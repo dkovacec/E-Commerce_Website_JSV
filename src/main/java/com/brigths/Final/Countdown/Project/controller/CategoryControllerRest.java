@@ -47,6 +47,22 @@ public class CategoryControllerRest {
         return new ResponseEntity<>(category, HttpStatus.OK);
     }
 
+    //create new category
+    @PostMapping("/categories")
+    public ResponseEntity<Category> createCategory (@RequestBody Category category){
+
+        try {
+            Category category1 = categoryService.addCategory(
+                    new Category(
+                            category.getName(),
+                            category.getDescription())
+            );
+            return new ResponseEntity<>(category1, HttpStatus.CREATED);
+        }catch (Exception e){
+            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     //delete one category by id
     @DeleteMapping("/categories/{id}")
     public ResponseEntity<HttpStatus> deleteCategoryById(@PathVariable("id") Integer id){
@@ -67,6 +83,7 @@ public class CategoryControllerRest {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
 
 
 }
