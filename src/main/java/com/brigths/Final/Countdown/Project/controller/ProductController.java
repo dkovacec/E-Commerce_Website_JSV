@@ -61,4 +61,38 @@ public class ProductController {
 
     }
 
+    @GetMapping("products/{productId}")
+    public ResponseEntity<Product> getProductById(@PathVariable("productId") long productId){
+        Product product = productService.getProductById(productId);
+
+        if(product != null){
+            return new ResponseEntity<>(product,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+    }
+
+    @PutMapping ("products/{productId}")
+    public ResponseEntity<Product> updateProductById (@PathVariable("productId") long productId, @RequestBody Product product){
+
+        Product updateProduct = productService.updateProductById(productId,product);
+
+        if(updateProduct != null){
+            return new ResponseEntity<>(productService.saveProduct(updateProduct),HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+    }
+
+    @DeleteMapping("products/{productId}")
+    public ResponseEntity<Product> deleteProductById (@PathVariable ("productId") long productId){
+        try {
+            productService.deleteProductById(productId);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }
