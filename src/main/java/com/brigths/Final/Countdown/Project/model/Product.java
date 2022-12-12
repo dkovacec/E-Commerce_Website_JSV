@@ -10,25 +10,29 @@ public class Product {
     private String name;
     private double price;
     private double weight;
+    @Lob
     private String summary;
+    @Lob
     private String description;
     private String imageName;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", referencedColumnName = "category_id")
     private Category category;
 
     public Product() {
     }
 
-    public Product(String name, double price, double weight, String summary, String description, String imageName) {
+
+    public Product(String name, double price, double weight, String summary, String description, String imageName, Category category) {
         this.name = name;
         this.price = price;
         this.weight = weight;
         this.summary = summary;
         this.description = description;
         this.imageName = imageName;
+        this.category = category;
     }
 
     public Long getId() {

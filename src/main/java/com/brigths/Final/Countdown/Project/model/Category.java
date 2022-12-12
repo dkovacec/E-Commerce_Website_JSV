@@ -11,6 +11,7 @@ public class Category {
     private int id;
 
     private String name;
+    @Lob
 
     private String description;
 
