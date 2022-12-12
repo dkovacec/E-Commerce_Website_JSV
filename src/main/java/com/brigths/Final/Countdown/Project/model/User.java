@@ -42,8 +42,8 @@ public class User {
     private List<Role> roles;
 
     public User() {
-
     }
+
     public User(User user) {
         this.id = id;
         this.firstName = user.getFirstName();
