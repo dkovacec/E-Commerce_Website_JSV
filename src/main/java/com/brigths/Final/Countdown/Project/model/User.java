@@ -5,6 +5,8 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import org.hibernate.annotations.Table;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -29,7 +31,7 @@ public class User {
     //one role can be given to many users
     @ManyToMany(cascade = CascadeType.MERGE, fetch  = FetchType.EAGER)
     @JoinTable(name = "user_role" , joinColumns = {@JoinColumn (name = "USER_ID", referencedColumnName = "ID")},
-                inverseJoinColumn = {@JoinColumn (name = "ROLE_ID", referencedColumnName = "ID")})
+                inverseJoinColumns = {@JoinColumn (name = "ROLE_ID", referencedColumnName = "ID")})
     private List<Role> roles;
 
 
