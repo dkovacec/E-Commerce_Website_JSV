@@ -29,7 +29,7 @@ public class ProductController {
 
         try{
             Product newProduct= productService.saveProduct(new Product(product.getName(),product.getPrice(),product.getWeight()
-            ,product.getSummary(),product.getDescription(),product.getImageName()));
+            ,product.getSummary(),product.getDescription(),product.getImageName(), product.getCategory()));
 
             return new ResponseEntity<>(newProduct, HttpStatus.CREATED);
 
