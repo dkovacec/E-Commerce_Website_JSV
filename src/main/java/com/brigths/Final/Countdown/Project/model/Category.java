@@ -14,7 +14,7 @@ public class Category {
 
     private String description;
 
-    public Category() {;
+    public Category() {
     }
 
     public int getId() {
