@@ -30,43 +30,13 @@ public class UserController {
 
         return "users";
     }
-
-    @GetMapping("/register")
-    public String registerUser(Model model, HttpSession session){
-
-        if (sessionService.loginCheck(session)) {
-            return "redirect:/";
-        }
-
-        model.addAttribute("user", new User());
-
-        return "user/register";
-    }
-    @PostMapping("/saveuser")
-    public String saveUser(@Valid @ModelAttribute User user, BindingResult bindingResult, Model model){
-
-        if(bindingResult.hasErrors()){
-            return "/user/register";
-        }
-
-        User existingUser = userService.getUserByEmail(user.getEmail());
-
-        if (existingUser != null) {
-            model.addAttribute("exists", true);
-            return "/user/register";
-        }
-
-        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
-
-        userService.saveUser(user);
-
-        return "user/login";
-    }
-    @GetMapping("/login")
-    public String loginForm(Model model, HttpSession session){
-
-        if (sessionService.loginCheck(session)) {
-            return "redirect:/";
+    @PostMapping("/saveUsers")
+    public String saveUsers(@Valid @ModelAttribute User user,
+                            BindingResult bindingResult, Model model,
+                            @RequestParam(required = false) String email) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("users", new User());
+            return "users/new";
         }
 
         model.addAttribute("error", false);
@@ -74,32 +44,92 @@ public class UserController {
         return "user/login";
 
     }
-    @PostMapping("/login")
-    public String login(@RequestParam String email,
-                        @RequestParam String password,
-                        Model model,
-                        HttpServletRequest request) {
 
-        User user = userService.getUserByEmail(email);
+    @GetMapping("/showUserForUpdate/{id}")
+    public String showUserForUpdate(@PathVariable(value = "id") long id, Model model,
+                                    @RequestParam(required = false) String email) {
 
-        if (user == null) {
-            System.out.println("wrong name");
-            model.addAttribute("error", true);
-            return "user/login";
-        }
 
-        if (new BCryptPasswordEncoder().matches(password, user.getPassword())) {
-            request.getSession().setAttribute("user", user.getEmail());
-            request.getSession().setAttribute("id", user.getId());
-            request.getSession().setAttribute("firstName", user.getFirstName());
-            request.getSession().setAttribute("lastName", user.getLastName());
+        User user = userService.findUserById(id);
+        model.addAttribute("user",user);
+        model.addAttribute("listOfUsers", userService.getUserByEmail(email));
 
-            return "redirect:/";
-        }
-        model.addAttribute("error", true);
-        return "user/login";
-
+        return "users/update";
     }
+    @GetMapping("/showUserForDelete/{id}")
+    public String showUserForDelete(@PathVariable(value = "id") long id) {
+        userService.deleteUserById(id);
+        return "redirect:/users";
+    }
+//    @GetMapping("/register")
+//    public String registerUser(Model model, HttpSession session){
+//
+//        if (sessionService.loginCheck(session)) {
+//            return "redirect:/";
+//        }
+//
+//        model.addAttribute("user", new User());
+//
+//        return "user/register";
+//    }
+//    @PostMapping("/saveuser")
+//    public String saveUser(@Valid @ModelAttribute User user, BindingResult bindingResult, Model model){
+//
+//        if(bindingResult.hasErrors()){
+//            return "/user/register";
+//        }
+//
+//        User existingUser = userService.getUserByEmail(user.getEmail());
+//
+//        if (existingUser != null) {
+//            model.addAttribute("exists", true);
+//            return "/user/register";
+//        }
+//
+//        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+//
+//        userService.saveUser(user);
+//
+//        return "user/login";
+//    }
+//    @GetMapping("/login")
+//    public String loginForm(Model model, HttpSession session){
+//
+//        if (sessionService.loginCheck(session)) {
+//            return "redirect:/";
+//        }
+//
+//        model.addAttribute("error", false);
+//
+//        return "user/login";
+//
+//    }
+//    @PostMapping("/login")
+//    public String login(@RequestParam String email,
+//                        @RequestParam String password,
+//                        Model model,
+//                        HttpServletRequest request) {
+//
+//        User user = userService.getUserByEmail(email);
+//
+//        if (user == null) {
+//            System.out.println("wrong name");
+//            model.addAttribute("error", true);
+//            return "user/login";
+//        }
+//
+//        if (new BCryptPasswordEncoder().matches(password, user.getPassword())) {
+//            request.getSession().setAttribute("user", user.getEmail());
+//            request.getSession().setAttribute("id", user.getId());
+//            request.getSession().setAttribute("firstName", user.getFirstName());
+//            request.getSession().setAttribute("lastName", user.getLastName());
+//
+//            return "redirect:/";
+//        }
+//        model.addAttribute("error", true);
+//        return "user/login";
+//
+//    }
 //    @GetMapping("/users")
 //    public String editRoles(Model model, HttpSession session) {
 //
@@ -118,22 +148,22 @@ public class UserController {
 //
 //        return "/user/editRoles";
 //    }
-    @GetMapping("/user/showUpdateForm/{id}")
-    public String showFormForUpdate(@PathVariable(value = "id") long id, Model model, HttpSession session){
-
-        if (!sessionService.loginCheck(session)) {
-            return "redirect:/";
-        } else {
-            if (!session.getAttribute("role").equals("ADMIN")) {
-                return "redirect:/";
-            }
-        }
-        User updatedUser = userService.getUserById(id);
-        model.addAttribute("updateUser", updatedUser);
-        model.addAttribute("user", session.getAttribute("user"));
-
-        return "user/updateRole";
-
-
-    }
+//    @GetMapping("/user/showUpdateForm/{id}")
+//    public String showFormForUpdate(@PathVariable(value = "id") long id, Model model, HttpSession session){
+//
+//        if (!sessionService.loginCheck(session)) {
+//            return "redirect:/";
+//        } else {
+//            if (!session.getAttribute("role").equals("ADMIN")) {
+//                return "redirect:/";
+//            }
+//        }
+//        User updatedUser = userService.getUserById(id);
+//        model.addAttribute("updateUser", updatedUser);
+//        model.addAttribute("user", session.getAttribute("user"));
+//
+//        return "user/updateRole";
+//
+//
+//    }
 }
