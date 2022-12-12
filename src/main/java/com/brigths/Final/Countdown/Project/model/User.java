@@ -3,7 +3,7 @@ package com.brigths.Final.Countdown.Project.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
-import org.hibernate.annotations.Table;
+
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
+    @NotEmpty(message = "First name can't be empty.")
     @Column(nullable = false)
     private String firstName;
 

@@ -9,10 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import service.SessionService;
 import service.UserService;
 
@@ -25,6 +22,14 @@ public class UserController {
 
     @Autowired
     SessionService sessionService;
+
+
+    @GetMapping("/users")
+    public String usersHome(Model model) {
+        model.addAttribute("listOfUsers", userService.findAll());
+
+        return "users";
+    }
 
     @GetMapping("/register")
     public String registerUser(Model model, HttpSession session){
@@ -95,5 +100,40 @@ public class UserController {
         return "user/login";
 
     }
+//    @GetMapping("/users")
+//    public String editRoles(Model model, HttpSession session) {
+//
+//        if (!sessionService.loginCheck(session)) {
+//            return "redirect:/";
+//        } else {
+//            if (!session.getAttribute("role").equals("ADMIN")) {
+//                return "redirect:/";
+//            }
+//        }
+//
+//        List<User> users = userService.getAllUsers();
+//
+//        model.addAttribute("users", users);
+//        model.addAttribute("user", session.getAttribute("user"));
+//
+//        return "/user/editRoles";
+//    }
+    @GetMapping("/user/showUpdateForm/{id}")
+    public String showFormForUpdate(@PathVariable(value = "id") long id, Model model, HttpSession session){
 
+        if (!sessionService.loginCheck(session)) {
+            return "redirect:/";
+        } else {
+            if (!session.getAttribute("role").equals("ADMIN")) {
+                return "redirect:/";
+            }
+        }
+        User updatedUser = userService.getUserById(id);
+        model.addAttribute("updateUser", updatedUser);
+        model.addAttribute("user", session.getAttribute("user"));
+
+        return "user/updateRole";
+
+
+    }
 }
