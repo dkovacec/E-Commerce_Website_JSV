@@ -1,6 +1,7 @@
 package com.brigths.Final.Countdown.Project.service;
 
 import com.brigths.Final.Countdown.Project.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.brigths.Final.Countdown.Project.repository.UserRepository;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
+    @Autowired
     private UserRepository userRepository;
 
 

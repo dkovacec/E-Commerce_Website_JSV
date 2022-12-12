@@ -12,5 +12,5 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByEmailContainingIgnoreCase (String email);
 
-    List <User> findProductsByUserId (long userId);
+//    List <User> findProductsByUserId (long userId);
 }
