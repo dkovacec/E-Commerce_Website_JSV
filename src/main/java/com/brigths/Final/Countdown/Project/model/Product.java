@@ -22,6 +22,15 @@ public class Product {
     public Product() {
     }
 
+    public Product(String name, double price, double weight, String summary, String description, String imageName) {
+        this.name = name;
+        this.price = price;
+        this.weight = weight;
+        this.summary = summary;
+        this.description = description;
+        this.imageName = imageName;
+    }
+
     public Long getId() {
         return id;
     }
