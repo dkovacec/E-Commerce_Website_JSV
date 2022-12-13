@@ -11,13 +11,42 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
-
+    @Autowired
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
+    @Override
+    public User saveUser(User user) {
+        User newUser = userRepository.save(user);
+
+        return newUser;
+    }
+
+
+    @Override
+    public User updateUserById(long id, User user) {
+        User userData = getUserById(id);
+        if (userData != null) {
+            userData.setLastName(user.getLastName());
+            userData.setFirstName(user.getFirstName());
+            userData.setEmail(user.getEmail());
+            userData.setPassword(user.getPassword());
+            userData.setCountry(user.getCountry());
+            userData.setAddress(user.getAddress());
+            userData.setAddress2(user.getAddress2());
+            userData.setPostCode(user.getPostCode());
+            userData.setCity(user.getCity());
+            userData.setPhoneNumber(user.getPhoneNumber());
+            return userData;
+        }
+        return null;
+    }
     @Override
     public User getUserById(long id) {
         Optional<User> optional = userRepository.findById(id);
@@ -31,35 +60,6 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    @Override
-    public void deleteUserById(long id) {
-        boolean exists = this.userRepository.existsById(id);
-        if (!exists) {
-            throw new IllegalStateException("User with id " + id + " was not found.");
-        }
-        this.userRepository.deleteById(id);
-    }
-
-    @Override
-    public User updateUserById(long id, User user) {
-        User userData = getUserById(id);
-        if (userData != null) {
-            userData.setLastName(user.getLastName());
-            userData.setFirstName(user.getFirstName());
-            userData.setEmail(user.getEmail());
-
-
-            return userData;
-        }
-        return null;
-    }
-
-    @Override
-    public User saveUser(User user) {
-        User newUser = userRepository.save(user);
-
-        return newUser;
-    }
 
     @Override
     public List<User> getUserByEmail(String email) {
@@ -70,5 +70,13 @@ public class UserServiceImpl implements UserService {
     public User addUser(User user) {
         userRepository.save(user);
         return user;
+    }
+    @Override
+    public void deleteUserById(long id) {
+        boolean exists = this.userRepository.existsById(id);
+        if (!exists) {
+            throw new IllegalStateException("User with id " + id + " was not found.");
+        }
+        this.userRepository.deleteById(id);
     }
 }

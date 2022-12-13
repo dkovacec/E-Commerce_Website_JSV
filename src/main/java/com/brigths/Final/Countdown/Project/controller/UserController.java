@@ -29,7 +29,7 @@ public class UserController {
 
         try{
             User newUser= userService.saveUser(new User(user.getFirstName(),user.getLastName(),user.getEmail()
-                    ,user.getPassword(), user.getAddress(),user.getAddress2(),user.getCity(),user.getCountry(),user.getPostCode(), user.getPhoneNumber()));
+                    ,user.getPassword(),user.getCountry(), user.getAddress(),user.getAddress2(),user.getPostCode(),user.getCity(), user.getPhoneNumber()));
 
             return new ResponseEntity<>(newUser, HttpStatus.CREATED);
 

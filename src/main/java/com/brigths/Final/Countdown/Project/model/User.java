@@ -1,7 +1,6 @@
 package com.brigths.Final.Countdown.Project.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 
 import java.util.List;
@@ -41,16 +40,24 @@ public class User {
                 inverseJoinColumns = {@JoinColumn (name = "ROLE_ID", referencedColumnName = "ID")})
     private List<Role> roles;
 
-    public User() {
+
+    public User(String firstName, String lastName, String email, String password, String country, String address, String address2, String postCode, String city, String phoneNumber) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.country = country;
+        this.address = address;
+        this.address2 = address2;
+        this.postCode = postCode;
+        this.city = city;
+        this.phoneNumber = phoneNumber;
+        this.roles = roles;
     }
 
-    public User(User user) {
-        this.id = id;
-        this.firstName = user.getFirstName();
-        this.lastName = user.getLastName();
-        this.email = user.getEmail();
-        this.password = user.getPassword();
-        this.roles = getRoles();
+    public User() {
+
     }
 
 
