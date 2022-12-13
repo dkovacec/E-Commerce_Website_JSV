@@ -1,6 +1,7 @@
 package com.brigths.Final.Countdown.Project.service;
 
 import com.brigths.Final.Countdown.Project.model.Product;
+import com.brigths.Final.Countdown.Project.repository.CategoryRepository;
 import com.brigths.Final.Countdown.Project.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,12 +13,12 @@ import java.util.Optional;
 public class ProductServiceImpl implements ProductService {
 
     private ProductRepository productRepository;
-//    private CategoryRepository categoryRepository;
+    private CategoryRepository categoryRepository;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository /*, CategoryRepository categoryRepository*/) {
+    public ProductServiceImpl(ProductRepository productRepository, CategoryRepository categoryRepository) {
         this.productRepository = productRepository;
-//        this.categoryRepository = categoryRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     @Override
@@ -59,6 +60,7 @@ public class ProductServiceImpl implements ProductService {
             productData.setSummary(product.getSummary());
             productData.setDescription(product.getDescription());
             productData.setImageName(product.getImageName());
+            productData.setCategory(product.getCategory());
 
             return productData;
         }
@@ -78,8 +80,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getProductsByCategoryId(long categoryId) {
-        return productRepository.findTutorialsByCategoryId(categoryId);
+    public List<Product> getProductsByCategoryId(Integer id) {
+        return productRepository.findProductsByCategoryId(id);
     }
 
     @Override

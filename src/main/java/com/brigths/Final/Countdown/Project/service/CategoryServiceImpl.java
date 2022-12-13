@@ -65,4 +65,9 @@ public class CategoryServiceImpl implements CategoryService {
         return null;
     }
 
+    @Override
+    public boolean existsCategoryById(Integer id) {
+        return categoryRepository.existsById(id);
+    }
+
 }
