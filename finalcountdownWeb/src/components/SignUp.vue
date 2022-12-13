@@ -69,7 +69,7 @@ export default {
         } else {
             this.errors.address = false;
         }
-        if (!addr.test(this.user.address2.trim())) {
+        if (!this.user.address2.trim) {
             this.errors.address2 = true;
         } else {
             this.errors.address2 = false;
@@ -205,8 +205,7 @@ export default {
         <Message v-show="errors.address" :message="'Address field is empty'"></Message>
 
         <p><label for="address">Address2</label><input type="text" id="address" v-model="user.address2"></p>
-        <Message v-show="errors.address2" :message="'Address2 field is empty'"></Message>
-
+       
         
         <p><label for="postCode">Post Code</label><input type="text" id="postCode" v-model="user.postCode"></p>
         <Message v-show="errors.postCode" :message="'PostCode number field is empty'"></Message>
