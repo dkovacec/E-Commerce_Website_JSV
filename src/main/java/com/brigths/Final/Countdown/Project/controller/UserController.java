@@ -69,7 +69,7 @@ public class UserController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-    @PutMapping ("user/{userId}")
+    @PutMapping ("users/{userId}")
     public ResponseEntity<User> updateUserById (@PathVariable("userId") long userId, @RequestBody User user){
 
        User updateUser = userService.updateUserById(userId,user);
