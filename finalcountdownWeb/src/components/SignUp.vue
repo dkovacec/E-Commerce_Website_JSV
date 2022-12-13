@@ -136,10 +136,10 @@ export default {
     },
         async createUser(user) {
             try {
-                let url = "http://localhost:8080/api/users";
+                let url = "/api/users";
                 let response2 = await fetch(url, {
                     method: "POST",
-                    mode: "no-cors",
+            
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -166,8 +166,8 @@ export default {
         },
         async getUsers() {
             try {
-                let url = "http://localhost:8080/api/users";
-                let response = await fetch(url, {mode:"no-cors"});
+                let url = "/api/users";
+                let response = await fetch(url);
                 this.users = await response.json();
                 this.totalUsers = this.users.length;
                 console.log(this.users);
