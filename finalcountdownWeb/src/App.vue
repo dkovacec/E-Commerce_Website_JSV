@@ -1,5 +1,5 @@
 <script>
-import LoginSignUp from './components/LoginSignUp.vue';
+import LoginSignUp from './components/SignUp.vue';
 
 export default {
   data() {
