@@ -8,6 +8,6 @@ export default{
 }
 </script>
 <template>
-    <h1>Login / SignUp</h1>
+    <h1>SignUp</h1>
     <SignUp></SignUp>
 </template>

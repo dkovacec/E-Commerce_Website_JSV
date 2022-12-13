@@ -7,15 +7,26 @@ export default {
             user: {
                 firstName: "",
                 lastName: "",
+                country: "",
+                address: "",
+                address2: "",
+                phoneNumber: "",
+                postCode: "",
                 email: "",
-                password: ""
+                password: "",
             },
             formErrors: [],
             errors: {
                 firstName: false,
                 lastName: false,
+                city: false,
+                country: false,
+                address: false,
+                address2: false,
+                phoneNumber: false,
+                postCode: false,
                 email: false,
-                password: false
+                password: false,
             },
             users: [],
             totalUsers: 0
@@ -30,7 +41,7 @@ export default {
         console.log(this.user);
         this.formErrors = [];
 
-        let re = /^[A-Za-z ]{3,}$/;
+        let re = /^[A-Za-z ]{2,}$/;
         if (!re.test(this.user.firstName.trim())) {
             this.errors.firstName = true;
         } else {
@@ -42,8 +53,43 @@ export default {
         } else {
             this.errors.lastName = false;
         }
-    
-        if (!this.user.email) {
+        if (!re.test(this.user.city.trim())) {
+            this.errors.city = true;
+        } else {
+            this.errors.city = false;
+        }
+        if (!re.test(this.user.country.trim())) {
+            this.errors.country = true;
+        } else {
+            this.errors.country = false;
+        }
+        let addr = /^[A-Za-z  0-9]{2,}$/;
+        if (!addr.test(this.user.address.trim())) {
+            this.errors.address = true;
+        } else {
+            this.errors.address = false;
+        }
+        if (!addr.test(this.user.address2.trim())) {
+            this.errors.address2 = true;
+        } else {
+            this.errors.address2 = false;
+        }
+        
+        let num = /^\d+$/;
+        if (!num.test(this.user.postCode.trim())) {
+            this.errors.postCode = true;
+        } else {
+            this.errors.postCode = false;
+        }
+       
+        if (!num.test(this.user.phoneNumber.trim())) {
+            this.errors.phoneNumber = true;
+        } else {
+            this.errors.phoneNumber = false;
+        }
+
+        let mail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (!mail.test(this.user.email.trim())) {
             this.errors.email = true;
         } else {
             this.errors.email = false;
@@ -67,55 +113,73 @@ export default {
             alert("User inserted");
             this.firstName = "";
             this.lastName = "";
+            this.city = "";
+            this.country = "";
+            this.address = "";
+            this.address2 = "";
+            this.postCode = "";
+            this.phoneNumber = "";
             this.email = "";
             this.password = "";
             this.errors.firstName = false;
             this.errors.lastName = false;
+            this.errors.city = false;
+            this.errors.country = false;
+            this.errors.address = false;
+            this.errors.address2 = false;
+            this.errors.postCode = false;
+            this.errors.phoneNumber = false;
             this.errors.email = false;
             this.errors.password = false;
 
         }
     },
-    //     async createUser(user) {
-    //         try {
-    //             let url = "http://localhost:8080/users";
-    //             let response2 = await fetch(url, {
-    //                 method: "POST",
-    //                 headers: {
-    //                     'Content-Type': 'application/json'
-    //                 },
-    //                 body: JSON.stringify({
-    //                     firstName: user.firstName,
-    //                     lastName: user.lastName,
-    //                     email: user.email,
-    //                     password: user.password
+        async createUser(user) {
+            try {
+                let url = "http://localhost:8080/api/users";
+                let response2 = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        firstName: user.firstName,
+                        lastName: user.lastName,
+                        email: user.email,
+                        city: user.city,
+                        country: user.country,
+                        address: user.address,
+                        address2: user.address2,
+                        postCode: user.postCode,
+                        phoneNumber: user.phoneNumber,
+                        email: user.email,
+                        password: user.password
+                    })
+                });
+                let newUser = await response2.json();
+                alert(`User inserted with id=${newUser.id}`)
+                this.getUsers();
+            } catch (error) {
+                console.log("Error".error);
+            }
+        },
+        async getUsers() {
+            try {
+                let url = "http://localhost:8080/api/users";
+                let response = await fetch(url);
+                this.users = await response.json();
+                this.totalUsers = this.users.length;
+                console.log(this.users);
+            } catch (error) {
+                console.log("Error".error);
+            }
+        }
+    },
+    created() {
+        this.getUsers();
+    }
+}
 
-    //                 })
-    //             });
-    //             let newUser = await response2.json();
-    //             alert(`User inserted with id=${newUser.id}`)
-    //             this.getUsers();
-    //         } catch (error) {
-    //             console.log("Error".error);
-    //         }
-    //     },
-    //     async getUsers() {
-    //         try {
-    //             let url = "http://localhost:8080/users";
-    //             let response = await fetch(url);
-    //             this.users = await response.json();
-    //             this.totalUsers = this.users.length;
-    //             console.log(this.users);
-    //         } catch (error) {
-    //             console.log("Error".error);
-    //         }
-    //     }
-    // },
-    // created() {
-    //     this.getUsers();
-    // }
-}
-}
 
 
 </script>
@@ -125,17 +189,36 @@ export default {
             <li v-for="error of formErrors">{{ error }}</li>
         </ul>
         <p><label for="firstName">First name</label><input type="text" id="firstName" v-model="user.firstName"></p>
-        <Message v-show="errors.firstName" :message="'First name field is empty'"></Message>
+        <Message v-show="errors.firstName" :message="'First name field is empty or incorrect'"></Message>
 
         <p><label for="lastName">Last name</label><input type="text" id="lastName" v-model="user.lastName"></p>
         <Message v-show="errors.lastName" :message="'Last name field is empty'"></Message>
 
+        <p><label for="city">City</label><input type="text" id="city" v-model="user.city"></p>
+        <Message v-show="errors.city" :message="'City field is empty'"></Message>
+
+        <p><label for="country">Country</label><input type="text" id="country" v-model="user.country"></p>
+        <Message v-show="errors.country" :message="'Country field is empty'"></Message>
+
+        <p><label for="address">Address</label><input type="text" id="address" v-model="user.address"></p>
+        <Message v-show="errors.address" :message="'Address field is empty'"></Message>
+
+        <p><label for="address">Address2</label><input type="text" id="address" v-model="user.address2"></p>
+        <Message v-show="errors.address2" :message="'Address2 field is empty'"></Message>
+
+        
+        <p><label for="postCode">Post Code</label><input type="text" id="postCode" v-model="user.postCode"></p>
+        <Message v-show="errors.postCode" :message="'PostCode number field is empty'"></Message>
+
+        <p><label for="phoneNumber">Phone number</label><input type="text" id="phoneNumber" v-model="user.phoneNumber"></p>
+        <Message v-show="errors.phoneNumber" :message="'Phone number field is empty'"></Message>
+        
         <p><label for="email">E-mail</label><input type="email" id="email" v-model="user.email"></p>
-        <Message v-show="errors.email" :message="'E-mail field is empty'"></Message>
+        <Message v-show="errors.email" :message="'E-mail field is empty or incorrect'"></Message>
 
         <p><label for="password">Password</label><input type="text" id="password" v-model="user.password"></p>
         <Message v-show="errors.password" :message="'Password field is empty'"></Message>
-
+        
         <p><input type="submit" value="Register user"></p>
     </form>
 </template>
