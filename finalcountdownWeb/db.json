@@ -1,0 +1,23 @@
+{
+    "users": [
+
+      {
+        "username": "Pedro Remoaldo",
+        "email": "premoaldo@gmail.com",
+        "password": "dsfčkj",
+        "id": 3
+      },
+      {
+        "username": "Marko Gace",
+        "email": "mgace@gmail.com",
+        "password": "ldksflds",
+        "id": 4
+      },
+      {
+        "username": "Antonio",
+        "email": "antonio@gmail.com",
+        "password": "dffsdf",
+        "id": 5
+      }
+    ]
+  }
