@@ -1,7 +1,9 @@
 package com.brigths.Final.Countdown.Project.controller;
 
 import com.brigths.Final.Countdown.Project.model.Category;
+import com.brigths.Final.Countdown.Project.model.Product;
 import com.brigths.Final.Countdown.Project.service.CategoryService;
+import com.brigths.Final.Countdown.Project.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +16,13 @@ import java.util.List;
 public class CategoryControllerRest {
 
     private CategoryService categoryService;
+    private ProductService productService;
 
     @Autowired
-    public CategoryControllerRest(CategoryService categoryService) {
+    public CategoryControllerRest(CategoryService categoryService, ProductService productService) {
+
         this.categoryService = categoryService;
+        this.productService = productService;
     }
 
     //get category list
@@ -46,6 +51,29 @@ public class CategoryControllerRest {
         }
         return new ResponseEntity<>(category, HttpStatus.OK);
     }
+
+
+    //get all products in a category
+    @GetMapping("/categories/{id}/products")
+    public ResponseEntity<List<Product>> getAllProductsById(@PathVariable(value = "id") Integer id) {
+        try{
+            if(!categoryService.existsCategoryById(id)) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            List<Product> products =  productService.getProductsByCategoryId(id);
+
+            if(products.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(products, HttpStatus.OK);
+
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
+
 
     //create new category
     @PostMapping("/categories")
