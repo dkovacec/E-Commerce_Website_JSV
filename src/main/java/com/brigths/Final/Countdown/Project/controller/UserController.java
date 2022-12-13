@@ -69,7 +69,7 @@ public class UserController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-    @PutMapping ("user/{userId}")
+    @PutMapping ("users/{userId}")
     public ResponseEntity<User> updateUserById (@PathVariable("userId") long userId, @RequestBody User user){
 
        User updateUser = userService.updateUserById(userId,user);
@@ -81,7 +81,7 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
     }
-    @DeleteMapping("users/userId")
+    @DeleteMapping("users/{userId}")
     public ResponseEntity<User> deleteUserById (@PathVariable ("userId") long userId){
         try {
             userService.deleteUserById(userId);
