@@ -80,8 +80,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getProductsByCategoryId(long categoryId) {
-        return productRepository.findTutorialsByCategoryId(categoryId);
+    public List<Product> getProductsByCategoryId(Integer id) {
+        return productRepository.findProductsByCategoryId(id);
     }
 
     @Override

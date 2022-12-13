@@ -16,4 +16,7 @@ public interface CategoryService {
 
     Category updateCategoryById(Integer id, Category category);
 
+    boolean existsCategoryById(Integer id);
+
+
 }

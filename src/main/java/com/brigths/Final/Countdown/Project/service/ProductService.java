@@ -19,7 +19,7 @@ public interface ProductService {
 
     boolean existsProductById(long id);
 
-    List<Product> getProductsByCategoryId (long categoryId);
+    List<Product> getProductsByCategoryId (Integer id);
 
     List<Product> getProductByName (String name);
 
