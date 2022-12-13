@@ -29,7 +29,7 @@ public class UserController {
 
         try{
             User newUser= userService.saveUser(new User(user.getFirstName(),user.getLastName(),user.getEmail()
-                    ,user.getPassword(), user.getAddress(),user.getAddress2(),user.getCity(),user.getCountry(),user.getPostCode(), user.getPhoneNumber()));
+                    ,user.getPassword(),user.getCountry(), user.getAddress(),user.getAddress2(),user.getPostCode(),user.getCity(), user.getPhoneNumber()));
 
             return new ResponseEntity<>(newUser, HttpStatus.CREATED);
 
@@ -81,7 +81,7 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
     }
-    @DeleteMapping("users/userId")
+    @DeleteMapping("users/{userId}")
     public ResponseEntity<User> deleteUserById (@PathVariable ("userId") long userId){
         try {
             userService.deleteUserById(userId);
