@@ -60,8 +60,8 @@ public class User {
 
     }
 
-    public User(String firstName, String lastName, String email, String password, String address, String address2, String city, String country, String postCode, String phoneNumber) {
-    }
+//    public User(String firstName, String lastName, String email, String password, String address, String address2, String city, String country, String postCode, String phoneNumber) {
+//    }
 
 
     public Long getId() {
