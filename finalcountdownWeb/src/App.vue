@@ -1,24 +1,19 @@
 <script>
 import HeaderMain from './components/HeaderMain.vue';
 import HeaderSecondary from './components/HeaderSecondary.vue';
-
 import FooterMain from './components/FooterMain.vue';
-import Login from './components/Login.vue';
-import SignUp from './components/SignUp.vue';
 export default {
   data() {
     return {
     }
   },
   methods: {
-
   },
   components: {
     HeaderMain,
     HeaderSecondary,
     FooterMain,
-    Login,
-    SignUp
+    
   }
 }
 </script>
@@ -27,6 +22,7 @@ export default {
 <!-- <HeaderSecondary></HeaderSecondary> -->
 
   <main class="container">
+
     <router-view></router-view>
   </main>
 

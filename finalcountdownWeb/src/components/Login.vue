@@ -1,7 +1,10 @@
 <script>
+import { defineComponent } from "vue";
+import { mapStores } from "pinia";
+import { useAuthStore } from "@/store/auth";
 import Message from './Message.vue';
 
-export default {
+export default defineComponent({
     data() {
         return {
             user: {
@@ -56,14 +59,20 @@ export default {
 
         }
     },
+    computed: {
+    ...mapStores(useAuthStore),
+    valid() {
+      return this.user.username.length > 0 && this.user.password.length > 0;
+    },
+  }
 }
-}
+});
 
 
 </script>
 <template>
 
-    <form @submit.prevent="processForm" novalidate>
+    <form @submit.prevent="processForm" novalidate v-if="!authStore.isAuthenticated">
         <p><label for="username">Username</label><input type="username" id="username" v-model="user.username"></p>
         <Message v-show="errors.username" :message="'Username field is empty'"></Message>
 

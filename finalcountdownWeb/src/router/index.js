@@ -1,40 +1,21 @@
-import { createRouter, createWebHistory, useRoute }
+import { createRouter, createWebHistory}
 
     from "vue-router";
-    import HomeView from "../views/HomeView.vue";
-    import SignUp from '../views/SignUpView.vue';
-    import Login from '../views/LoginView.vue';
-    import ListOfCategories from '../views/ListOfCategoryView.vue';
-    import AddCategory from '../views/AddCategoryView.vue';
+    import { routes } from "../router/routes";
+    import { useAuthStore } from "../store/auth";
 
 
-    import PageNotFoundView from "../views/PageNotFoundView.vue";
-
-   
-   
-
-    const routes = [
-
-        {
-            path: '/', name: 'Home', component: HomeView
-        },
-        { path: '/signup', name: 'SignUp', component: SignUp },
-
-        { path: '/login', name: 'Login', component: Login },
-        { path: '/categorylist', name: 'Categories', component: ListOfCategories },
-        { path: '/categoryadd', name: 'AddCategories', component: AddCategory },
-
-
-        {
-            path: '/:pathMatch(.*)*', name: '404error', component: PageNotFoundView
-        }
- 
-    ]
+export const router = createRouter({
+    history: createWebHistory(),
+    routes: routes,
+    strict: true
+})
 
    
-    const router = createRouter({
-        history: createWebHistory(),
-        routes
-    })
-
-export default router
+router.beforeEach((to, _) => {
+    const authStore = useAuthStore()
+    if (to.meta.requiresAuth && !authStore.isAuthenticated) {
+        return { name: 'login' }
+    }
+});
+export default router;

@@ -1,7 +1,12 @@
 <script>
-export default {
-
-}
+import { defineComponent } from "vue";
+import { mapState } from "pinia";
+import { useAuthStore } from "@/store/auth";
+export default defineComponent({
+  computed: {
+    ...mapState(useAuthStore, ["isAuthenticated"])
+  },
+});
 
 </script>
 
@@ -19,10 +24,27 @@ export default {
         <!-- <li><router-link :to="{ name: 'Tabs'}">Tabs</router-link></li> -->
         <!-- <li><a href="#">Shop</a></li> -->
 
-        <li><router-link to="/login">Login</router-link></li>
-        <li><router-link to="/signup">Sign Up</router-link></li>
+        <!-- <li><router-link to="/login">Login</router-link></li>
+        <li><router-link to="/signup">Sign Up</router-link></li> -->
         <li><router-link to="/categorylist">Categories</router-link></li>
         <li><router-link to="/categoryadd">Add Category</router-link></li>
+
+        <li v-if="!isAuthenticated">
+          <li><router-link to="/signup">Sign Up</router-link></li>
+    </li>
+    <li v-if="!isAuthenticated">
+      <li><router-link to="/login">Login</router-link></li>
+    </li>
+    <li v-if="isAuthenticated">
+      <li><router-link to="/logout">Logout</router-link></li>
+    </li>
+    <li v-if="isAuthenticated">
+      <li><router-link to="/userListView">Users</router-link></li>
+    </li>
+    <li v-if="isAuthenticated">
+      <li><router-link to="/profileView">Profile</router-link></li>
+      <!-- <router-link :to="{ name: 'profileView' }">Profile</router-link> -->
+    </li>
 
         <li><a href="#">Cart</a></li>
       </ul>

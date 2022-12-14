@@ -1,7 +1,10 @@
 <script>
+import { defineComponent } from "vue";
+import { mapStores } from "pinia";
+import { useAuthStore } from "@/store/auth";
 import Message from './Message.vue';
 
-export default {
+export default defineComponent({
     data() {
         return {
             user: {
@@ -36,6 +39,14 @@ export default {
     },
     components: {
         Message
+    },
+    computed: {
+    ...mapStores(useAuthStore),
+    valid() {
+      const usernameValid = this.registrationData.username.length > 0;
+      const passwordValid = this.registrationData.password.length > 3
+     // const passwordRepeatValid = this.registrationData.password1 === this.registrationData.password2
+      return usernameValid && passwordValid; //&& passwordRepeatValid;
     },
     methods: {
     processForm() {
@@ -189,6 +200,7 @@ export default {
         this.getUsers();
     }
 }
+});
 
 
 
