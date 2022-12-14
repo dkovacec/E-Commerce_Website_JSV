@@ -23,7 +23,11 @@ public class User {
     private String email;
 
     @NotEmpty
+    private String username;
+    @NotEmpty
     private String password;
+
+    private boolean isAdmin;
 
     private String country;
     private String address;
@@ -94,6 +98,14 @@ public class User {
         this.email = email;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -156,5 +168,13 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.isAdmin = admin;
     }
 }

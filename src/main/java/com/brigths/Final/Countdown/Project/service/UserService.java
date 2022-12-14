@@ -4,6 +4,7 @@ import com.brigths.Final.Countdown.Project.model.Category;
 import com.brigths.Final.Countdown.Project.model.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
     List<User> getAllUsers();
@@ -19,4 +20,11 @@ public interface UserService {
     User saveUser(User user);
 
     List<User> getUserByEmail(String email);
+
+    Optional<User> findByEmail(String email);
+   // boolean userExists(String email);
+
+    boolean userExists(String username);
+    Optional<User> findByUsername(String username);
+
 }
