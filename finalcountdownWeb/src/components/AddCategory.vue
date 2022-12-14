@@ -80,7 +80,7 @@ export default {
 
 <template>
 
-    <form @submit.prevent="processForm" novalidate>
+    <form class="loginform" @submit.prevent="processForm" novalidate>
         <p>
             <label for="categoryName">Category Name: </label>
             <input type="text" id="categoryName" v-model="category.name">   
@@ -99,3 +99,60 @@ export default {
     </form>
 
 </template>
+
+<style>
+
+.loginform {
+	width: 65%;
+	margin: 0;
+	padding: 20px 20px;
+	box-sizing: border-box;
+	border: 2px solid #380000;
+	border-radius: 4px;
+	background-color: whitesmoke;
+	resize: none;
+	color: black;
+}
+
+.loginform label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    margin: 1px;
+    font-size: 14px;
+}
+
+.loginform textarea {
+    box-shadow: inset 0 2px 3px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+    background-color: #DDD;
+    width: 80%;
+    height: 100px;
+    resize: none;
+    padding: 3px;
+    margin-left: 15px;
+}
+
+input[type=text],[type=username], [type=email]  {
+    height: 25px;
+    width: 80%;
+    padding: 3px;
+    margin-left: 15px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    border-top: none;
+    border-bottom: 1px solid #DDD;
+    background-color: #DDD;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF
+}
+
+.input[type=button], input[type=submit], input[type=reset] {
+	background-color: #00050f; /*inverted of floralwhite*/
+	border: 2px solid darkblue;
+	border-radius: 4px;
+	color: white;
+	padding: 10px 15px;
+	text-decoration: none;
+	margin: 4px 2px;
+	cursor: pointer;
+}
+</style>

@@ -27,6 +27,7 @@ export default {
 <!-- <HeaderSecondary></HeaderSecondary> -->
 
   <main class="container">
+
     <router-view></router-view>
   </main>
 
@@ -35,9 +36,14 @@ export default {
 
 <style>
 .container {
-    margin: 0;
-    padding-top: 100px;
-    width: 85%;
-    border: 1px solid black;
+	position: absolute;
+  margin-top: 70px;
+	width: 75%;
+	padding: 10px;
+  padding-top: 100px;
+	font-family: Tahoma, Arial, sans-serif;
+  border: 1px solid black;
+	/*background-color: whitesmoke;  /*inverted of whitesmokr  #0a0a0a*/
+	color: black;
 }
 </style>

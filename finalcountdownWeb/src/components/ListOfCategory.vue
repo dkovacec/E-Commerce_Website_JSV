@@ -59,7 +59,7 @@ export default {
 </script>
 
 <template>
-    <table>
+    <table class="formattedTable">
         <thead>
             <th>Category Id</th>
             <th>Category Name</th>
@@ -85,3 +85,76 @@ export default {
 
     </table>
 </template>
+
+<style>
+
+.formattedTable, .formattedTable td {
+    border: 1px solid black;
+}
+
+
+.formattedTable th:nth-child(1), .formattedTable th:nth-child(2) {
+    border-right: 1px solid white;
+}
+
+
+.formattedTable {
+    /*border-spacing: 0;*/
+    border-collapse: collapse;
+}
+
+.formattedTable th, .formattedTable td {
+    padding: 5px;
+}
+
+.formattedTable th {
+    background-color: black;
+    color: white;
+
+}
+
+.formattedTable tfoot td {
+    background-color: #eee;
+}
+
+/* :nth-child - pseudo-class*/
+.formattedTable tbody tr:nth-child(even) {
+    background-color: #ccc;
+}
+
+.formattedTable tbody tr:hover {
+    cursor: pointer;
+    background-color: #555;
+    color: white;
+}
+
+.formattedTable caption {
+    margin-top: 3px;
+    caption-side: bottom;
+}
+
+.input[type="checkbox"] {
+	background-color: #000;
+	margin: 2px;
+	font: inherit;
+	color: currentColor;
+	width: 1.5em;
+	height: 1.5em;
+	border: 0.25em solid currentColor;
+	border-radius: 0.15em;
+	transform: translateY(-0.075em);
+}
+
+.button {
+	background-color: #380000; /* Green */
+	color: white;
+	padding: 5px 10px;
+	margin: 4px 2px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	border: 1px solid crimson;
+	border-radius: 5px;
+}
+</style>

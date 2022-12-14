@@ -8,11 +8,12 @@ export default {
 <template>
 
 <nav class="topMenu">
-    <a href="#"><img class="logo" src="src\images\logo.jpg"></a>
+    <img class="logo" src="src\images\logo.jpg">
       <ul>
-         <!-- use router-link instead of a to stop refreshing and request to server-->
+        <!-- use router-link instead of a to stop refreshing and request to server-->
         <!-- this makes it very fast and better -->
         <!-- <li><router-link to="/">Home</router-link></li>-->
+
         <li><router-link to="/">Home</router-link></li>
         
         <!-- using names for routing -->
@@ -71,6 +72,8 @@ export default {
     margin: 0;
     display: inline-block;
 }
+
+
 
 .topMenu a:hover {
     cursor: pointer;
