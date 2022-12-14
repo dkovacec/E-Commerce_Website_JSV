@@ -12,6 +12,7 @@ export default {
                 address2: "",
                 phoneNumber: "",
                 postCode: "",
+                username: "",
                 email: "",
                 password: "",
             },
@@ -25,6 +26,7 @@ export default {
                 address2: false,
                 phoneNumber: false,
                 postCode: false,
+                username: false,
                 email: false,
                 password: false,
             },
@@ -52,6 +54,11 @@ export default {
             this.errors.lastName = true;
         } else {
             this.errors.lastName = false;
+        }
+        if (!re.test(this.user.username.trim())) {
+            this.errors.username = true;
+        } else {
+            this.errors.username = false;
         }
         if (!re.test(this.user.city.trim())) {
             this.errors.city = true;
@@ -119,6 +126,7 @@ export default {
             this.address2 = "";
             this.postCode = "";
             this.phoneNumber = "";
+            this.username = "";
             this.email = "";
             this.password = "";
             this.errors.firstName = false;
@@ -129,6 +137,7 @@ export default {
             this.errors.address2 = false;
             this.errors.postCode = false;
             this.errors.phoneNumber = false;
+            this.errors.username = false;
             this.errors.email = false;
             this.errors.password = false;
 
@@ -146,7 +155,7 @@ export default {
                     body: JSON.stringify({
                         firstName: user.firstName,
                         lastName: user.lastName,
-                        email: user.email,
+                        username: user.username,
                         city: user.city,
                         country: user.country,
                         address: user.address,
@@ -213,6 +222,9 @@ export default {
         <p><label for="phoneNumber">Phone number</label><input type="text" id="phoneNumber" v-model="user.phoneNumber"></p>
         <Message v-show="errors.phoneNumber" :message="'Phone number field is empty'"></Message>
         
+        <p><label for="username">Username</label><input type="username" id="username" v-model="user.username"></p>
+        <Message v-show="errors.username" :message="'Username field is empty or incorrect'"></Message>
+
         <p><label for="email">E-mail</label><input type="email" id="email" v-model="user.email"></p>
         <Message v-show="errors.email" :message="'E-mail field is empty or incorrect'"></Message>
 

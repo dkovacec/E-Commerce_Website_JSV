@@ -6,13 +6,13 @@ export default {
         return {
             user: {
               
-                email: "",
+                username: "",
                 password: ""
             },
             formErrors: [],
             errors: {
         
-                email: false,
+                username: false,
                 password: false
             },
             users: [],
@@ -28,10 +28,10 @@ export default {
         console.log(this.user);
         this.formErrors = [];
 
-        if (!this.user.email) {
-            this.errors.email = true;
+        if (!this.user.username) {
+            this.errors.username = true;
         } else {
-            this.errors.email = false;
+            this.errors.username = false;
         }
       
         if (!this.user.password) {
@@ -48,13 +48,10 @@ export default {
         }
         if (!isErrors) {
 
-            this.createUser(this.user);
-            alert("User inserted");
-
-            this.email = "";
+            this.username = "";
             this.password = "";
            
-            this.errors.email = false;
+            this.errors.username = false;
             this.errors.password = false;
 
         }
@@ -67,8 +64,8 @@ export default {
 <template>
 
     <form @submit.prevent="processForm" novalidate>
-        <p><label for="email">E-mail</label><input type="email" id="email" v-model="user.email"></p>
-        <Message v-show="errors.email" :message="'E-mail field is empty'"></Message>
+        <p><label for="username">Username</label><input type="username" id="username" v-model="user.username"></p>
+        <Message v-show="errors.username" :message="'Username field is empty'"></Message>
 
         <p><label for="password">Password</label><input type="text" id="password" v-model="user.password"></p>
         <Message v-show="errors.password" :message="'Password field is empty'"></Message>

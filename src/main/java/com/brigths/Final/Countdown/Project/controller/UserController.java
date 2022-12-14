@@ -1,5 +1,6 @@
 package com.brigths.Final.Countdown.Project.controller;
 
+import com.brigths.Final.Countdown.Project.dto.UserDTO;
 import com.brigths.Final.Countdown.Project.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.brigths.Final.Countdown.Project.service.UserService;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/api")
@@ -23,6 +26,15 @@ public class UserController {
         this.userService = userService;
 
     }
+
+    @GetMapping
+    public List<UserDTO> users() {
+        return this.userService.getAllUsers()
+                .stream()
+                .map(UserDTO::fromEntity)
+                .toList();
+    }
+
 
     @PostMapping("/users")
     public ResponseEntity<User> createUser(@RequestBody User user){
@@ -70,6 +82,20 @@ public class UserController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    @GetMapping("/me")
+    public ResponseEntity<UserDTO> me(Principal principal) {
+        if (principal != null) {
+            Optional<User> userOptional = this.userService.findByUsername(principal.getName());
+            if (userOptional.isPresent()) {
+                return ResponseEntity.ok(userOptional.map(UserDTO::fromEntity).get());
+            }
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
+
     @PutMapping ("users/{userId}")
     public ResponseEntity<User> updateUserById (@PathVariable("userId") long userId, @RequestBody User user){
 
