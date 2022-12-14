@@ -1,6 +1,7 @@
 package com.brigths.Final.Countdown.Project.jwt;
 
 
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.brigths.Final.Countdown.Project.service.SecurityService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
