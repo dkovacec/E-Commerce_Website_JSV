@@ -1,5 +1,6 @@
 package com.brigths.Final.Countdown.Project.config;
 
+import com.brigths.Final.Countdown.Project.jwt.JWTFilter;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -49,9 +50,9 @@ public class WebSecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authz -> authz
                 .requestMatchers("/api/auth/register", "/api/auth/login").permitAll()
-                .requestMatchers("/api/auth/**").authenticated()
-                .requestMatchers("/api/users/**").authenticated()
-                .requestMatchers("/api/messages").authenticated()
+                .requestMatchers("/api/auth/**").permitAll()    //.authenticated()
+                .requestMatchers("/api/users/**").permitAll()   //.authenticated()
+                .requestMatchers("/api/messages").permitAll()   //.authenticated()
                 .anyRequest().authenticated());
 
         http
