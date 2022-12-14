@@ -69,26 +69,9 @@ export default {
                 });
                 let newCategory = await responseCategory.json();
                 alert(`Category inserted with id= ${newCategory.id}`)
-                this.getCategory();
             } catch (error) {
                 console.log("Error: ", error)
             }
-        },
-
-        async getCategory() {
-            try {
-                let urlGetCategory = "/api/categories";
-                let responseCategory2 = await fetch(urlGetCategory);
-                this.categories = await responseCategory2.json();
-                this.totalCategories = this.categories.length
-
-            } catch (error) {
-                console.log("Error: ", error)
-
-            }
-        },
-        created() {
-            this.getCategory();
         }
     }
 }
