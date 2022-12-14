@@ -1,6 +1,7 @@
+
 <script>
 export default {
-    mounted:function(){
+    mounted: function () {
         this.created()
     },
 
@@ -12,11 +13,12 @@ export default {
         };
     },
 
-    created(){
+    created() {
 
     },
 
     methods: {
+
         async getCategories() {
             let url = 'api/categories'
             try {
@@ -31,8 +33,28 @@ export default {
         },
         created() {
             this.getCategories();
-        }
+        },
+
+        async deleteCategory(id) {
+
+            if(confirm('Do you really want to delete this category ?')){
+
+
+            let urlDelete = 'api/categories/' + id
+
+                let response = await fetch(urlDelete,{
+                    method:'DELETE'
+                }).then(response => {
+                    if(!response.ok){
+                        return Promise.reject("Error")
+                    }
+                }).catch(error => alert("Cannot delete this category, there are still some products listed for that category, first delete all products with this category"))
+
+                this.getCategories();
+            }
+        },
     }
+
 }
 </script>
 
@@ -45,23 +67,21 @@ export default {
             <th>Actions</th>
         </thead>
         <tbody>
-            <tr v-for="category in categoryList"> 
-                <td>{{ category.id}}</td>
-                <td>{{category.name}}</td>
-                <td>{{category.description}}</td>
-                <td> 
+            <tr v-for="category in categoryList" :key="category.id">
+                <td>{{ category.id }}</td>
+                <td>{{ category.name }}</td>
+                <td>{{ category.description }}</td>
+                <td>
                     <Button> Edit</Button>
-                    <Button> Delete</Button>
+                    <Button  @click="deleteCategory(category.id)"> Delete</Button>
                 </td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="4"> Total number of categories: <span> {{totalCategories}}</span></td>
+                <td colspan="4"> Total number of categories: <span> {{ totalCategories }}</span></td>
             </tr>
         </tfoot>
 
     </table>
-
-
 </template>
