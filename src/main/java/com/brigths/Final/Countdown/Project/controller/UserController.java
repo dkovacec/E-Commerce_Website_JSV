@@ -36,7 +36,7 @@ public class UserController {
     }
 
 
-    @PostMapping("/users")
+    @PostMapping("/api/auth/register")
     public ResponseEntity<User> createUser(@RequestBody User user){
 
         try{

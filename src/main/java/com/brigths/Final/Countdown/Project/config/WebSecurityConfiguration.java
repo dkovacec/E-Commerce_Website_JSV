@@ -53,6 +53,7 @@ public class WebSecurityConfiguration {
                 .requestMatchers("/api/auth/**").permitAll()    //.authenticated()
                 .requestMatchers("/api/users/**").permitAll()   //.authenticated()
                 .requestMatchers("/api/messages").permitAll()   //.authenticated()
+                .requestMatchers("/api/**").permitAll()   //.authenticated()
                 .anyRequest().authenticated());
 
         http

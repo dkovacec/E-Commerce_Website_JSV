@@ -45,11 +45,11 @@ export default defineComponent({
     },
     computed: {
     ...mapStores(useAuthStore),
-    valid() {
-      const usernameValid = this.user.username.length > 0;
-      const passwordValid = this.user.password.length > 3
-     const passwordRepeatValid = this.user.password === this.user.password1   
-    }
+    // valid() {
+    //   const usernameValid = this.user.username.length > 0;
+    //   const passwordValid = this.user.password.length > 3
+    //  const passwordRepeatValid = this.user.password === this.user.password1   
+    // }
     },
     methods: {
     register() {
@@ -64,7 +64,8 @@ export default defineComponent({
           })
     },
     
-        // async register(user) {
+    
+        // async createUser(user) {
         //     try {
         //         let url = "/api/users";
         //         let response = await fetch(url, {
@@ -97,7 +98,7 @@ export default defineComponent({
         // },
 }
 });
-// async processForm() {
+// methodes:{ processForm() {
 //         console.log("Form submitted");
 //         console.log(this.user);
 //         this.formErrors = [];
@@ -317,8 +318,8 @@ export default defineComponent({
         <span>Password repeat</span>
         <input type="password" id="password1" autocomplete="new-password" v-model="user.password1">
       </p>
-      <p><input type="submit" value="Register user"></p>
-      <button type="submit" :disabled="!valid">Register</button>
+    <!-- <p><input type="submit" value="Register user"></p> -->
+      <button type="submit">Register</button>
     </fieldset>
   </form>
 

@@ -12,27 +12,37 @@ export default defineComponent({
                 username: "",
                 password: ""
             },
-            formErrors: [],
-            errors: {
+            // formErrors: [],
+            // errors: {
         
-                username: false,
-                password: false
-            },
-            users: [],
-            totalUsers: 0
+            //     username: false,
+            //     password: false
+            // },
+            // users: [],
+            // totalUsers: 0
+            error: null,
+        isLoggedIn: false,
         }
     },
     components: {
         Message
     },
+    methods: {
+    login() {
+      this.authStore.login(this.user)
+          .then(() => this.$router.push({ name: 'home' }))
+          .catch(error => this.error = { message: "Login failed." })
+    },
+  },
     computed: {
     ...mapStores(useAuthStore),
     valid() {
       return this.user.username.length > 0 && this.user.password.length > 0;
     }
   },
-    methods: {
-    processForm() {
+ 
+    // methods: {
+    // processForm() {
     //     console.log("Form submitted");
     //     console.log(this.user);
     //     this.formErrors = [];
@@ -68,19 +78,28 @@ export default defineComponent({
     
 // }
 // });
-{
-      this.authStore.login(this.user)
-          .then(() => this.$router.push({ name: 'home' }))
-          .catch(error => this.error = { message: "Login failed." })
-    }
-}
-}
 })
 
 
 </script>
 <template>
+      <form @submit.prevent="login" v-if="!authStore.isAuthenticated">
+    <fieldset>
+      <label for="username">
+        <span>Username</span>
+        <input type="text" id="username" autocomplete="username" v-model="user.username">
+      </label>
 
+      <label for="password">
+        <span>Password</span>
+        <input type="password" id="password" autocomplete="current-password" v-model="user.password">
+      </label>
+
+      <button type="submit" :disabled="!valid">Login</button>
+    </fieldset>
+  </form>
+  <Message v-if="error?.message" :error="error"/>
+<!-- 
     <form @submit.prevent="processForm" novalidate v-if="!authStore.isAuthenticated">
         <p><label for="username">Username</label><input type="username" id="username" v-model="user.username"></p>
         <Message v-show="errors.username" :message="'Username field is empty'"></Message>
@@ -89,7 +108,7 @@ export default defineComponent({
         <Message v-show="errors.password" :message="'Password field is empty'"></Message>
 
         <p><input type="submit" value="Login"></p>
-    </form>
+    </form> -->
 </template>
 <style scoped>
 #listErrors {

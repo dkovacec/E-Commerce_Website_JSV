@@ -33,7 +33,7 @@ export const useAuthStore = defineStore("auth", {
     }),
     actions: {
         async check() {
-            const response = await fetch('/api/auth/check')
+            const response = await fetch('/api/users/{userId}')
             this.isAuthenticated = response.ok;
             persistState(this.isAuthenticated);
         },
