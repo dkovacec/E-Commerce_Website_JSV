@@ -54,6 +54,8 @@ public class WebSecurityConfiguration {
                 .requestMatchers("/api/users/**").permitAll()   //.authenticated()
                 .requestMatchers("/api/messages").permitAll()   //.authenticated()
                 .requestMatchers("/api/**").permitAll()   //.authenticated()
+                .requestMatchers("/api/upload/**").permitAll()   //.authenticated()
+                .requestMatchers("/api/files/**").permitAll()   //.authenticated()
                 .anyRequest().authenticated());
 
         http

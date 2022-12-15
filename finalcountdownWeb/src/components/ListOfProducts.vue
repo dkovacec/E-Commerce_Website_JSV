@@ -59,6 +59,7 @@ export default {
 </script>
 
 <template>
+
     <table class="formattedTable">
         <thead>
             <th>Product Id</th>
@@ -79,7 +80,7 @@ export default {
                 <td>{{ product.price }}</td>
                 <td>{{ product.weight }}</td>
                 <td>{{ product.description }}</td>
-                <td>{{ product.imageName }}</td>
+                <td><img class="listimage" :src=product.imageName></td>
                 <td>{{ product.category.name }}</td>
                 <td>
                     <Button> Edit</Button>
@@ -166,5 +167,11 @@ export default {
 	font-size: 16px;
 	border: 1px solid crimson;
 	border-radius: 5px;
+}
+
+.listimage {
+    width: 150px;
+    height: 150px;
+
 }
 </style>
