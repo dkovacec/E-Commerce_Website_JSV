@@ -13,9 +13,6 @@ export default {
         };
     },
 
-    created() {
-
-    },
 
     methods: {
 
@@ -72,7 +69,9 @@ export default {
                 <td>{{ category.name }}</td>
                 <td>{{ category.description }}</td>
                 <td>
+                   <router-link :to="{name:'EditCategory', params: {id: category.id}}">
                     <Button> Edit</Button>
+                </router-link>
                     <Button  @click="deleteCategory(category.id)"> Delete</Button>
                 </td>
             </tr>
