@@ -25,48 +25,57 @@ export default defineComponent({
     components: {
         Message
     },
-    methods: {
-    processForm() {
-        console.log("Form submitted");
-        console.log(this.user);
-        this.formErrors = [];
-
-        if (!this.user.username) {
-            this.errors.username = true;
-        } else {
-            this.errors.username = false;
-        }
-      
-        if (!this.user.password) {
-            this.errors.password = true;
-        } else {
-            this.errors.password = false;
-        }
-
-        let isErrors = false;
-        for (const error in this.errors) {
-            if (this.errors[error]) {
-                isErrors = true;
-            }
-        }
-        if (!isErrors) {
-
-            this.username = "";
-            this.password = "";
-           
-            this.errors.username = false;
-            this.errors.password = false;
-
-        }
-    },
     computed: {
     ...mapStores(useAuthStore),
     valid() {
       return this.user.username.length > 0 && this.user.password.length > 0;
-    },
-  }
+    }
+  },
+    methods: {
+    processForm() {
+    //     console.log("Form submitted");
+    //     console.log(this.user);
+    //     this.formErrors = [];
+
+    //     if (!this.user.username) {
+    //         this.errors.username = true;
+    //     } else {
+    //         this.errors.username = false;
+    //     }
+      
+    //     if (!this.user.password) {
+    //         this.errors.password = true;
+    //     } else {
+    //         this.errors.password = false;
+    //     }
+
+    //     let isErrors = false;
+    //     for (const error in this.errors) {
+    //         if (this.errors[error]) {
+    //             isErrors = true;
+    //         }
+    //     }
+    //     if (!isErrors) {
+
+    //         this.username = "";
+    //         this.password = "";
+           
+    //         this.errors.username = false;
+    //         this.errors.password = false;
+
+    //     }
+    // },
+    
+// }
+// });
+{
+      this.authStore.login(this.user)
+          .then(() => this.$router.push({ name: 'home' }))
+          .catch(error => this.error = { message: "Login failed." })
+    }
 }
-});
+}
+})
 
 
 </script>

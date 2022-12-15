@@ -26,6 +26,8 @@ public class User {
     private String username;
     @NotEmpty
     private String password;
+    @NotEmpty
+    private String password1;
 
     private boolean isAdmin;
 
@@ -45,12 +47,13 @@ public class User {
     private List<Role> roles;
 
 
-    public User(String firstName, String lastName, String email, String password, String country, String address, String address2, String postCode, String city, String phoneNumber) {
+    public User(String firstName, String lastName, String email, String password,String password1, String country, String address, String address2, String postCode, String city, String phoneNumber) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.password1 = password1;
         this.country = country;
         this.address = address;
         this.address2 = address2;
@@ -96,6 +99,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword1() {
+        return password1;
+    }
+
+    public void setPassword1(String password1) {
+        this.password1 = password1;
     }
 
     public String getUsername() {

@@ -41,7 +41,7 @@ public class UserController {
 
         try{
             User newUser= userService.saveUser(new User(user.getFirstName(),user.getLastName(),user.getEmail()
-                    ,user.getPassword(),user.getCountry(), user.getAddress(),user.getAddress2(),user.getPostCode()
+                    ,user.getPassword(), user.getPassword1(), user.getCountry(), user.getAddress(),user.getAddress2(),user.getPostCode()
                     ,user.getCity(), user.getPhoneNumber()));
 
             return new ResponseEntity<>(newUser, HttpStatus.CREATED);
