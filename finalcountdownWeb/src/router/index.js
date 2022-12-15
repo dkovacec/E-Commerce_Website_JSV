@@ -6,7 +6,8 @@ import { createRouter, createWebHistory, useRoute }
     import Login from '../views/LoginView.vue';
     import ListOfCategories from '../views/ListOfCategoryView.vue';
     import AddCategory from '../views/AddCategoryView.vue';
-
+    import ListOfProducts from '../views/ListOfProductsView.vue';
+    import AddProduct from '../views/AddProductView.vue';
 
     import PageNotFoundView from "../views/PageNotFoundView.vue";
 
@@ -23,7 +24,8 @@ import { createRouter, createWebHistory, useRoute }
         { path: '/login', name: 'Login', component: Login },
         { path: '/categorylist', name: 'Categories', component: ListOfCategories },
         { path: '/categoryadd', name: 'AddCategories', component: AddCategory },
-
+        { path: '/productlist', name: 'AllProducts', component: ListOfProducts },
+        { path: '/productadd', name: 'AddProduct', component: AddProduct },
 
         {
             path: '/:pathMatch(.*)*', name: '404error', component: PageNotFoundView

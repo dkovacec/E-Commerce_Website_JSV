@@ -11,7 +11,8 @@ public class Category {
     private int id;
 
     private String name;
-
+    @Lob
+    @Column(columnDefinition="BLOB")
     private String description;
 
     public Category() {

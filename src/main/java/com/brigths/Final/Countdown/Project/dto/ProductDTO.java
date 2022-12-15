@@ -1,42 +1,35 @@
-package com.brigths.Final.Countdown.Project.model;
+package com.brigths.Final.Countdown.Project.dto;
 
-import jakarta.persistence.*;
+import com.brigths.Final.Countdown.Project.model.Product;
+import jakarta.persistence.Column;
+import jakarta.persistence.Lob;
 
-@Entity
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProductDTO {
+
     private Long id;
     private String name;
     private double price;
     private double weight;
-    @Lob
-    @Column(columnDefinition="BLOB")
     private String summary;
-    @Lob
-    @Column(columnDefinition="BLOB")
     private String description;
     private String imageName;
+    private int categoryId;
 
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "category_id", referencedColumnName = "category_id")
-    private Category category;
-
-    public Product() {
+    public ProductDTO() {
     }
 
-    public Product(String name, double price, double weight, String summary, String description, String imageName, Category category) {
-        this.name = name;
-        this.price = price;
-        this.weight = weight;
-        this.summary = summary;
-        this.description = description;
-        this.imageName = imageName;
-        this.category = category;
-    }
 
-    public Product(String name, double price, double weight, String summary, String description, String imageName, int categoryId) {
+    public ProductDTO fromEntity(Product product) {
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.id = product.getId();
+        productDTO.name = product.getName();
+        productDTO.price = product.getPrice();
+        productDTO.weight = product.getWeight();
+        productDTO.summary = product.getSummary();
+        productDTO.description = product.getDescription();
+        productDTO.imageName = product.getImageName();
+        productDTO.categoryId = product.getCategory().getId();
+        return productDTO;
     }
 
     public Long getId() {
@@ -95,11 +88,11 @@ public class Product {
         this.imageName = imageName;
     }
 
-    public Category getCategory() {
-        return category;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 }
