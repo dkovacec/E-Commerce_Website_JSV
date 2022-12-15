@@ -24,6 +24,8 @@ export default {
         <li><router-link to="/signup">Sign Up</router-link></li>
         <li><router-link to="/categorylist">Categories</router-link></li>
         <li><router-link to="/categoryadd">Add Category</router-link></li>
+        <li><router-link to="/productlist">Products</router-link></li>
+        <li><router-link to="/productadd">Add Product</router-link></li>
 
         <li><a href="#">Cart</a></li>
       </ul>
