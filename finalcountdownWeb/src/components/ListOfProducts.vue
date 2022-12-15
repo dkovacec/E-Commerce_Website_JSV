@@ -79,10 +79,12 @@ export default {
                 <td>{{ product.price }}</td>
                 <td>{{ product.weight }}</td>
                 <td>{{ product.description }}</td>
-                <td>{{ product.imageName }}</td>
+                <td><img class="listimage" :src=product.imageName></td>
                 <td>{{ product.category.name }}</td>
                 <td>
+                    <router-link :to="{name:'EditProduct', params: {id: product.id}}">
                     <Button> Edit</Button>
+                </router-link>
                     <Button  @click="deleteProduct(product.id)"> Delete</Button>
                 </td>
             </tr>
@@ -167,4 +169,15 @@ export default {
 	border: 1px solid crimson;
 	border-radius: 5px;
 }
+
+.listimage {
+
+width: 150px;
+
+height: 150px;
+
+
+
+}
+
 </style>
