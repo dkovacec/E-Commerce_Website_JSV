@@ -92,9 +92,9 @@ public class ProductController {
     }
 
     @PutMapping ("products/{productId}")
-    public ResponseEntity<Product> updateProductById (@PathVariable("productId") long productId, @RequestBody Product product){
+    public ResponseEntity<Product> updateProductById (@PathVariable("productId") long productId, @RequestBody ProductDTO productDTO){
 
-        Product updateProduct = productService.updateProductById(productId,product);
+        Product updateProduct = productService.updateProductById(productId,productDTO);
 
         if(updateProduct != null){
             return new ResponseEntity<>(productService.saveProduct(updateProduct),HttpStatus.OK);

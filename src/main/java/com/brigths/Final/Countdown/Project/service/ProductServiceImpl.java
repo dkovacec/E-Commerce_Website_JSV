@@ -1,5 +1,7 @@
 package com.brigths.Final.Countdown.Project.service;
 
+import com.brigths.Final.Countdown.Project.dto.ProductDTO;
+import com.brigths.Final.Countdown.Project.model.Category;
 import com.brigths.Final.Countdown.Project.model.Product;
 import com.brigths.Final.Countdown.Project.repository.CategoryRepository;
 import com.brigths.Final.Countdown.Project.repository.ProductRepository;
@@ -11,6 +13,7 @@ import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {
+
 
     private ProductRepository productRepository;
     private CategoryRepository categoryRepository;
@@ -49,18 +52,23 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product updateProductById(long id, Product product) {
+    public Product updateProductById(long id, ProductDTO productDTO) {
 
         Product productData = getProductById(id);
 
+        Category category = categoryRepository.findById(productDTO.getCategoryId())
+                .orElseThrow();
+
+
+
         if(productData != null){
-            productData.setName(product.getName());
-            productData.setPrice(product.getPrice());
-            productData.setWeight(product.getWeight());
-            productData.setSummary(product.getSummary());
-            productData.setDescription(product.getDescription());
-            productData.setImageName(product.getImageName());
-            productData.setCategory(product.getCategory());
+            productData.setName(productDTO.getName());
+            productData.setPrice(productDTO.getPrice());
+            productData.setWeight(productDTO.getWeight());
+            productData.setSummary(productDTO.getSummary());
+            productData.setDescription(productDTO.getDescription());
+            productData.setImageName(productDTO.getImageName());
+            productData.setCategory(category);
 
             return productData;
         }

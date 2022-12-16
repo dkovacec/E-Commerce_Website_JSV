@@ -83,7 +83,9 @@ export default {
                 <td><img class="listimage" :src=product.imageName></td>
                 <td>{{ product.category.name }}</td>
                 <td>
+                    <router-link :to="{name:'EditProduct', params: {id: product.id}}">
                     <Button> Edit</Button>
+                </router-link>
                     <Button  @click="deleteProduct(product.id)"> Delete</Button>
                 </td>
             </tr>
@@ -170,8 +172,10 @@ export default {
 }
 
 .listimage {
+
     width: 150px;
     height: 150px;
 
 }
+
 </style>

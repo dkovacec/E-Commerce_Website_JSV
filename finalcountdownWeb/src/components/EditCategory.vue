@@ -54,7 +54,6 @@ export default {
 
             if (!isErrors) {
                 this.createCategory(this.category)
-                alert("You have created a new category !")
                 this.name = "",
                 this.description = ""
                 this.errors.name = false;
