@@ -48,6 +48,10 @@ export default {
 .topMenu {
     position: absolute;
     list-style: none;
+    margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
     margin: auto;
     padding: 0;
     text-align: center;

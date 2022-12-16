@@ -2,7 +2,7 @@
 <script>
 export default {
     mounted: function () {
-        this.created()
+        //this.fetchData()       
     },
 
     data() {
@@ -12,6 +12,14 @@ export default {
             totalProducts: 0   
 
         };
+    },
+
+    created () {
+        this.$watch( () => this.$route.params, () => {
+            this.fetchData();
+        }, {
+            immediate:true
+        } )
     },
 
     methods: {
@@ -40,30 +48,16 @@ export default {
 
             }
         },   
-        
-        // getProducts() {
-        //     //let urlGet = '/api/categories/1/products'
-        //     let urlGet = '/api/categories/' + this.$route.params.id + '/products'
-        //     try {
-
-        //         let response = fetch(urlGet);
-        //         this.productList = response.json();
-        //         this.totalProducts = this.productList.length;
-        //     } catch (error) {
-        //         console.log("Error: ", error)
-
-        //     }
-        // },
-            
-        created() {
+                    
+        fetchData() {
             this.getCategories();
             this.getProducts();
         },
     
 
         clicked() {           
-            this.created(),
-            this.$router.go('/api/categories/' + category.id + '/products')           
+            // this.fetchData(),
+            // this.$router.go('/api/categories/' + category.id + '/products')           
             
         }
 
@@ -83,7 +77,7 @@ export default {
 
         <ul>
             <li v-for="category in categoryList" :key="category.id">
-                <router-link :to="{name:'ProductsInCategory', params: {id: category.id, name: category.name}}" @click="clicked">{{ category.name }} </router-link></li>
+                <router-link :to="{name:'ProductsInCategory', params: {id: category.id, name: category.name}}">{{ category.name }} </router-link></li>
         </ul>
 
 </nav>
@@ -101,9 +95,9 @@ export default {
         <p class="summary"><b>Short description:</b><br><br> {{ product.summary }}</p>
         <p class="price"><b>Price:</b> €{{ product.price }}</p>
         <p class="buttonPosition">
-            <!-- <router-link :to="{name:'ProductInfo', params: {id: product.id}}"> -->
-                    <Button class="buttonMore">More info</Button>
-                <!-- </router-link> -->
+            <router-link :to="{name:'ProductDetail', params: {productid: product.id}}">
+                    <button class="buttonMore">More info</button>
+                </router-link>
 
         </p>
 
@@ -147,7 +141,8 @@ export default {
 }
 
 .productscategorized {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
+    background-color: rgb(243, 244, 245);
 }
 
 .productid {
