@@ -59,6 +59,7 @@ export default {
 </script>
 
 <template>
+
     <table class="formattedTable">
         <thead>
             <th>Product Id</th>
@@ -172,11 +173,8 @@ export default {
 
 .listimage {
 
-width: 150px;
-
-height: 150px;
-
-
+    width: 150px;
+    height: 150px;
 
 }
 

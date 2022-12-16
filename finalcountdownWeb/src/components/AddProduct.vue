@@ -5,6 +5,7 @@ export default {
     mounted: function () {
         this.created()
     },
+
     data() {
         return {
             product: {
@@ -71,10 +72,12 @@ export default {
                 this.price = "",
                 this.weight = "",
                 this.product.categoryId = "",
+                this.product.imageName = "",
                 this.errors.name = false;
                 this.errors.description = false;
             }
         },
+ 
         async createProduct(product) {
             try {
                 
@@ -160,8 +163,8 @@ export default {
         </p>
         
         <p>
-            <label for="productImageName">Image: </label>
-            <input type="file" id="productImageName" name="productImageName" multiple accept="image/png, image/gif, image/jpeg"/></p>
+            <label for="productImageName">Image path/URL: </label>
+            <input type="text" id="productImageName" v-model="product.imageName"/></p>
 
         <p><input type="submit" value="Add product"></p>
 
