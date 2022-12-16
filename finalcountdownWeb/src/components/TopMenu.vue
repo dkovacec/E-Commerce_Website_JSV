@@ -8,7 +8,7 @@ export default {
 <template>
 
 <nav class="topMenu">
-    <img class="logo" src="src\images\logo.jpg">
+    <img class="logo" src="..\images\logo.jpg">
       <ul>
         <!-- use router-link instead of a to stop refreshing and request to server-->
         <!-- this makes it very fast and better -->

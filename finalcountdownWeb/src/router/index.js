@@ -10,6 +10,7 @@ import { createRouter, createWebHistory, useRoute }
     import AddProduct from '../views/AddProductView.vue';
     import EditCategory from '../views/EditCategoryView.vue';
     import EditProduct from '../views/EditProductView.vue';
+    import ProductsInCategory from '../views/ProductsInCategoryView.vue';
 
     import PageNotFoundView from "../views/PageNotFoundView.vue";
 
@@ -30,6 +31,8 @@ import { createRouter, createWebHistory, useRoute }
         { path: '/productlist', name: 'AllProducts', component: ListOfProducts },
         { path: '/productadd', name: 'AddProduct', component: AddProduct },
         { path: '/product/:id', name: 'EditProduct', component: EditProduct },
+
+        { path: '/productsincategory/:name/:id', name: 'ProductsInCategory', component: ProductsInCategory },
 
         {
             path: '/:pathMatch(.*)*', name: '404error', component: PageNotFoundView
