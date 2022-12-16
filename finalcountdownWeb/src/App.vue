@@ -23,7 +23,7 @@ export default {
 }
 </script>
 <template>
-<HeaderMain></HeaderMain>
+
 <!-- <HeaderSecondary></HeaderSecondary> -->
 
   <main class="container">
@@ -31,6 +31,7 @@ export default {
     <router-view></router-view>
   </main>
 
+  <HeaderMain></HeaderMain>
   <FooterMain></FooterMain>
 </template>
 

@@ -229,4 +229,16 @@ input[type=text],[type=username], [type=email]  {
 	margin: 4px 2px;
 	cursor: pointer;
 }
+
+select {
+    background-color: #ddd;
+    padding: 3px;
+    margin-left: 15px;
+    border-radius: 3px;
+    width: 200px;
+    font-size: 14px;
+}
+
+
+
 </style>

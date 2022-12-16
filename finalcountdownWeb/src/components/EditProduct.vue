@@ -165,18 +165,18 @@ export default {
             <label for="productName">Product Name: </label>
             <input type="text" id="productName" v-model="products.name">
         </p>
-        <Message v-show="errors.name" :message="'Name of product should not be empty'"></Message>
+        <!-- <Message v-show="errors.name" :message="'Name of product should not be empty'"></Message> -->
         <p>
             <label for="productSummary">Summary (Short description): </label>
             <textarea type="textarea" id="productSummary" v-model="products.summary"></textarea>
         </p>
-        <Message v-show="errors.description" :message="'Short description of product should not be empty'"></Message>
+        <!-- <Message v-show="errors.description" :message="'Short description of product should not be empty'"></Message> -->
 
         <p>
             <label for="productDescription">Detailed Description: </label>
             <textarea type="textarea" id="productDescription" v-model="products.description"></textarea>
         </p>
-        <Message v-show="errors.description" :message="'Description of product should not be empty'"></Message>
+        <!-- <Message v-show="errors.description" :message="'Description of product should not be empty'"></Message> -->
 
         <p><label for="productCategoryId">Category: </label>
             <select v-model="products.categoryId" name="productCategoryId" id="productCategoryId">

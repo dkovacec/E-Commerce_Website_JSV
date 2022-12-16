@@ -70,9 +70,9 @@ export default {
                 <td>{{ category.description }}</td>
                 <td>
                    <router-link :to="{name:'EditCategory', params: {id: category.id}}">
-                    <Button> Edit</Button>
+                    <Button class="buttonEdit"> Edit</Button>
                 </router-link>
-                    <Button  @click="deleteCategory(category.id)"> Delete</Button>
+                    <Button class="buttonDelete" @click="deleteCategory(category.id)"> Delete</Button>
                 </td>
             </tr>
         </tbody>
@@ -144,9 +144,25 @@ export default {
 	transform: translateY(-0.075em);
 }
 
-.button {
-	background-color: #380000; /* Green */
+.buttonEdit {
+	background-color: #02527d; /* Green */
+    width: 75px;
 	color: white;
+	padding: 5px 10px;
+	margin: 4px 2px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16p;
+	border: 1px solid blue;
+	border-radius: 5px;
+    box-shadow: 0px 3px 5px #000;
+}
+
+.buttonDelete {
+	background-color: #380000;
+    width: 75px;
+	color: yellow;
 	padding: 5px 10px;
 	margin: 4px 2px;
 	text-align: center;
@@ -155,5 +171,6 @@ export default {
 	font-size: 16px;
 	border: 1px solid crimson;
 	border-radius: 5px;
+    box-shadow: 0px 3px 5px #000;
 }
 </style>

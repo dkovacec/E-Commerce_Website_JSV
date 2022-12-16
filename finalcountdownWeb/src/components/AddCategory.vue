@@ -93,8 +93,7 @@ export default {
         <Message v-show="errors.description" :message="'Description of category should not be empty'"></Message>
 
         <p><input type="submit" value="Add category"></p>
-
-
+        
 
     </form>
 
@@ -104,7 +103,9 @@ export default {
 
 .loginform {
 	width: 65%;
-	margin: 0;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
 	padding: 20px 20px;
 	box-sizing: border-box;
 	border: 2px solid #380000;
@@ -155,4 +156,5 @@ input[type=text],[type=username], [type=email]  {
 	margin: 4px 2px;
 	cursor: pointer;
 }
+
 </style>

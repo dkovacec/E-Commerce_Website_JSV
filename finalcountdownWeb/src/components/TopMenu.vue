@@ -52,9 +52,10 @@ export default {
     padding: 0;
     text-align: center;
     box-shadow: 0px 3px 5px #000;
+    background-color: white;
     /*display: inline-block;*/
     /*overflow: hidden;*/
-    /*position: fixed;*/
+    position: fixed;
     width: 75%;
 }
 

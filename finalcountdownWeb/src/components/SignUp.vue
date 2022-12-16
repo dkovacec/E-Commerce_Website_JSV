@@ -252,7 +252,8 @@ export default {
 
 .loginform {
 	width: 450px;
-	margin: 0;
+    margin-left: auto;
+    margin-right: auto;
 	padding: 20px 20px;
 	box-sizing: border-box;
 	border: 2px solid #380000;
