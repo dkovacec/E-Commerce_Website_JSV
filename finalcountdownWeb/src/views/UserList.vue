@@ -1,6 +1,6 @@
 <script>
 import { defineComponent } from "vue";
-import UserTable from "@/components/UserTable.vue";
+import UserTable from "../components/UserTable.vue";
 export default defineComponent({
   name: "UserList",
   components: { UserTable },

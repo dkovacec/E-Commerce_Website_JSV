@@ -1,7 +1,7 @@
 <script>
 import { defineComponent } from "vue";
 import { mapStores } from "pinia";
-import { useAuthStore } from "@/store/auth";
+import { useAuthStore } from "../store/auth";
 export default defineComponent({
   methods: {
     logout() {

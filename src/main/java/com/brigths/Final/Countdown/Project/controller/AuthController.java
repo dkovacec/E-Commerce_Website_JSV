@@ -24,7 +24,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegistrationDTO registrationDTO, HttpServletResponse response) {
-        if (!registrationDTO.getPassword().equals(registrationDTO.getPassword1())) {
+        if (!registrationDTO.getPassword1().equals(registrationDTO.getPassword2())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Passwords don't match.");
         }
 

@@ -33,7 +33,7 @@ export const useAuthStore = defineStore("auth", {
     }),
     actions: {
         async check() {
-            const response = await fetch('/api/users/{userId}')
+            const response = await fetch('/api/auth/check')
             this.isAuthenticated = response.ok;
             persistState(this.isAuthenticated);
         },
@@ -46,7 +46,7 @@ export const useAuthStore = defineStore("auth", {
                 body: JSON.stringify(user)
             });
 
-            await handleReponse(response, this);
+            return await handleReponse(response, this);
         },
         async login(user) {
             const response = await fetch('/api/auth/login', {

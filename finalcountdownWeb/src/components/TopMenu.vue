@@ -29,23 +29,22 @@ export default defineComponent({
         <li><router-link to="/categorylist">Categories</router-link></li>
         <li><router-link to="/categoryadd">Add Category</router-link></li>
 
-        <li v-if="!isAuthenticated">
-          <li><router-link to="/signup">Sign Up</router-link></li>
-    </li>
-    <li v-if="!isAuthenticated">
-      <li><router-link to="/login">Login</router-link></li>
-    </li>
-    <li v-if="isAuthenticated">
-      <li><router-link to="/logout">Logout</router-link></li>
-    </li>
-    <li v-if="isAuthenticated">
-      <li><router-link to="/userListView">Users</router-link></li>
-    </li>
-    <li v-if="isAuthenticated">
-      <li><router-link to="/profileView">Profile</router-link></li>
-      <!-- <router-link :to="{ name: 'profileView' }">Profile</router-link> -->
-    </li>
-
+<!--        <li v-if="!isAuthenticated">-->
+<!--          <li><router-link to="/signup">Sign Up</router-link></li>-->
+<!--    </li>-->
+<!--    <li v-if="!isAuthenticated">-->
+<!--      <li><router-link to="/login">Login</router-link></li>-->
+<!--    </li>-->
+<!--    <li v-if="isAuthenticated">-->
+<!--      <li><router-link to="/logout">Logout</router-link></li>-->
+<!--    </li>-->
+<!--    <li v-if="isAuthenticated">-->
+<!--      <li><router-link to="/userListView">Users</router-link></li>-->
+<!--    </li>-->
+<!--    <li v-if="isAuthenticated">-->
+<!--      <li><router-link to="/profileView">Profile</router-link></li>-->
+<!--      &lt;!&ndash; <router-link :to="{ name: 'profileView' }">Profile</router-link> &ndash;&gt;-->
+<!--    </li>-->
         <li><a href="#">Cart</a></li>
       </ul>
     </nav>

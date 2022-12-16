@@ -38,7 +38,6 @@ public class UserServiceImpl implements UserService {
             userData.setFirstName(user.getFirstName());
             userData.setEmail(user.getEmail());
             userData.setPassword(user.getPassword());
-            userData.setPassword1(user.getPassword1());
             userData.setCountry(user.getCountry());
             userData.setAddress(user.getAddress());
             userData.setAddress2(user.getAddress2());
@@ -78,13 +77,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean userExists(String username) {
-        return this.userRepository.findByEmailContainingIgnoreCase(username);
+        return this.userRepository.existsByUsernameIgnoreCase(username);
     }
-
+    public List<User> findAll() {
+        return this.userRepository.findAll();
+    }
+    public Optional<User> findById(Long userId) {
+        return this.userRepository.findById(userId);
+    }
     @Override
     public User addUser(User user) {
         userRepository.save(user);
         return user;
+    }
+    public User save(User user) {
+        return this.userRepository.save(user);
     }
     @Override
     public void deleteUserById(long id) {

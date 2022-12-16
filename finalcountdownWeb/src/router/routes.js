@@ -1,28 +1,38 @@
-import HomeView from "../views/HomeView.vue";
-import SignUp from '../views/SignUpView.vue';
-import Login from '../views/LoginView.vue';
+
 import ListOfCategories from '../views/ListOfCategoryView.vue';
 import AddCategory from '../views/AddCategoryView.vue';
-import UserInfo from '../views/userInfoView.vue';
-import UserList from '../views/userListView.vue';
-import UserProfile from '../views/UserProfileView.vue';
-import Logout from "../views/LogoutView.vue";
-
+import Home from "../views/Home.vue";
+import Register from '../views/Register.vue';
+import Login from '../views/Login.vue';
+import UserInfo from '../views/UserInfo.vue';
+import UserList from '../views/UserList.vue';
+import UserProfile from '../views/UserProfile.vue';
+import Logout from "../views/Logout.vue";
 import PageNotFoundView from "../views/PageNotFoundView.vue";
 
 export const routes = [
 
     {
-        path: '/',
-        name: 'Home',
-        component: HomeView,
+        name: "home",
+        path: "/",
+        alias: "/home",
+        component: Home,
         meta: {
             requiresAuth: false
         }
     },
     {
-        path: '/signup',
-        name: 'SignUp', component: SignUp,
+        name: "register",
+        path: "/register",
+        component: Register,
+        meta: {
+            requiresAuth: false
+        }
+    },
+    {
+        name: "login",
+        path: "/login",
+        component: Login,
         meta: {
             requiresAuth: false
         }
@@ -36,7 +46,7 @@ export const routes = [
         }
     },
     {
-        name: "userListView",
+        name: "userList",
         path: "/user",
         component: UserList,
         meta: {
@@ -44,28 +54,20 @@ export const routes = [
         }
     },
     {
-        name: "userInfoView",
+        name: "userInfo",
         path: "/user/:userId",
         component: UserInfo,
-        props: route => ({ userId: Number(route.params.userId) }),
+        props: route => ({ userId: Number(route.params.userId)}),
         meta: {
             requiresAuth: true
         }
     },
     {
-        name: "profileView",
+        name: "profile",
         path: "/profile",
         component: UserProfile,
         meta: {
             requiresAuth: true
-        }
-    },
-
-    {
-        path: '/login',
-        name: 'Login',
-        component: Login, meta: {
-            requiresAuth: false
         }
     },
     {

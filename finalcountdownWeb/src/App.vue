@@ -2,6 +2,7 @@
 import HeaderMain from './components/HeaderMain.vue';
 import HeaderSecondary from './components/HeaderSecondary.vue';
 import FooterMain from './components/FooterMain.vue';
+import NavigationBar from "@/components/NavigationBar.vue";
 export default {
   data() {
     return {
@@ -10,6 +11,7 @@ export default {
   methods: {
   },
   components: {
+    NavigationBar,
     HeaderMain,
     HeaderSecondary,
     FooterMain,
@@ -18,6 +20,7 @@ export default {
 }
 </script>
 <template>
+  <NavigationBar></NavigationBar>
 <HeaderMain></HeaderMain>
 <!-- <HeaderSecondary></HeaderSecondary> -->
 
