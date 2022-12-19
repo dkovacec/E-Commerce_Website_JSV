@@ -24,12 +24,14 @@ export default defineComponent({
           })
           .catch(error => console.log('error', error))
     },
+  
   }
 })
 </script>
 
 <template>
   <UserTable :users="this.users"></UserTable>
+  
 </template>
 
 <style scoped>
