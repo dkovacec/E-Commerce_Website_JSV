@@ -6,7 +6,7 @@ export default defineComponent({
   components: { UserTable },
   data() {
     return {
-      users: []
+      users: [],
     }
   },
   created() {
@@ -14,7 +14,7 @@ export default defineComponent({
   },
   methods: {
     fetchUsers() {
-      fetch('/api/users', {})
+      fetch('/api/users/users', {})
           .then(response => response.json())
           .then(data => {
             console.log('data', data)
@@ -22,12 +22,14 @@ export default defineComponent({
           })
           .catch(error => console.log('error', error))
     },
+  
   }
 })
 </script>
 
 <template>
   <UserTable :users="this.users"></UserTable>
+  
 </template>
 
 <style scoped>

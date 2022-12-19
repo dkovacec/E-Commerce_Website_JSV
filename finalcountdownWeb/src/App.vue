@@ -20,7 +20,7 @@ export default {
   components: {
     HeaderMain,
     HeaderSecondary,
-    FooterMain,
+    // FooterMain,
     // NavigationBar
 
   }
@@ -39,7 +39,7 @@ export default {
 
   <!-- <NavigationBar></NavigationBar> -->
   <HeaderMain></HeaderMain>
-  <FooterMain></FooterMain>
+  <!-- <FooterMain></FooterMain> -->
 
 
 </template>
