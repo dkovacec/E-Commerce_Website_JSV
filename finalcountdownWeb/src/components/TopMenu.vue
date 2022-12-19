@@ -1,7 +1,12 @@
 <script>
-export default {
-
-}
+import { defineComponent } from "vue";
+import { mapState } from "pinia";
+import { useAuthStore } from "@/store/auth";
+export default defineComponent({
+  computed: {
+    ...mapState(useAuthStore, ["isAuthenticated"])
+  },
+});
 
 </script>
 
@@ -20,12 +25,39 @@ export default {
         <!-- <li><router-link :to="{ name: 'Tabs'}">Tabs</router-link></li> -->
         <!-- <li><a href="#">Shop</a></li> -->
 
-        <li><router-link to="/login">Login</router-link></li>
-        <li><router-link to="/signup">Sign Up</router-link></li>
+<li v-if="!isAuthenticated">
+      <router-link :to="{ name: 'register' }">Register</router-link>
+    </li>
+
+    <li v-if="!isAuthenticated">
+      <router-link :to="{ name: 'login' }">Login</router-link>
+    </li>
+    <li v-if="isAuthenticated">
+      <router-link :to="{ name: 'logout' }">Logout</router-link>
+    </li>
+
+    <li v-if="isAuthenticated">
         <li><router-link to="/categorylist">Categories</router-link></li>
+      </li>
+
+        <li v-if="isAuthenticated">
         <li><router-link to="/categoryadd">Add Category</router-link></li>
+      </li>
+
+        <li v-if="isAuthenticated">
         <li><router-link to="/productlist">Products</router-link></li>
+      </li>
+
+        <li v-if="isAuthenticated">
         <li><router-link to="/productadd">Add Product</router-link></li>
+      </li>
+
+    <li v-if="isAuthenticated">
+      <router-link :to="{ name: 'userList' }">Users</router-link>
+    </li>
+    <li v-if="isAuthenticated">
+      <router-link :to="{ name: 'profile' }">Profile</router-link>
+    </li>
 
         <li><a href="#">Cart</a></li>
       </ul>

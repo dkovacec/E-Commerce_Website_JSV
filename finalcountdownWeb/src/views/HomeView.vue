@@ -1,15 +1,28 @@
 <script>
-import Home from '../components/Home.vue';
-export default {
+import HomeMain from '../components/HomeMain.vue';
+import { defineComponent } from "vue";
+import { mapStores } from "pinia";
+import { useAuthStore } from "../store/auth";
+
+export default defineComponent({
     components: {
-        Home
-    }
-}
+        Home,
+    computed: {
+    ...mapStores(useAuthStore)
+  }, }
+})
+
 </script>
 
 <template>
 
+
+
     <h1>BANNER GOES HERE</h1>
-    <Home></Home>
+
+
+    <HomeMain></HomeMain>
+
+ 
 
 </template>

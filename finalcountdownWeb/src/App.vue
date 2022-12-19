@@ -3,8 +3,12 @@ import HeaderMain from './components/HeaderMain.vue';
 import HeaderSecondary from './components/HeaderSecondary.vue';
 
 import FooterMain from './components/FooterMain.vue';
-import Login from './components/Login.vue';
-import SignUp from './components/SignUp.vue';
+import NavigationBar from "@/components/NavigationBar.vue";
+
+// import Login from './components/Login.vue';
+// import SignUp from './components/SignUp.vue';
+
+
 export default {
   data() {
     return {
@@ -17,8 +21,8 @@ export default {
     HeaderMain,
     HeaderSecondary,
     FooterMain,
-    Login,
-    SignUp
+    // NavigationBar
+
   }
 }
 </script>
@@ -33,6 +37,7 @@ export default {
 
   </main>
 
+  <!-- <NavigationBar></NavigationBar> -->
   <HeaderMain></HeaderMain>
   <FooterMain></FooterMain>
 

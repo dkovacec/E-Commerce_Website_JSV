@@ -23,6 +23,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User saveUser(User user) {
+
         User newUser = userRepository.save(user);
 
         return newUser;
@@ -76,13 +77,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean userExists(String username) {
-        return this.userRepository.findByEmailContainingIgnoreCase(username);
+        return this.userRepository.existsByUsernameIgnoreCase(username);
     }
-
+    public List<User> findAll() {
+        return this.userRepository.findAll();
+    }
+    public Optional<User> findById(Long userId) {
+        return this.userRepository.findById(userId);
+    }
     @Override
     public User addUser(User user) {
         userRepository.save(user);
         return user;
+    }
+    public User save(User user) {
+        return this.userRepository.save(user);
     }
     @Override
     public void deleteUserById(long id) {

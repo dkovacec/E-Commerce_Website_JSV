@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/api")
+@RequestMapping("/api/users")
 public class UserController {
 
     private UserService userService;
@@ -36,53 +36,63 @@ public class UserController {
     }
 
 
-    @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody User user){
+//    @PostMapping("/api/auth/register")
+//    public ResponseEntity<User> createUser(@RequestBody User user){
+//
+//        try{
+//            User newUser= userService.saveUser(new User(user.getFirstName(),user.getLastName(),user.getEmail()
+//                    ,user.getPassword(), user.getPassword1(), user.getCountry(), user.getAddress(),user.getAddress2(),user.getPostCode()
+//                    ,user.getCity(), user.getPhoneNumber()));
+//
+//            return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+//
+//        }catch (Exception e){
+//            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
+//    @GetMapping("/users")
+//    public ResponseEntity<List<User>> getAllUsers(@RequestParam(required = false) String email){
+//
+//        try {
+//            List<User> users = new ArrayList<>();
+//
+//            if(email == null) {
+//                users = userService.getAllUsers();
+//            } else {
+//                users = userService.getUserByEmail(email);
+//            }
+//
+//            if(users.isEmpty()){
+//                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//            }
+//            return new ResponseEntity<>(users,HttpStatus.OK);
+//
+//        }catch(Exception e){
+//            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//
+//    }
 
-        try{
-            User newUser= userService.saveUser(new User(user.getFirstName(),user.getLastName(),user.getEmail()
-                    ,user.getPassword(),user.getCountry(), user.getAddress(),user.getAddress2(),user.getPostCode()
-                    ,user.getCity(), user.getPhoneNumber()));
+//    @GetMapping("/{userId}")
+//    public ResponseEntity<User> getUserById(@PathVariable("userId") long userId){
+//        User user = userService.getUserById(userId);
+//
+//        if(user != null){
+//            return new ResponseEntity<>(user,HttpStatus.OK);
+//        }
+//        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//    }
 
-            return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+    @GetMapping("/{userId}")
+    public ResponseEntity<UserDTO> getById(@PathVariable Long userId) {
+        Optional<User> userOptional = this.userService.findById(userId);
 
-        }catch (Exception e){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        if (userOptional.isPresent()) {
+            return ResponseEntity.ok(userOptional.map(UserDTO::fromEntity).get());
+        } else {
+            return ResponseEntity.notFound().build();
         }
     }
-    @GetMapping("/users")
-    public ResponseEntity<List<User>> getAllUsers(@RequestParam(required = false) String email){
-
-        try {
-            List<User> users = new ArrayList<>();
-
-            if(email == null) {
-                users = userService.getAllUsers();
-            } else {
-                users = userService.getUserByEmail(email);
-            }
-
-            if(users.isEmpty()){
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-            return new ResponseEntity<>(users,HttpStatus.OK);
-
-        }catch(Exception e){
-            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-    }
-
-    @GetMapping("users/{userId}")
-    public ResponseEntity<User> getUserById(@PathVariable("userId") long userId){
-        User user = userService.getUserById(userId);
-
-        if(user != null){
-            return new ResponseEntity<>(user,HttpStatus.OK);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-
     @GetMapping("/me")
     public ResponseEntity<UserDTO> me(Principal principal) {
         if (principal != null) {
@@ -96,10 +106,10 @@ public class UserController {
     }
 
 
-    @PutMapping ("users/{userId}")
+    @PutMapping ("/{userId}")
     public ResponseEntity<User> updateUserById (@PathVariable("userId") long userId, @RequestBody User user){
 
-       User updateUser = userService.updateUserById(userId,user);
+        User updateUser = userService.updateUserById(userId,user);
 
         if(updateUser != null){
             return new ResponseEntity<>(userService.saveUser(updateUser),HttpStatus.OK);
@@ -108,7 +118,7 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
     }
-    @DeleteMapping("users/{userId}")
+    @DeleteMapping("/{userId}")
     public ResponseEntity<User> deleteUserById (@PathVariable ("userId") long userId){
         try {
             userService.deleteUserById(userId);

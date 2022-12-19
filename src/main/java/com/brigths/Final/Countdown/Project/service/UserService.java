@@ -22,9 +22,12 @@ public interface UserService {
     List<User> getUserByEmail(String email);
 
     Optional<User> findByEmail(String email);
+    Optional<User> findById(Long userId);
    // boolean userExists(String email);
 
     boolean userExists(String username);
     Optional<User> findByUsername(String username);
+
+    User save(User user);
 
 }

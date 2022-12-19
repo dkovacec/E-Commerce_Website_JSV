@@ -45,9 +45,10 @@ public class User {
     private List<Role> roles;
 
 
-    public User(String firstName, String lastName, String email, String password, String country, String address, String address2, String postCode, String city, String phoneNumber) {
+    public User(String username, String firstName, String lastName, String email, String password, String country, String address, String address2, String postCode, String city, String phoneNumber) {
         this.id = id;
         this.firstName = firstName;
+        this.username = username;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
@@ -98,6 +99,14 @@ public class User {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -106,13 +115,6 @@ public class User {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public List<Role> getRoles() {
         return roles;
@@ -177,4 +179,5 @@ public class User {
     public void setAdmin(boolean admin) {
         this.isAdmin = admin;
     }
+
 }
