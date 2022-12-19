@@ -25,7 +25,7 @@ export default {
       this.getProducts();
     },
     async getProducts() {
-      let url = 'api/products'
+      let url = '/api/products'
       try {
 
         let response = await fetch(url);
@@ -39,22 +39,22 @@ export default {
   }
 }
 
-var prevScrollpos = window.pageYOffset;
-window.onscroll = function() {
-var currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-    document.getElementById("navbar").style.top = "25px";
-  } else {
-    document.getElementById("navbar").style.top = "-50px";
-  }
-  prevScrollpos = currentScrollPos;
-}
+// var prevScrollpos = window.pageYOffset;
+// window.onscroll = function() {
+// var currentScrollPos = window.pageYOffset;
+//   if (prevScrollpos > currentScrollPos) {
+//     document.getElementById("test").style.top = "25px";
+//   } else {
+//     document.getElementById("test").style.top = "-50px";
+//   }
+//   prevScrollpos = currentScrollPos;
+// }
 
 </script>
 
 <template>
 
-  <nav id="navbar">
+  <nav id="test">
     <ul>
       <li v-for="category in categoryList" :key="category.id">
         <router-link :to="{ name: 'ProductsInCategory', params: { id: category.id, name: category.name } }">{{
@@ -117,7 +117,7 @@ var currentScrollPos = window.pageYOffset;
   background-color: black;
 }
 
-#navbar {
+#test {
   background-color: #333;
   position: fixed;
   top: 25px;
@@ -130,7 +130,7 @@ var currentScrollPos = window.pageYOffset;
 
 }
 
-#navbar a {
+#test a {
   float: left;
   display: block;
   color: #f2f2f2;
@@ -140,13 +140,13 @@ var currentScrollPos = window.pageYOffset;
   font-size: 17px;
 }
 
-#navbar li a:hover {
+#test li a:hover {
   cursor: pointer;
   color: lightcyan;
   background-color: black;
 }
 
-#navbar li {
+#test li {
   float:left;
   display: inline;
   padding-left: 5%;
@@ -155,7 +155,7 @@ var currentScrollPos = window.pageYOffset;
   /* border: 1px solid black; */
 }
 
-#navbar a {
+#test a {
   text-decoration: none;
   color: white;
   padding: 10px 20px;

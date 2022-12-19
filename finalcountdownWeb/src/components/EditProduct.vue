@@ -1,7 +1,7 @@
 
 <script>
 import router from '../router';
-import Message from './Message.vue';
+import ErrorMessage from './ErrorMessage.vue';
 
 
 export default {
@@ -40,7 +40,7 @@ export default {
     },
 
     components: {
-        Message
+        ErrorMessage
     },
 
     methods: {

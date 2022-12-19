@@ -1,5 +1,5 @@
 <script>
-import Message from './Message.vue';
+import ErrorMessage from './ErrorMessage.vue';
 //import Message from './ErrorMessage.vue';
 
 export default {
@@ -18,7 +18,7 @@ export default {
         }
     },
     components: {
-        Message
+        ErrorMessage
     },
     methods: {
         processForm() {

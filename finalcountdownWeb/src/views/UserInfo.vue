@@ -24,8 +24,21 @@ export default defineComponent({
         if (response.ok) {
           this.user = await response.json();
         }
-      }, 3000) // setTimeout is only for showing the usage of loadingSpinners!
+      }, 300) // setTimeout is only for showing the usage of loadingSpinners!
     },
+    async deleteUser(userId) {
+if(confirm('Do you really want to delete this user ?')){
+let urlDelete = `/api/users/${userId}`
+    let response = await fetch(urlDelete,{
+        method:'DELETE'
+    }).then(response => {
+        if(!response.ok){
+            return Promise.reject("Error")
+        }
+    }).catch(error => alert("Cannot delete this user"))
+    this.getUsers();
+}
+},
   }
 })
 </script>
@@ -33,7 +46,9 @@ export default defineComponent({
 <template>
   <h2>User Info</h2>
   <div v-if="user">
-    <pre>{{ JSON.stringify(user, null, 2) }}</pre>
+   <table>
+        <pre>{{ JSON.stringify(user, null, 3) }}</pre>
+    </table>
   </div>
   <div v-else>
     <LoadingSpinner/>
