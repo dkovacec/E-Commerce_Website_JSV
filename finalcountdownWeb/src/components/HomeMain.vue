@@ -25,7 +25,7 @@ export default {
       this.getProducts();
     },
     async getProducts() {
-      let url = 'api/products'
+      let url = '/api/products'
       try {
 
         let response = await fetch(url);

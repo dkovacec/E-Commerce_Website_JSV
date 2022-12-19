@@ -144,11 +144,7 @@ export const routes = [
                 requiresAuth: false
             }
             },
-        
-        
-        
-
-        
+  
     
         {
             path: '/:pathMatch(.*)*', 
