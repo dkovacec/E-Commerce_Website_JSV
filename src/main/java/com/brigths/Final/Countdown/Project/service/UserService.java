@@ -2,15 +2,11 @@ package com.brigths.Final.Countdown.Project.service;
 
 import com.brigths.Final.Countdown.Project.model.Category;
 import com.brigths.Final.Countdown.Project.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
-
     List<User> getAllUsers();
 
     User addUser(User user);
@@ -33,4 +29,5 @@ public interface UserService {
     Optional<User> findByUsername(String username);
 
     User save(User user);
+
 }

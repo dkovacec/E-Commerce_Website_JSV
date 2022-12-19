@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/api/users")
 public class UserController {
 
@@ -109,7 +109,7 @@ public class UserController {
     @PutMapping ("/{userId}")
     public ResponseEntity<User> updateUserById (@PathVariable("userId") long userId, @RequestBody User user){
 
-       User updateUser = userService.updateUserById(userId,user);
+        User updateUser = userService.updateUserById(userId,user);
 
         if(updateUser != null){
             return new ResponseEntity<>(userService.saveUser(updateUser),HttpStatus.OK);

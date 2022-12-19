@@ -8,36 +8,39 @@ export default {
     data() {
         return {
 
-            categoryList: [],
-            totalCategories: 0
+            productList: [],
+            totalProducts: 0
         };
     },
 
+    created() {
+
+    },
 
     methods: {
 
-        async getCategories() {
-            let url = 'api/categories'
+        async getProducts() {
+            let url = 'api/products'
             try {
 
                 let response = await fetch(url);
-                this.categoryList = await response.json();
-                this.totalCategories = this.categoryList.length;
+                this.productList = await response.json();
+                this.totalProducts = this.productList.length;
             } catch (error) {
                 console.log("Error: ", error)
 
             }
         },
         created() {
-            this.getCategories();
+            this.getProducts();
         },
 
-        async deleteCategory(id) {
+        async deleteProduct(id) {
 
-            if(confirm('Do you really want to delete this category ?')){
+            if(confirm('Do you really want to delete this product ?')){
 
 
-            let urlDelete = 'api/categories/' + id
+            let urlDelete = 'api/products/' + id
 
                 let response = await fetch(urlDelete,{
                     method:'DELETE'
@@ -45,9 +48,9 @@ export default {
                     if(!response.ok){
                         return Promise.reject("Error")
                     }
-                }).catch(error => alert("Cannot delete this category, there are still some products listed for that category, first delete all products with this category"))
+                }).catch(error => alert("Cannot delete this product"))
 
-                this.getCategories();
+                this.getProducts();
             }
         },
     }
@@ -56,29 +59,40 @@ export default {
 </script>
 
 <template>
+
     <table class="formattedTable">
         <thead>
-            <th>Category Id</th>
-            <th>Category Name</th>
-            <th>Category Description</th>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Summary</th>
+            <th>Price</th>
+            <th>Weight</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Category</th>
             <th>Actions</th>
         </thead>
         <tbody>
-            <tr v-for="category in categoryList" :key="category.id">
-                <td>{{ category.id }}</td>
-                <td>{{ category.name }}</td>
-                <td>{{ category.description }}</td>
+            <tr v-for="product in productList" :key="product.id">
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.summary }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.weight }}</td>
+                <td>{{ product.description }}</td>
+                <td><img class="listimage" :src=product.imageName></td>
+                <td>{{ product.category.name }}</td>
                 <td>
-                   <router-link :to="{name:'EditCategory', params: {id: category.id}}">
+                    <router-link :to="{name:'EditProduct', params: {id: product.id}}">
                     <Button class="buttonEdit"> Edit</Button>
                 </router-link>
-                    <Button class="buttonDelete" @click="deleteCategory(category.id)"> Delete</Button>
+                    <Button class="buttonDelete" @click="deleteProduct(product.id)"> Delete</Button>
                 </td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="4"> Total number of categories: <span> {{ totalCategories }}</span></td>
+                <td colspan="9"> Total number of products: <span> {{ totalProducts }}</span></td>
             </tr>
         </tfoot>
 
@@ -173,4 +187,12 @@ export default {
 	border-radius: 5px;
     box-shadow: 0px 3px 5px #000;
 }
+
+.listimage {
+
+    width: 150px;
+    height: 150px;
+
+}
+
 </style>

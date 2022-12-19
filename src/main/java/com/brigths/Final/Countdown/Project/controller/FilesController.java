@@ -1,6 +1,6 @@
 package com.brigths.Final.Countdown.Project.controller;
 
-import com.brigths.Final.Countdown.Project.model.FileInfo;
+import com.brigths.Final.Countdown.Project.message.ResponseFile;
 import com.brigths.Final.Countdown.Project.model.ResponseMessage;
 import com.brigths.Final.Countdown.Project.service.FileStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import com.brigths.Final.Countdown.Project.model.FileDB;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,7 +21,8 @@ import java.util.stream.Collectors;
 @RequestMapping("/api")
 public class FilesController {
 
-    FileStorageService fileStorageService;
+    @Autowired
+    private FileStorageService fileStorageService;
 
     @Autowired
     public FilesController(FileStorageService fileStorageService) {
@@ -41,25 +44,54 @@ public class FilesController {
     }
 
     @GetMapping("/files")
-    public ResponseEntity<List<FileInfo>> getListFiles() {
+//public ResponseEntity<List<FileDB>> getListFiles() {
+//        List<FileDB> fileDBS = fileStorageService.loadAll().map(path -> {
+//            String filename = path.getFileName().toString();
+//            String url = MvcUriComponentsBuilder
+//                    .fromMethodName(FilesController.class, "getFile", path.getFileName().toString()).build()
+//                    .toString();
+//
+//            return  new FileDB(filename, url);
+//        }).collect(Collectors.toList());
+//        return ResponseEntity.status(HttpStatus.OK).body(fileDBS);
+//        }
 
-        List<FileInfo> fileInfos = fileStorageService.loadAll().map(path -> {
-            String filename = path.getFileName().toString();
-            String url = MvcUriComponentsBuilder
-                    .fromMethodName(FilesController.class, "getFile", path.getFileName().toString()).build()
-                    .toString();
+    public ResponseEntity<List<ResponseFile>> getListFiles() {
+        List<ResponseFile> files = fileStorageService.getAllFiles().map(dbFile -> {
+            String fileDownloadUri = ServletUriComponentsBuilder
+                    .fromCurrentContextPath()
+                    .path("/files/")
+                    .path(dbFile.getId())
+                    .toUriString();
 
-            return  new FileInfo(filename, url);
+            return new ResponseFile(
+                    dbFile.getName(),
+                    fileDownloadUri,
+                    dbFile.getType(),
+                    dbFile.getData().length);
         }).collect(Collectors.toList());
-        return ResponseEntity.status(HttpStatus.OK).body(fileInfos);
+
+        return ResponseEntity.status(HttpStatus.OK).body(files);
     }
 
-    @GetMapping("/files/{filename:.+}")
-    @ResponseBody
-    public ResponseEntity<Resource> getFile(@PathVariable String filename) {
-        Resource file = fileStorageService.load(filename);
+
+
+
+//    @GetMapping("/files/{filename:.+}")
+//    @ResponseBody
+//    public ResponseEntity<Resource> getFile(@PathVariable String filename) {
+//        Resource file = fileStorageService.load(filename);
+//        return ResponseEntity.ok()
+//                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+//    }
+
+    @GetMapping("/files/{id}")
+    public ResponseEntity<byte[]> getFile(@PathVariable String id) {
+        FileDB fileDB = fileStorageService.getFile(id);
+
         return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getName() + "\"")
+                .body(fileDB.getData());
     }
 }
 

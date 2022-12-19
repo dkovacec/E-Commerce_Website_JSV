@@ -45,7 +45,7 @@ public class User {
     private List<Role> roles;
 
 
-    public User(String username,String firstName, String lastName, String email, String password, String country, String address, String address2, String postCode, String city, String phoneNumber) {
+    public User(String username, String firstName, String lastName, String email, String password, String country, String address, String address2, String postCode, String city, String phoneNumber) {
         this.id = id;
         this.firstName = firstName;
         this.username = username;

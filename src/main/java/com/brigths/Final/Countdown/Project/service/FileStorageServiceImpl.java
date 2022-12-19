@@ -1,21 +1,27 @@
 package com.brigths.Final.Countdown.Project.service;
 
+import com.brigths.Final.Countdown.Project.model.FileDB;
+import com.brigths.Final.Countdown.Project.repository.FileDBRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 @Service
-public class FileStorageImpl implements FileStorageService{
+public class FileStorageServiceImpl implements FileStorageService {
+
+    @Autowired
+    private FileDBRepository fileDBRepository;
 
 
     private final Path root = Paths.get("uploads");
@@ -31,15 +37,21 @@ public class FileStorageImpl implements FileStorageService{
         }
 
     @Override
-    public void save(MultipartFile file) {
+    public FileDB save(MultipartFile file) throws IOException {
 
-        try{
+//        try{
         Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
-        }catch(Exception e) {
-            if (e instanceof FileAlreadyExistsException) {
-                throw new RuntimeException("A file with that name already exists");
-            }
-        }
+
+            String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+            FileDB fileDB = new FileDB(fileName, file.getContentType(), file.getBytes());
+
+            return fileDBRepository.save(fileDB);
+
+//        }catch(Exception e) {
+//            if (e instanceof FileAlreadyExistsException) {
+//                throw new RuntimeException("A file with that name already exists");
+//            }
+//        }
 
     }
 
@@ -57,6 +69,14 @@ public class FileStorageImpl implements FileStorageService{
         } catch (MalformedURLException e) {
             throw new RuntimeException("Error: " + e.getMessage());
         }
+    }
+
+    public FileDB getFile(String id) {
+        return fileDBRepository.findById(id).get();
+    }
+
+    public Stream<FileDB> getAllFiles() {
+        return fileDBRepository.findAll().stream();
     }
 
     @Override

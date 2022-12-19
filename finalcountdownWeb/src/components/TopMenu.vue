@@ -13,38 +13,52 @@ export default defineComponent({
 <template>
 
 <nav class="topMenu">
-    <a href="#"><img class="logo" src="src\images\logo.jpg"></a>
+    <img class="logo" src="..\images\logo.jpg">
       <ul>
-         <!-- use router-link instead of a to stop refreshing and request to server-->
+        <!-- use router-link instead of a to stop refreshing and request to server-->
         <!-- this makes it very fast and better -->
         <!-- <li><router-link to="/">Home</router-link></li>-->
+
         <li><router-link to="/">Home</router-link></li>
         
         <!-- using names for routing -->
         <!-- <li><router-link :to="{ name: 'Tabs'}">Tabs</router-link></li> -->
         <!-- <li><a href="#">Shop</a></li> -->
 
-        <!-- <li><router-link to="/login">Login</router-link></li>
-        <li><router-link to="/signup">Sign Up</router-link></li> -->
-        <li><router-link to="/categorylist">Categories</router-link></li>
-        <li><router-link to="/categoryadd">Add Category</router-link></li>
+<li v-if="!isAuthenticated">
+      <router-link :to="{ name: 'register' }">Register</router-link>
+    </li>
 
-<!--        <li v-if="!isAuthenticated">-->
-<!--          <li><router-link to="/signup">Sign Up</router-link></li>-->
-<!--    </li>-->
-<!--    <li v-if="!isAuthenticated">-->
-<!--      <li><router-link to="/login">Login</router-link></li>-->
-<!--    </li>-->
-<!--    <li v-if="isAuthenticated">-->
-<!--      <li><router-link to="/logout">Logout</router-link></li>-->
-<!--    </li>-->
-<!--    <li v-if="isAuthenticated">-->
-<!--      <li><router-link to="/userListView">Users</router-link></li>-->
-<!--    </li>-->
-<!--    <li v-if="isAuthenticated">-->
-<!--      <li><router-link to="/profileView">Profile</router-link></li>-->
-<!--      &lt;!&ndash; <router-link :to="{ name: 'profileView' }">Profile</router-link> &ndash;&gt;-->
-<!--    </li>-->
+    <li v-if="!isAuthenticated">
+      <router-link :to="{ name: 'login' }">Login</router-link>
+    </li>
+    <li v-if="isAuthenticated">
+      <router-link :to="{ name: 'logout' }">Logout</router-link>
+    </li>
+
+    <li v-if="isAuthenticated">
+        <li><router-link to="/categorylist">Categories</router-link></li>
+      </li>
+
+        <li v-if="isAuthenticated">
+        <li><router-link to="/categoryadd">Add Category</router-link></li>
+      </li>
+
+        <li v-if="isAuthenticated">
+        <li><router-link to="/productlist">Products</router-link></li>
+      </li>
+
+        <li v-if="isAuthenticated">
+        <li><router-link to="/productadd">Add Product</router-link></li>
+      </li>
+
+    <li v-if="isAuthenticated">
+      <router-link :to="{ name: 'userList' }">Users</router-link>
+    </li>
+    <li v-if="isAuthenticated">
+      <router-link :to="{ name: 'profile' }">Profile</router-link>
+    </li>
+
         <li><a href="#">Cart</a></li>
       </ul>
     </nav>
@@ -66,13 +80,18 @@ export default defineComponent({
 .topMenu {
     position: absolute;
     list-style: none;
+    margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
     margin: auto;
     padding: 0;
     text-align: center;
     box-shadow: 0px 3px 5px #000;
+    background-color: white;
     /*display: inline-block;*/
     /*overflow: hidden;*/
-    /*position: fixed;*/
+    position: fixed;
     width: 75%;
 }
 
@@ -92,6 +111,8 @@ export default defineComponent({
     margin: 0;
     display: inline-block;
 }
+
+
 
 .topMenu a:hover {
     cursor: pointer;

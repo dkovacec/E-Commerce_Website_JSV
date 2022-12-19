@@ -1,6 +1,7 @@
 package com.brigths.Final.Countdown.Project.service;
 
 
+
 import com.brigths.Final.Countdown.Project.dto.RegistrationDTO;
 import com.brigths.Final.Countdown.Project.exception.UsernameTakenException;
 import com.brigths.Final.Countdown.Project.jwt.JWTUtil;
@@ -15,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AuthService {
-
     private final static int COOKIE_AGE_24H = 24 * 60 * 60;
 
     private final AuthenticationManager authenticationManager;
