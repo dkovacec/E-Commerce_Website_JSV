@@ -18,7 +18,6 @@ export default {
     },
 
     methods: {
-
         async getProducts() {
             let url = 'api/products'
             try {

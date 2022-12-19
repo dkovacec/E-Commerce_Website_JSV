@@ -1,5 +1,4 @@
 <script>
-import Message from './Message.vue';
 import { defineComponent } from "vue";
 import { mapStores } from "pinia";
 import { useAuthStore } from "../store/auth";
