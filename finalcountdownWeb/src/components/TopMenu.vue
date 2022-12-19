@@ -3,6 +3,26 @@ import { defineComponent } from "vue";
 import { mapState } from "pinia";
 import { useAuthStore } from "@/store/auth";
 export default defineComponent({
+
+  data() {
+    return {
+      currentUser: null,
+    }
+  },
+  created() {
+    this.fetchCurrentUser();
+  },
+  methods: {
+    async fetchCurrentUser() {
+      const response = await fetch('/api/users/me')
+      if (response.ok) {
+        setTimeout(async () => {
+          this.currentUser = await response.json();
+        }, 500) // setTimeout is only for showing the usage of loadingSpinners!
+      }
+    },
+  },
+
   computed: {
     ...mapState(useAuthStore, ["isAuthenticated"])
   },
@@ -14,6 +34,10 @@ export default defineComponent({
 
 <nav class="topMenu">
     <img class="logo" src="..\images\logo.jpg">
+
+    <p v-if="currentUser" class="currentUser" > Hello {{ this.currentUser.username }} </p>
+
+
       <ul>
         <!-- use router-link instead of a to stop refreshing and request to server-->
         <!-- this makes it very fast and better -->
@@ -59,6 +83,11 @@ export default defineComponent({
       <router-link :to="{ name: 'profile' }">Profile</router-link>
     </li>
 
+
+
+
+
+
         <li><a href="#">Cart</a></li>
       </ul>
     </nav>
@@ -75,6 +104,12 @@ export default defineComponent({
 
 .logo a {
     padding: 0;
+}
+
+.currentUser {
+  font-size: 0.8em;
+  float: right;
+  padding-right: 5px;
 }
 
 .topMenu {
