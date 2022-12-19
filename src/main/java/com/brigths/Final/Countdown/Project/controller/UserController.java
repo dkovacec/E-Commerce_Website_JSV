@@ -36,7 +36,7 @@ public class UserController {
     }
 
 
-//    @PostMapping("/api/auth/register")
+    //    @PostMapping("/api/auth/register")
 //    public ResponseEntity<User> createUser(@RequestBody User user){
 //
 //        try{
@@ -50,28 +50,28 @@ public class UserController {
 //            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 //        }
 //    }
-//    @GetMapping("/users")
-//    public ResponseEntity<List<User>> getAllUsers(@RequestParam(required = false) String email){
-//
-//        try {
-//            List<User> users = new ArrayList<>();
-//
-//            if(email == null) {
-//                users = userService.getAllUsers();
-//            } else {
-//                users = userService.getUserByEmail(email);
-//            }
-//
-//            if(users.isEmpty()){
-//                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//            }
-//            return new ResponseEntity<>(users,HttpStatus.OK);
-//
-//        }catch(Exception e){
-//            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//
-//    }
+    @GetMapping("/users")
+    public ResponseEntity<List<User>> getAllUsers(@RequestParam(required = false) String email){
+
+        try {
+            List<User> users = new ArrayList<>();
+
+            if(email == null) {
+                users = userService.getAllUsers();
+            } else {
+                users = userService.getUserByEmail(email);
+            }
+
+            if(users.isEmpty()){
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+            return new ResponseEntity<>(users,HttpStatus.OK);
+
+        }catch(Exception e){
+            return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
 
 //    @GetMapping("/{userId}")
 //    public ResponseEntity<User> getUserById(@PathVariable("userId") long userId){
