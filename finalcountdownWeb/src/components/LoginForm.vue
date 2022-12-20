@@ -103,7 +103,7 @@ export default defineComponent({
     font-size: 14px;
 }
 
-input[type=text],[type=username], [type=email]  {
+input[type=text],[type=username], [type=email], [type=password] {
     height: 25px;
     width: 60%;
     padding: 3px;

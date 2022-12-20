@@ -1,28 +1,22 @@
 <script>
 import HeaderMain from './components/HeaderMain.vue';
 import HeaderSecondary from './components/HeaderSecondary.vue';
-
-import FooterMain from './components/FooterMain.vue';
-import NavigationBar from "@/components/NavigationBar.vue";
-
+//import FooterMain from './components/FooterMain.vue';
+//import NavigationBar from "@/components/NavigationBar.vue";
 // import Login from './components/Login.vue';
 // import SignUp from './components/SignUp.vue';
-
-
 export default {
   data() {
     return {
     }
   },
   methods: {
-
   },
   components: {
     HeaderMain,
     HeaderSecondary,
     // FooterMain,
     // NavigationBar
-
   }
 }
 </script>
@@ -49,7 +43,6 @@ body {
   margin: 0;
   padding: 0;
 }
-
 .container {
   position: absolute;
   margin-left: auto;
