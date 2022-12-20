@@ -27,7 +27,7 @@ public class User {
     @NotEmpty
     private String password;
 
-    private boolean isAdmin;
+    private boolean admin;
 
     private String country;
     private String address;
@@ -171,11 +171,11 @@ public class User {
     }
 
     public boolean isAdmin() {
-        return isAdmin;
+        return admin;
     }
 
     public void setAdmin(boolean admin) {
-        this.isAdmin = admin;
+        this.admin = admin;
     }
 
 }
