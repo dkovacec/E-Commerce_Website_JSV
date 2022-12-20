@@ -33,7 +33,7 @@ export default defineComponent({
     <h2>Profile of {{ this.currentUser.username }}</h2>
     <!-- <pre>{{ this.currentUser }}</pre> -->
 
-    <p>This page contains all of your personal data that you provided on the registration form.</p>
+    <p>This page contains all of your personal data that you provided on the registration form at the moment of registration.</p>
     <!-- <pre>{{ this.currentUser }}</pre> -->
 
     <p><b>Firstname: </b>{{ this.currentUser.firstName }}</p>
