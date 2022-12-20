@@ -41,7 +41,7 @@ public class User {
     //one role can be given to many users
     @ManyToMany(cascade = CascadeType.MERGE, fetch  = FetchType.EAGER)
     @JoinTable(name = "user_role" , joinColumns = {@JoinColumn (name = "USER_ID", referencedColumnName = "ID")},
-                inverseJoinColumns = {@JoinColumn (name = "ROLE_ID", referencedColumnName = "ID")})
+            inverseJoinColumns = {@JoinColumn (name = "ROLE_ID", referencedColumnName = "ID")})
     private List<Role> roles;
 
 

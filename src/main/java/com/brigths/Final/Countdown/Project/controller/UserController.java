@@ -36,7 +36,7 @@ public class UserController {
     }
 
 
-//    @PostMapping("/api/auth/register")
+    //    @PostMapping("/api/auth/register")
 //    public ResponseEntity<User> createUser(@RequestBody User user){
 //
 //        try{

@@ -32,7 +32,7 @@ export default defineComponent({
   <template v-if="currentUser">
     <h2>Profile of {{ this.currentUser.username }}</h2>
     <pre>{{ this.currentUser }}</pre>
-    
+
   </template>
   <template v-else>
     <LoadingSpinner/>

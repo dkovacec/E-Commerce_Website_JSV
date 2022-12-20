@@ -34,7 +34,9 @@ export default defineComponent({
 
 <template>
 
-  <table class="formattedTable">
+
+<table class="formattedTable">
+
 
     <thead>
       <tr>
@@ -45,6 +47,7 @@ export default defineComponent({
       </tr>
     </thead>
     <tbody>
+
       <tr v-for="user in this.users" :key="user.id">
         <td>{{ user.id }}</td>
         <td>{{ user.username }}</td>
@@ -56,20 +59,24 @@ export default defineComponent({
           <Button class="buttonDelete" @click="deleteUser(user.id)"> Delete</Button>
         </td>
       </tr>
+
     </tbody>
 
   </table>
 
 </template>
 <style>
+
 .formattedTable,
 .formattedTable td {
+
   border: 1px solid black;
 }
 
 
-.formattedTable th:nth-child(1),
-.formattedTable th:nth-child(2) {
+
+.formattedTable th:nth-child(1), .formattedTable th:nth-child(2) {
+
   border-right: 1px solid white;
 }
 
@@ -79,8 +86,8 @@ export default defineComponent({
   border-collapse: collapse;
 }
 
-.formattedTable th,
-.formattedTable td {
+.formattedTable th, .formattedTable td {
+
   padding: 5px;
 }
 
@@ -111,6 +118,7 @@ export default defineComponent({
 }
 
 .input[type="checkbox"] {
+
   background-color: #000;
   margin: 2px;
   font: inherit;
@@ -123,22 +131,34 @@ export default defineComponent({
 }
 
 .buttonEdit {
-  background-color: #02527d;
-  /* Green */
+background-color: #000;
+margin: 2px;
+font: inherit;
+color: currentColor;
+width: 1.5em;
+height: 1.5em;
+border: 0.25em solid currentColor;
+border-radius: 0.15em;
+transform: translateY(-0.075em);
+}
+
+.buttonEdit {
+background-color: #02527d; /* Green */
   width: 75px;
-  color: white;
-  padding: 5px 10px;
-  margin: 4px 2px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16p;
-  border: 1px solid blue;
-  border-radius: 5px;
+color: white;
+padding: 5px 10px;
+margin: 4px 2px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16p;
+border: 1px solid blue;
+border-radius: 5px;
   box-shadow: 0px 3px 5px #000;
 }
 
 .buttonDelete {
+
   background-color: #380000;
   width: 75px;
   color: yellow;
@@ -158,5 +178,7 @@ export default defineComponent({
   width: 150px;
   height: 150px;
 
+
 }
+
 </style>
