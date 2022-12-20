@@ -86,7 +86,7 @@ export default {
 
 
 <style scoped>
-#ctgMenu {
+/* #ctgMenu {
   position: fixed;
   display: block;
   margin-top: -210px;
@@ -96,21 +96,35 @@ export default {
   background-color: white;
   /*display: inline-block;*/
   /*overflow: hidden;*/
+  /* position: fixed;
+  /* width: 75%; */
+/*}*/
+
+#test {
+  background-color: #333;
   position: fixed;
+  top: 25px;
+  margin-left: 0;
+  padding: 0;
   width: 75%;
+  text-align: center;
+  box-shadow: 0px 3px 5px #000;
+  display: block;
+  transition: top 1s;
 }
+
 
 #ctgMenu li {
   display: inline;
-  padding-left: 5%;
-  padding-right: 5%;
+  padding-left: 0;
+  padding-right: 0;
   text-align: center;
   /* border: 1px solid black; */
 }
 
 #ctgMenu a {
   text-decoration: none;
-  color: black;
+  color: white;
   padding: 10px 20px;
   margin: 0;
   display: inline-block;
@@ -118,15 +132,16 @@ export default {
 
 #ctgMenu li a:hover {
   cursor: pointer;
-  color: lightcyan;
-  background-color: black;
+  color: black;
+  background-color: lightgrey;
 }
 
 #test {
   background-color: #333;
   position: fixed;
   top: 25px;
-  margin-left: 0px;
+  margin-left: 0;
+  padding: 0;
   width: 75%;
   text-align: center;
   box-shadow: 0px 3px 5px #000;
@@ -140,22 +155,22 @@ export default {
   display: block;
   color: #f2f2f2;
   text-align: center;
-  padding: 15px;
+  padding: 10px;
   text-decoration: none;
   font-size: 17px;
 }
 
 #test li a:hover {
   cursor: pointer;
-  color: lightcyan;
-  background-color: black;
+  color: black;
+  background-color: lightgrey;
 }
 
 #test li {
   float:left;
   display: inline;
-  padding-left: 5%;
-  padding-right: 5%;
+  padding-left: 0;
+  padding-right: 0;
   text-align: center;
   /* border: 1px solid black; */
 }
