@@ -20,8 +20,7 @@ export default {
                 postCode: "",
                 username: "",
                 email: "",
-                isAdmin: false,
-
+                admin: ""
             },
             errors: {
                 firstName: false,
@@ -34,9 +33,10 @@ export default {
                 postCode: false,
                 username: false,
                 email: false,
-                isAdmin: false,
+                admin: false,
             },
             users: [],
+
         }
     },
     components: {
@@ -70,6 +70,7 @@ export default {
                 console.log("Clicked 2")
                 alert("You have edited a user!")
                 this.username = "",
+                    this.email = "",
                     this.firstName = "",
                     this.lastName = "",
                     this.address = "",
@@ -79,7 +80,7 @@ export default {
                     this.postCode = "",
                     this.phoneNumber = "",
                     this.errors.username = false;
-                this.errors.email = false;
+                this.lastName.email = false;
             }
         },
 
@@ -118,15 +119,14 @@ export default {
                         id: this.$route.params.uId,
                         firstName: this.users.firstName,
                         lastName: this.users.lastName,
-                        username: this.users.username,
+                        lastName: this.users.username,
                         city: this.users.city,
                         country: this.users.country,
                         address: this.users.address,
                         address2: this.users.address2,
                         postCode: this.users.postCode,
                         phoneNumber: this.users.phoneNumber,
-                        email: this.users.email,
-                        isAdmin: this.users.isAdmin,
+                        isAdmin: this.users.admin,
                     })
                 });
                 let updateUser = await responseCategory.json();
@@ -197,18 +197,26 @@ export default {
                 <input type="email" id="email" autocomplete="email" v-model="users.email">
             </p>
             <p for="username">
-                <span>Username</span>
-                <input type="username" id="username" autocomplete="username" v-model="users.username">
+
+                <span>Username: {{ users.username }}</span>
+                <!-- <input type="username" id="username" autocomplete="username" v-model="users.username"> -->
             </p>
-            <p for="isAdmin">
+
+            <p for="admin">
+                <span>Admin=1 | User= 0</span>
+                <input type="text" id="admin" autocomplete="admin" v-model="users.admin">
+                <br><br>
+            </p>
+
+            <!-- <p for="isAdmin">
                 <span>Admin</span>
-                <input type="radio" id="isAdmin" autocomplete="isAdmin" v-model="users.isAdmin" v-bind:value="true">
+                <input type="radio" id="admin" autocomplete="isAdmin" v-model="users.isAdmin" v-bind:value="true">
                 <br>
                 <span>User</span>
-                <input type="radio" id="isAdmin" autocomplete="isAdmin" v-model="users.isAdmin" v-bind:value="false">
+                <input type="radio" id="user" autocomplete="isAdmin" v-model="users.isAdmin" v-bind:value="false">
                 <br><br>
             <span>Admin: {{ isAdmin }}</span>
-            </p>
+            </p> -->
 
             <p><input @click="updateUser()" type="submit" value="Update"></p>
         </fieldset>
