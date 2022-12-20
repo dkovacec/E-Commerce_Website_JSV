@@ -3,18 +3,14 @@ export default {
     mounted: function () {
         this.created()       
     },
-
     data() {
         return {
             //productList: [],
             categoryList: [],
             product: {}
-
         };
     },
-
     methods: {
-
         async getCategories() {
             let url = '/api/categories'
             try {
@@ -25,7 +21,6 @@ export default {
                 console.log("Error: ", error)
             }
         },
-
         async getProduct() {
             let productId = this.$route.params.id
             //let urlGet = '/api/categories/1/products'
@@ -33,13 +28,10 @@ export default {
             //let urlGet = '/api/categories/' + this.$route.params.id + '/products'
             //let urlGet = '/api/products/1'
             try {
-
                 let response = await fetch(urlGet);
                 this.product = await response.json();
-
             } catch (error) {
                 console.log("Error: ", error)
-
             }
         },   
                     
@@ -48,16 +40,13 @@ export default {
             this.getProduct();
         },
     
-
         // clicked() {           
         //     this.created(),
         //     this.$router.go('/api/categories/' + category.id + '/products')           
             
         // }
-
     }
 }
-
 </script>
 
 <template>
@@ -109,7 +98,6 @@ export default {
 </template>
 
 <style>
-
 .productDetailCard {
     /*border: 1px solid rgba(113, 110, 110, 1);*/
     min-height: 450px;
@@ -117,15 +105,12 @@ export default {
     margin: auto;
     /*margin-right: auto;*/
     padding: 8px 8px 8px 8px;
-
 }
-
 .productdetailimagebox{
     /*border: 1px solid rgba(113, 110, 110, 1);*/    
     width: 380px;
     margin: 10px;
     float: left;
-
 }
 .productdetailimage {
     position: relative;
@@ -138,33 +123,27 @@ export default {
     padding: 15px;
     margin: 0;
 }
-
-
 .productdetailid {
     font-size: 0.7em;
     text-align: right;
     font-weight: bold;
     padding: 10px;     
 }
-
 .summary {
     font-size: 1em;
     text-align: justify;
     padding: 5px; 
 }
-
 .price {
     font-size: 1.4em;
     text-align: right;
     padding: 5px; 
 }
-
 .buttondetailPosition {
     position: relative;
     margin-left: auto;
     /*border: 1px solid blue;*/
     width: 150px;
-
 }
 .buttonCart {
 	background-color: rgb(76, 151, 244);
@@ -180,7 +159,6 @@ export default {
 	border-radius: 5px;
     box-shadow: 0px 3px 5px #000;
 }
-
 .buttonMore:hover {
 	background-color: rgb(13, 57, 111);
     width: 150px;
@@ -195,12 +173,7 @@ export default {
     box-shadow: 0px 3px 5px #000;
     cursor: pointer;
 }
-
-
-
-
 /*CategoryMenu*/
-
 .categorylisted {
     /*border: 1px solid black;*/
     min-height: 450px;
@@ -210,12 +183,10 @@ export default {
     /*margin-right: auto;*/
     padding: 5px;
 }
-
 .categories {
     color: gray;
     font-size: 1.3em;
 }
-
 .verticalMenu {
     position: relative;
     margin: 0;
@@ -225,14 +196,12 @@ export default {
     background-color: white;
     /*display: inline-block;*/
     /*overflow: hidden;*/
-
     width: 98%;
  
 }
 .verticalMenu ul {
     margin: 0;
     padding: 0;
-
 }
 .verticalMenu li {
     padding: 0;
@@ -254,10 +223,8 @@ export default {
     color: lightcyan;
     background-color: black;
 }
-
 .verticalMenu li a:active {
     color: black;
     background-color: rgb(216, 220, 225);
 }
-
 </style>

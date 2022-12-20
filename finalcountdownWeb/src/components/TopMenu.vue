@@ -60,23 +60,23 @@ export default defineComponent({
       <router-link :to="{ name: 'logout' }">Logout</router-link>
     </li>
 
-    <li v-if="isAuthenticated">
+    <li v-if="isAuthenticated && this.currentUser.admin">
         <li><router-link to="/categorylist">Categories</router-link></li>
       </li>
 
-        <li v-if="isAuthenticated">
+        <li v-if="isAuthenticated && this.currentUser.admin">
         <li><router-link to="/categoryadd">Add Category</router-link></li>
       </li>
 
-        <li v-if="isAuthenticated">
+        <li v-if="isAuthenticated && this.currentUser.admin">
         <li><router-link to="/productlist">Products</router-link></li>
       </li>
 
-        <li v-if="isAuthenticated">
+        <li v-if="isAuthenticated && this.currentUser.admin">
         <li><router-link to="/productadd">Add Product</router-link></li>
       </li>
 
-    <li v-if="isAuthenticated">
+    <li v-if="isAuthenticated && this.currentUser.admin">
       <router-link :to="{ name: 'userList' }">Users</router-link>
     </li>
     <li v-if="isAuthenticated">
