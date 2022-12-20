@@ -1,5 +1,6 @@
 package com.brigths.Final.Countdown.Project.service;
 
+import com.brigths.Final.Countdown.Project.dto.UserDTO;
 import com.brigths.Final.Countdown.Project.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,19 +32,20 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User updateUserById(long id, User user) {
+    public User updateUserById(long id, UserDTO userDTO) {
         User userData = getUserById(id);
         if (userData != null) {
-            userData.setLastName(user.getLastName());
-            userData.setFirstName(user.getFirstName());
-            userData.setEmail(user.getEmail());
-            userData.setPassword(user.getPassword());
-            userData.setCountry(user.getCountry());
-            userData.setAddress(user.getAddress());
-            userData.setAddress2(user.getAddress2());
-            userData.setPostCode(user.getPostCode());
-            userData.setCity(user.getCity());
-            userData.setPhoneNumber(user.getPhoneNumber());
+            userData.setLastName(userDTO.getLastName());
+            userData.setFirstName(userDTO.getFirstName());
+            userData.setEmail(userDTO.getEmail());
+            userData.setCountry(userDTO.getCountry());
+            userData.setAddress(userDTO.getAddress());
+            userData.setAddress2(userDTO.getAddress2());
+            userData.setPostCode(userDTO.getPostCode());
+            userData.setCity(userDTO.getCity());
+            userData.setPhoneNumber(userDTO.getPhoneNumber());
+            userData.setAdmin(userDTO.isAdmin());
+            userData.setUsername((userDTO.getUsername()));
             return userData;
         }
         return null;
