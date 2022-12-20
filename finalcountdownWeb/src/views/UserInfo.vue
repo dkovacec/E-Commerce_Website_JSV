@@ -34,10 +34,25 @@ export default defineComponent({
   <h2>User Info</h2>
   <div v-if="user">
 
-    <table>
+    <!-- <table>
       <pre class="formattedTable">{{ JSON.stringify(user, null, 3) }}</pre>
 
-    </table>
+    </table> -->
+
+    <h2>Personal data of {{ user.username }}</h2>
+
+    <p><b>Firstname: </b>{{ user.firstName }}</p>
+    <p><b>Lastname: </b>{{ user.lastName }}</p>
+    <p><b>Address: </b>{{ user.address }}</p>
+    <p><b>Address 2: </b>{{ user.address2 }}</p>
+    <p><b>City: </b>{{ user.city }}</p>
+    <p><b>Postal code: </b>{{ user.postCode }}</p>
+    <p><b>Country: </b>{{ user.country }}</p>
+    <p><b>Phone number: </b>{{ user.phoneNumber }}</p>
+    <p><b>Username: </b>{{ user.username }}</p>
+    <p><b>Email: </b>{{ user.email }}</p>
+    <p><b>Id#: </b>{{ user.id }}</p>
+    <p><b>Admin: </b>{{ user.admin }}</p>
   </div>
   <div v-else>
     <LoadingSpinner />
@@ -108,9 +123,9 @@ export default defineComponent({
 .buttonEdit {
   background-color: #02527d;
   /* Green */
-  width: 75px;
+  width: 75px; 
   color: white;
-  padding: 5px 10px;
+  padding: 10px 10px;
   margin: 4px 2px;
   text-align: center;
   text-decoration: none;
@@ -124,8 +139,9 @@ export default defineComponent({
 .buttonDelete {
   background-color: #380000;
   width: 75px;
+  height: 40px;
   color: yellow;
-  padding: 5px 10px;
+  padding: 10px 10px;
   margin: 4px 2px;
   text-align: center;
   text-decoration: none;
