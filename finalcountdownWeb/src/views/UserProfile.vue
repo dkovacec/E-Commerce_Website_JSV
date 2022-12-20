@@ -31,7 +31,22 @@ export default defineComponent({
 
   <template v-if="currentUser">
     <h2>Profile of {{ this.currentUser.username }}</h2>
-    <pre>{{ this.currentUser }}</pre>
+    <!-- <pre>{{ this.currentUser }}</pre> -->
+
+    <p>This page contains all of your personal data that you provided on the registration form.</p>
+    <!-- <pre>{{ this.currentUser }}</pre> -->
+
+    <p><b>Firstname: </b>{{ this.currentUser.firstName }}</p>
+    <p><b>Lastname: </b>{{ this.currentUser.lastName }}</p>
+    <p><b>Address: </b>{{ this.currentUser.address }}</p>
+    <p><b>Address 2: </b>{{ this.currentUser.address2 }}</p>
+    <p><b>City: </b>{{ this.currentUser.city }}</p>
+    <p><b>Postal code: </b>{{ this.currentUser.postCode }}</p>
+    <p><b>Country: </b>{{ this.currentUser.country }}</p>
+    <p><b>Phone number: </b>{{ this.currentUser.phoneNumber }}</p>
+    <p><b>Username: </b>{{ this.currentUser.username }}</p>
+    <p><b>Email: </b>{{ this.currentUser.email }}</p>
+    <p><b>Id#: </b>{{ this.currentUser.id }}</p>
 
   </template>
   <template v-else>
