@@ -6,7 +6,8 @@ export default {
   data() {
     return {
       categoryList: [],
-      productList: []
+      productList: [],
+      randomList: []
     };
   },
   methods: {
@@ -23,6 +24,7 @@ export default {
     created() {
       this.getCategories();
       this.getProducts();
+
     },
     async getProducts() {
       let url = '/api/products'
@@ -30,12 +32,14 @@ export default {
 
         let response = await fetch(url);
         this.productList = await response.json();
+        this.productList=this.productList.sort(() => Math.random() - 0.5)
         this.totalProducts = this.productList.length;
       } catch (error) {
         console.log("Error: ", error)
 
       }
     },
+
   }
 }
 
@@ -66,13 +70,14 @@ export default {
 
 
 
-  <div class="card" v-for="product in productList" :key="product.id">
+  <div class="card" v-for="(product,index) in productList.slice(0,9)" :key="product.id">
     <router-link :to="{ name: 'ProductDetail', params: { productid: product.id } }">
       <img class="imageCard" :src="product.imageName">
       <p class="title">{{ product.name }}</p>
       <p class="price">€{{ product.price }}</p>
       <!-- <p class="summary">{{product.summary}}</p> -->
     </router-link>
+    
   </div>
 
 
@@ -165,7 +170,8 @@ export default {
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 400px;
+  max-width: 290px;
+  height: 435px;
   margin-top: 8%;
   text-align: center;
   float:left;
@@ -189,8 +195,8 @@ export default {
 }
 
 .card .imageCard {
-  width: 300px;
-  height: 300px;
+  width: 280px;
+  height: 280px;
 }
 
 
