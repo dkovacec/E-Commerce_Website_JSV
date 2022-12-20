@@ -83,7 +83,7 @@ export const routes = [
             }
         },
         { 
-            path: '/editUser',
+            path: '/editUser/:uId',
             name: 'EditUser', 
             component: EditUser,
                  meta: {

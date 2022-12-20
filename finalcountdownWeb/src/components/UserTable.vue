@@ -8,34 +8,42 @@ export default defineComponent({
       default: () => []
     }
   },
-   methods: {
+  methods: {
+    // async getUser() {
+    //   let urlGetUser = '/api/users/users'
+    //   try {
+    //     let response = await fetch(urlGetUser);
+    //     this.users = await response.json();
+    //     console.log(this.users)
+    //   } catch (error) {
+    //   }
+    // },
+    // created() {
+    //   this.getUser();
+    // },
 
-        async deleteUser(userId) {
+    async deleteUser(userId) {
+      if (confirm('Do you really want to delete this user ?')) {
+        let urlDelete = `/api/users/${userId}`
+        let response = await fetch(urlDelete, {
+          method: 'DELETE'
+        }).then(response => {
+          if (!response.ok) {
+            return Promise.reject("Error")
+          }
+        }).catch(error => alert("Cannot delete this user"))
 
-            if(confirm('Do you really want to delete this user ?')){
-
-
-            let urlDelete = '/api/users/users/{userId}'
-
-                let response = await fetch(urlDelete,{
-                    method:'DELETE'
-                }).then(response => {
-                    if(!response.ok){
-                        return Promise.reject("Error")
-                    }
-                }).catch(error => alert("Cannot delete this user"))
-
-                this.getUsers();
-            }
-        },
+        this.getUser();
       }
+    },
+  }
 });
 </script>
 
 <template>
 
 
-<table class="formattedTable">
+  <table class="formattedTable">
 
 
     <thead>
@@ -53,10 +61,10 @@ export default defineComponent({
         <td>{{ user.username }}</td>
         <td><router-link :to="{ name: 'userInfo', params: { userId: user.id } }">Profile</router-link></td>
         <td>
-       <router-link :to="{ name: 'EditUser', params: { userId: user.id } }">
-          <Button class="buttonEdit"> Edit</Button>
-         </router-link>
-          <Button class="buttonDelete" @click="deleteUser(user.id)"> Delete</Button>
+          <router-link :to="{ name: 'EditUser', params: { uId: user.id } }">
+            <button class="buttonEdit"> Edit</button>
+          </router-link>
+          <button class="buttonDelete" @click="deleteUser(user.id)"> Delete</button>
         </td>
       </tr>
 
@@ -65,8 +73,7 @@ export default defineComponent({
   </table>
 
 </template>
-<style>
-
+<style scoped>
 .formattedTable,
 .formattedTable td {
 
@@ -75,7 +82,8 @@ export default defineComponent({
 
 
 
-.formattedTable th:nth-child(1), .formattedTable th:nth-child(2) {
+.formattedTable th:nth-child(1),
+.formattedTable th:nth-child(2) {
 
   border-right: 1px solid white;
 }
@@ -86,7 +94,8 @@ export default defineComponent({
   border-collapse: collapse;
 }
 
-.formattedTable th, .formattedTable td {
+.formattedTable th,
+.formattedTable td {
 
   padding: 5px;
 }
@@ -131,29 +140,30 @@ export default defineComponent({
 }
 
 .buttonEdit {
-background-color: #000;
-margin: 2px;
-font: inherit;
-color: currentColor;
-width: 1.5em;
-height: 1.5em;
-border: 0.25em solid currentColor;
-border-radius: 0.15em;
-transform: translateY(-0.075em);
+  background-color: #000;
+  margin: 2px;
+  font: inherit;
+  color: currentColor;
+  width: 1.5em;
+  height: 1.5em;
+  border: 0.25em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
 }
 
 .buttonEdit {
-background-color: #02527d; /* Green */
+  background-color: #02527d;
+  /* Green */
   width: 75px;
-color: white;
-padding: 5px 10px;
-margin: 4px 2px;
-text-align: center;
-text-decoration: none;
-display: inline-block;
-font-size: 16p;
-border: 1px solid blue;
-border-radius: 5px;
+  color: white;
+  padding: 5px 10px;
+  margin: 4px 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16p;
+  border: 1px solid blue;
+  border-radius: 5px;
   box-shadow: 0px 3px 5px #000;
 }
 
@@ -180,5 +190,4 @@ border-radius: 5px;
 
 
 }
-
 </style>

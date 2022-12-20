@@ -1,5 +1,6 @@
 package com.brigths.Final.Countdown.Project.service;
 
+import com.brigths.Final.Countdown.Project.dto.UserDTO;
 import com.brigths.Final.Countdown.Project.model.Category;
 import com.brigths.Final.Countdown.Project.model.User;
 
@@ -15,7 +16,7 @@ public interface UserService {
 
     void deleteUserById(long id);
 
-    User updateUserById(long id, User user);
+    User updateUserById(long id, UserDTO userDTO);
 
     User saveUser(User user);
 

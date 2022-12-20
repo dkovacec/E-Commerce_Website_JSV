@@ -107,9 +107,9 @@ public class UserController {
 
 
     @PutMapping ("/{userId}")
-    public ResponseEntity<User> updateUserById (@PathVariable("userId") long userId, @RequestBody User user){
+    public ResponseEntity<User> updateUserById (@PathVariable("userId") long userId, @RequestBody UserDTO userDTO){
 
-        User updateUser = userService.updateUserById(userId,user);
+        User updateUser = userService.updateUserById(userId,userDTO);
 
         if(updateUser != null){
             return new ResponseEntity<>(userService.saveUser(updateUser),HttpStatus.OK);
