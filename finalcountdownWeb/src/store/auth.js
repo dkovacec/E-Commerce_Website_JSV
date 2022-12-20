@@ -30,6 +30,7 @@ const handleReponse = async (response, store) => {
 export const useAuthStore = defineStore("auth", {
     state: () => ({
         isAuthenticated: localStorage.getItem(LOCAL_STORAGE_KEY_NAME) !== null,
+        user: null,
     }),
     actions: {
         async check() {
@@ -55,15 +56,26 @@ export const useAuthStore = defineStore("auth", {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(user)
-            });
-            await handleReponse(response, this);
+            });            
+            return await handleReponse(response, this);
         },
         async logout() {
             const response = await fetch('/api/auth/logout', {
                 method: 'POST'
             })
             this.isAuthenticated = false;
+            this.user = null;
             persistState(this.isAuthenticated);
         },
+
+        async retrieveUserData(userId) {
+            const response = await fetch(`/api/users/${userId}`)
+          
+              if (response.ok) {
+                this.user = await response.json();
+              }
+
+
+          }
     }
 })

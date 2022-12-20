@@ -4,7 +4,7 @@ import LoadingSpinner from "../components/LoadingSpinner.vue";
 export default defineComponent({
   components: { LoadingSpinner },
   created() {
-    this.retrieveUserData(this.userId);
+    // this.retrieveUserData(this.userId);
   },
   props: {
     userId: {
@@ -18,14 +18,14 @@ export default defineComponent({
     }
   },
   methods: {
-    async retrieveUserData(userId) {
-      const response = await fetch(`/api/users/${userId}`)
-      setTimeout(async () => {
-        if (response.ok) {
-          this.user = await response.json();
-        }
-      }, 300) // setTimeout is only for showing the usage of loadingSpinners!
-    },
+    // async retrieveUserData(userId) {
+    //   const response = await fetch(`/api/users/${userId}`)
+    //   setTimeout(async () => {
+    //     if (response.ok) {
+    //       this.user = await response.json();
+    //     }
+    //   }, 300) // setTimeout is only for showing the usage of loadingSpinners!
+    // },
   }
 })
 </script>
