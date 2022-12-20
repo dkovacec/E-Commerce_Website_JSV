@@ -30,6 +30,7 @@ export default defineComponent({
     methods: {
     login() {
       this.authStore.login(this.user)
+      .then( (user) => this.authStore.retrieveUserData(user.id))
           .then(() => this.$router.push({ name: 'home' }))
           .catch(error => this.error = { message: "Login failed." })
     },
