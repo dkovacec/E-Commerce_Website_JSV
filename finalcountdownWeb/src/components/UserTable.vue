@@ -50,7 +50,10 @@ export default defineComponent({
       <tr>
         <th>ID</th>
         <th>Username</th>
-        <th>Info</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>is Admin?</th>
+        <th>Details</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -59,12 +62,15 @@ export default defineComponent({
       <tr v-for="user in this.users" :key="user.id">
         <td>{{ user.id }}</td>
         <td>{{ user.username }}</td>
-        <td><router-link :to="{ name: 'userInfo', params: { userId: user.id } }">Profile</router-link></td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.admin }}</td>
+        <td><router-link :to="{ name: 'userInfo', params: { userId: user.id } }" class="buttonEdit">Profile</router-link></td>
         <td>
           <router-link :to="{ name: 'EditUser', params: { uId: user.id } }">
-            <button class="buttonEdit"> Edit</button>
+            <button class="buttonEdit">Edit</button>
           </router-link>
-          <button class="buttonDelete" @click="deleteUser(user.id)"> Delete</button>
+          <button class="buttonDelete" @click="deleteUser(user.id)">Delete</button>
         </td>
       </tr>
 
