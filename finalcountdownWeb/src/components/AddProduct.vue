@@ -1,11 +1,10 @@
 <script>
-import Message from './Message.vue';
+import ErrorMessage from './ErrorMessage.vue';
 
 export default {
     mounted: function () {
         this.created()
     },
-
     data() {
         return {
             product: {
@@ -31,13 +30,10 @@ export default {
             totalProducts: 0
         }
     },
-
     created() {
-
     },
-
     components: {
-        Message
+        ErrorMessage
     },
     methods: {
         processForm() {
@@ -46,21 +42,17 @@ export default {
             } else {
                 this.errors.name = false;
             }
-
             if (!this.product.description.trim()) {
                 this.errors.description = true;
             } else {
                 this.errors.description = false;
             }
-
             let isErrors = false;
-
             for (let error in this.errors) {
                 if (this.errors[error]) {
                     isErrors = true;
                 }
             }
-
             if (!isErrors) {
                 console.log("Clicked ")
                 this.createProduct(this.product)
@@ -83,13 +75,10 @@ export default {
                 
                 let urlProduct = "/api/products"
                 let responseProduct = await fetch(urlProduct, {
-
                     method: 'POST',
-
                     headers: {
                         'Content-Type': 'application/json'
                     },
-
                     body: JSON.stringify({
                         name: product.name,
                         summary: product.summary,
@@ -106,25 +95,20 @@ export default {
                 console.log("Error: ", error)
             }
         },
-
         async getCategories() {
             let url = 'api/categories'
             try {
-
                 let response = await fetch(url);
                 this.categoryList = await response.json();
             } catch (error) {
                 console.log("Error: ", error)
-
             }
         },
         created() {
             this.getCategories();
         },
-
     }
 }
-
 </script>
 
 <template>
@@ -175,7 +159,6 @@ export default {
 </template>
 
 <style>
-
 .loginform {
 	width: 65%;
 	margin: 0;
@@ -187,7 +170,6 @@ export default {
 	resize: none;
 	color: black;
 }
-
 .loginform label {
     display: inline-block;
     width: 100px;
@@ -195,7 +177,6 @@ export default {
     margin: 1px;
     font-size: 14px;
 }
-
 .loginform textarea {
     box-shadow: inset 0 2px 3px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
     background-color: #DDD;
@@ -205,7 +186,6 @@ export default {
     padding: 3px;
     margin-left: 15px;
 }
-
 input[type=text],[type=username], [type=email]  {
     height: 25px;
     width: 80%;
@@ -218,7 +198,6 @@ input[type=text],[type=username], [type=email]  {
     background-color: #DDD;
     box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF
 }
-
 .input[type=button], input[type=submit], input[type=reset] {
 	background-color: #00050f; /*inverted of floralwhite*/
 	border: 2px solid darkblue;
@@ -229,7 +208,6 @@ input[type=text],[type=username], [type=email]  {
 	margin: 4px 2px;
 	cursor: pointer;
 }
-
 select {
     background-color: #ddd;
     padding: 3px;
@@ -238,7 +216,4 @@ select {
     width: 200px;
     font-size: 14px;
 }
-
-
-
 </style>

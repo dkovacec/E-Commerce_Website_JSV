@@ -25,32 +25,36 @@ export default {
       this.getProducts();
     },
     async getProducts() {
-      let url = 'api/products'
+      let url = '/api/products'
       try {
+
         let response = await fetch(url);
         this.productList = await response.json();
         this.totalProducts = this.productList.length;
       } catch (error) {
         console.log("Error: ", error)
+
       }
     },
   }
 }
+
 // var prevScrollpos = window.pageYOffset;
 // window.onscroll = function() {
 // var currentScrollPos = window.pageYOffset;
 //   if (prevScrollpos > currentScrollPos) {
-//     document.getElementById("navbar").style.top = "25px";
+//     document.getElementById("test").style.top = "25px";
 //   } else {
-//     document.getElementById("navbar").style.top = "-50px";
+//     document.getElementById("test").style.top = "-50px";
 //   }
 //   prevScrollpos = currentScrollPos;
 // }
+
 </script>
 
 <template>
 
-  <nav id="navbar">
+  <nav id="test">
     <ul>
       <li v-for="category in categoryList" :key="category.id">
         <router-link :to="{ name: 'ProductsInCategory', params: { id: category.id, name: category.name } }">{{
@@ -90,6 +94,7 @@ export default {
   position: fixed;
   width: 75%;
 }
+
 #ctgMenu li {
   display: inline;
   padding-left: 5%;
@@ -97,6 +102,7 @@ export default {
   text-align: center;
   /* border: 1px solid black; */
 }
+
 #ctgMenu a {
   text-decoration: none;
   color: black;
@@ -104,12 +110,14 @@ export default {
   margin: 0;
   display: inline-block;
 }
+
 #ctgMenu li a:hover {
   cursor: pointer;
   color: lightcyan;
   background-color: black;
 }
-#navbar {
+
+#test {
   background-color: #333;
   position: fixed;
   top: 25px;
@@ -119,8 +127,10 @@ export default {
   box-shadow: 0px 3px 5px #000;
   display: block;
   transition: top 1s;
+
 }
-#navbar a {
+
+#test a {
   float: left;
   display: block;
   color: #f2f2f2;
@@ -129,12 +139,14 @@ export default {
   text-decoration: none;
   font-size: 17px;
 }
-#navbar li a:hover {
+
+#test li a:hover {
   cursor: pointer;
   color: lightcyan;
   background-color: black;
 }
-#navbar li {
+
+#test li {
   float:left;
   display: inline;
   padding-left: 5%;
@@ -142,40 +154,50 @@ export default {
   text-align: center;
   /* border: 1px solid black; */
 }
-#navbar a {
+
+#test a {
   text-decoration: none;
   color: white;
   padding: 10px 20px;
   margin: 0;
   display: inline-block;
 }
+
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  min-width: 300px;
   max-width: 400px;
-  min-height: 350px;
   margin-top: 8%;
   text-align: center;
   float:left;
   margin-left: 2.8rem;
+
 }
+
 .card .title {
   font-weight: bold;
 }
+
+
 .card:hover {
   opacity: 1;
   cursor: pointer;
 }
+
 .price {
   color: grey;
   font-size: 22px;
 }
+
 .card .imageCard {
   width: 300px;
   height: 300px;
 }
+
+
 .card a {
 text-decoration: none;
 color: black;
 }
+
+
 </style>

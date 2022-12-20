@@ -7,12 +7,14 @@ export default defineComponent({
   data() {
     return {
       users: [],
+
     }
   },
   created() {
     this.fetchUsers();
   },
   methods: {
+
     fetchUsers() {
       fetch('/api/users/users', {})
           .then(response => response.json())
