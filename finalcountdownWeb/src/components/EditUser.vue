@@ -80,7 +80,8 @@ export default {
                     this.postCode = "",
                     this.phoneNumber = "",
                     this.errors.username = false;
-                this.lastName.email = false;
+                    this.errors.email = false;
+            
             }
         },
 
@@ -126,7 +127,7 @@ export default {
                         address2: this.users.address2,
                         postCode: this.users.postCode,
                         phoneNumber: this.users.phoneNumber,
-                        isAdmin: this.users.admin,
+                        admin: this.users.admin,
                     })
                 });
                 let updateUser = await responseCategory.json();
