@@ -70,7 +70,7 @@ export default {
 
 
 
-  <div class="card" v-for="(product,index) in productList.slice(0,8)" :key="product.id">
+  <div class="card" v-for="(product,index) in productList.slice(0,9)" :key="product.id">
     <router-link :to="{ name: 'ProductDetail', params: { productid: product.id } }">
       <img class="imageCard" :src="product.imageName">
       <p class="title">{{ product.name }}</p>
@@ -170,7 +170,8 @@ export default {
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 400px;
+  max-width: 290px;
+  height: 435px;
   margin-top: 8%;
   text-align: center;
   float:left;
@@ -194,8 +195,8 @@ export default {
 }
 
 .card .imageCard {
-  width: 300px;
-  height: 300px;
+  width: 280px;
+  height: 280px;
 }
 
 
