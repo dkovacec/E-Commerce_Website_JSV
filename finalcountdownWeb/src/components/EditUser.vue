@@ -21,8 +21,6 @@ export default {
                 username: "",
                 email: "",
                 admin: ""
-
-
             },
             errors: {
                 firstName: false,
@@ -193,11 +191,13 @@ export default {
                 <span>Phone number</span>
                 <input type="number" id="phoneNumber" autocomplete="phoneNumber" v-model="users.phoneNumber">
             </p>
+
             <p for="email">
                 <span>E-mail</span>
                 <input type="email" id="email" autocomplete="email" v-model="users.email">
             </p>
             <p for="username">
+
                 <span>Username: {{ users.username }}</span>
                 <!-- <input type="username" id="username" autocomplete="username" v-model="users.username"> -->
             </p>
