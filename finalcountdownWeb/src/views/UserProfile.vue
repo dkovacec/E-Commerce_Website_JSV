@@ -47,6 +47,7 @@ export default defineComponent({
     <p><b>Username: </b>{{ this.currentUser.username }}</p>
     <p><b>Email: </b>{{ this.currentUser.email }}</p>
     <p><b>Id#: </b>{{ this.currentUser.id }}</p>
+    <p><b>Admin: </b>{{ this.currentUser.admin }}</p>
 
   </template>
   <template v-else>
