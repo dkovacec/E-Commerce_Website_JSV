@@ -1,5 +1,6 @@
 <script>
 import ErrorMessage from './ErrorMessage.vue';
+
 export default {
     mounted: function () {
         this.created()

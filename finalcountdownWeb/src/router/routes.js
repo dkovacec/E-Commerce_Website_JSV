@@ -2,6 +2,7 @@ import AddCategory from '../views/AddCategoryView.vue';
 import AddProduct from '../views/AddProductView.vue';
 import EditCategory from '../views/EditCategoryView.vue';
 import EditProduct from '../views/EditProductView.vue';
+import EditUser from '../views/EditUserView.vue';
 import Home from "../views/Home.vue";
 //import HomeView from "../views/HomeView.vue";
 import ListOfCategories from '../views/ListOfCategoryView.vue';
@@ -78,6 +79,14 @@ export const routes = [
             component: UserInfo,
             props: route => ({ userId: Number(route.params.userId)}),
             meta: {
+                requiresAuth: true
+            }
+        },
+        { 
+            path: '/editUser',
+            name: 'EditUser', 
+            component: EditUser,
+                 meta: {
                 requiresAuth: true
             }
         },

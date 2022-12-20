@@ -14,7 +14,7 @@ export default defineComponent({
     this.fetchUsers();
   },
   methods: {
-    
+
     fetchUsers() {
       fetch('/api/users/users', {})
           .then(response => response.json())
