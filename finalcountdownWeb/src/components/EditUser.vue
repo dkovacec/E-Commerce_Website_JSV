@@ -155,55 +155,55 @@ export default {
     <fieldset>
       <p for="firstName">
         <span>First name</span>
-        <input type="text" id="firstName" autocomplete="firstName" v-model="user.firstName">
+        <input type="text" id="firstName" autocomplete="firstName" v-model="users.firstName">
       </p>
       
       <p for="lastName">
         <span>Last name</span>
-        <input type="text" id="lastName" autocomplete="lastName" v-model="user.lastName">
+        <input type="text" id="lastName" autocomplete="lastName" v-model="users.lastName">
       </p>
      
       <p for="city">
         <span>City</span>
-        <input type="text" id="city" autocomplete="city" v-model="user.city">
+        <input type="text" id="city" autocomplete="city" v-model="users.city">
       </p>
       
       <p for="country">
         <span>Country</span>
-        <input type="text" id="country" autocomplete="country" v-model="user.country">
+        <input type="text" id="country" autocomplete="country" v-model="users.country">
       </p>
      
       <p for="address">
         <span>Address</span>
-        <input type="text" id="address" autocomplete="address" v-model="user.address">
+        <input type="text" id="address" autocomplete="address" v-model="users.address">
       </p>
      
       <p for="address2">
         <span>Address2</span>
-        <input type="text" id="address2" autocomplete="address2" v-model="user.address2">
+        <input type="text" id="address2" autocomplete="address2" v-model="users.address2">
       </p>
      
       <p for="postCode">
         <span>PostCode</span>
-        <input type="number" id="postCode" autocomplete="postCode" v-model="user.postCode">
+        <input type="number" id="postCode" autocomplete="postCode" v-model="users.postCode">
      </p>
      
      <p for="phoneNumber">
         <span>Phone number</span>
-        <input type="number" id="phoneNumber" autocomplete="phoneNumber" v-model="user.phoneNumber">
+        <input type="number" id="phoneNumber" autocomplete="phoneNumber" v-model="users.phoneNumber">
       </p>
 
       <p for="email">
         <span>E-mail</span>
-        <input type="email" id="email" autocomplete="email" v-model="user.email">
+        <input type="email" id="email" autocomplete="email" v-model="users.email">
       </p>
       <p for="username">
         <span>Username</span>
-        <input type="username" id="username" autocomplete="username" v-model="user.username">
+        <input type="username" id="username" autocomplete="username" v-model="users.username">
       </p>
       <p for="isAdmin">
         <span>User/Admin</span>
-        <input type="checkbox" id="isAdmin" autocomplete="isAdmin" v-model="user.isAdmin" true-value="1" false-value="false"> // when unchecked:false
+        <input type="checkbox" id="isAdmin" autocomplete="isAdmin" v-model="users.isAdmin" true-value="1" false-value="false"> // when unchecked:false
       </p>
       <p><input @click="updateUser()"  type="submit" value="Update"></p>
     </fieldset>
