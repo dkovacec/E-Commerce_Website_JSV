@@ -52,7 +52,7 @@ export default defineComponent({
         <th>Username</th>
         <th>Firstname</th>
         <th>Lastname</th>
-        <th>is Admin?</th>
+        <th>Role</th>
         <th>Details</th>
         <th>Actions</th>
       </tr>
@@ -64,7 +64,7 @@ export default defineComponent({
         <td>{{ user.username }}</td>
         <td>{{ user.firstName }}</td>
         <td>{{ user.lastName }}</td>
-        <td>{{ user.admin }}</td>
+        <td>{{ user.admin ? "Admin" : "User"}}</td>
         <td><router-link :to="{ name: 'userInfo', params: { userId: user.id } }" class="buttonEdit">Profile</router-link></td>
         <td>
           <router-link :to="{ name: 'EditUser', params: { uId: user.id } }">
