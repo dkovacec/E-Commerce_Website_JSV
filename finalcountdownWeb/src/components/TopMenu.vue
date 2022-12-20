@@ -10,21 +10,21 @@ export default defineComponent({
     }
   },
   created() {
-    this.fetchCurrentUser();
+    // this.fetchCurrentUser();
   },
   methods: {
-    async fetchCurrentUser() {
-      const response = await fetch('/api/users/me')
-      if (response.ok) {
-        setTimeout(async () => {
-          this.currentUser = await response.json();
-        }, 500) // setTimeout is only for showing the usage of loadingSpinners!
-      }
-    },
+    // async fetchCurrentUser() {
+    //   const response = await fetch('/api/users/me')
+    //   if (response.ok) {
+    //     setTimeout(async () => {
+    //       this.currentUser = await response.json();
+    //     }, 500) // setTimeout is only for showing the usage of loadingSpinners!
+    //   }
+    // },
   },
 
   computed: {
-    ...mapState(useAuthStore, ["isAuthenticated"])
+    ...mapState(useAuthStore, ["isAuthenticated", "user"] )
   },
 });
 
@@ -35,7 +35,7 @@ export default defineComponent({
 <nav class="topMenu">
     <img class="logo" src="..\images\logo.jpg">
 
-    <p v-if="currentUser" class="currentUser" > Hello {{ this.currentUser.username }} </p>
+    <p v-if="user" class="currentUser" > Hello {{ this.user?.username }} </p>
 
 
       <ul>
@@ -60,23 +60,23 @@ export default defineComponent({
       <router-link :to="{ name: 'logout' }">Logout</router-link>
     </li>
 
-    <li v-if="isAuthenticated && this.currentUser.admin">
+    <li v-if="isAuthenticated && this.user?.admin">
         <li><router-link to="/categorylist">Categories</router-link></li>
       </li>
 
-        <li v-if="isAuthenticated && this.currentUser.admin">
+        <li v-if="isAuthenticated && this.user?.admin">
         <li><router-link to="/categoryadd">Add Category</router-link></li>
       </li>
 
-        <li v-if="isAuthenticated && this.currentUser.admin">
+        <li v-if="isAuthenticated && this.user?.admin">
         <li><router-link to="/productlist">Products</router-link></li>
       </li>
 
-        <li v-if="isAuthenticated && this.currentUser.admin">
+        <li v-if="isAuthenticated && this.user?.admin">
         <li><router-link to="/productadd">Add Product</router-link></li>
       </li>
 
-    <li v-if="isAuthenticated && this.currentUser.admin">
+    <li v-if="isAuthenticated && this.user?.admin">
       <router-link :to="{ name: 'userList' }">Users</router-link>
     </li>
     <li v-if="isAuthenticated">

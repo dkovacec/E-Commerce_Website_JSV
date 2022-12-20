@@ -70,7 +70,7 @@ export default {
 
 
 
-  <div class="card" v-for="(product,index) in productList.slice(0,9)" :key="product.id">
+  <div class="card" v-for="(product,index) in productList.slice(0,8)" :key="product.id">
     <router-link :to="{ name: 'ProductDetail', params: { productid: product.id } }">
       <img class="imageCard" :src="product.imageName">
       <p class="title">{{ product.name }}</p>
