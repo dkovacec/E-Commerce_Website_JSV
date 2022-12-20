@@ -132,13 +132,13 @@ export default {
                         postCode: this.users.postCode,
                         phoneNumber: this.users.phoneNumber,
                         email: this.users.email,
-                        isAdmin: this.users.admin,
+                        admin: this.users.admin
                     })
                 });
                 let updateUser = await responseCategory.json();
 
                 
-                alert(`User updated with id=` + this.$route.params.uId)
+                alert(`User updated with id= + ${updateUser.id}`)
 
                 router.push({ path: '/user' })
 
