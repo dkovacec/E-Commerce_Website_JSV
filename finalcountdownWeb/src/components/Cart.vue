@@ -1,22 +1,27 @@
 <script>
+//for shopping cart
+import { mapStores } from "pinia";
+import { useCartStore } from "@/store/cart";
+
 export default {
 
-    methods: {
-
-        async getCart() {
-            try {
-                this.cart = await response.json();
-                this.totalCart = this.cart.length;
-            } catch (error) {
-                console.log("Error: ", error)
-            }
-        }
-}
+    computed: {
+    ...mapStores(useCartStore),    
+  },
 
 }
 
+methods: {
 
-
+    removeFromCart(productId) {
+            this.cart = this.cart.filter(item => item.id !== productId);
+            alert(`Product ${productId} removed from cart`)
+        },
+        clear() {
+            this.cart = [];
+        },
+        
+}
 
 
 </script>
