@@ -1,4 +1,8 @@
 <script>
+//for shopping cart
+import { mapStores } from "pinia";
+import { useCartStore } from "@/store/cart";
+
 export default {
     mounted: function () {
         this.created()       
@@ -7,9 +11,15 @@ export default {
         return {
             //productList: [],
             categoryList: [],
-            product: {}
+            product: {},
+            quantity: 1,
         };
     },
+
+    computed: {
+    ...mapStores(useCartStore),    
+  },
+
     methods: {
         async getCategories() {
             let url = '/api/categories'
@@ -30,15 +40,29 @@ export default {
             try {
                 let response = await fetch(urlGet);
                 this.product = await response.json();
+                // console.log("get-product " + this.product.id);
             } catch (error) {
-                console.log("Error: ", error)
+                console.log("Error: ", error);
+
             }
-        },   
+        },      
+        
                     
         created() {
             this.getCategories();
             this.getProduct();
+            // console.log("cartarray " + this.cart);
+            // let prodId2 = this.$route.params.productid
+            // console.log("prodId " + this.prodId2)
         },
+
+        // //for shopping cart
+        addToCart() {
+            this.cartStore.addToCart(this.product.id, this.quantity);
+            alert(`Product ${this.product.id} added to cart`);
+            console.log("Showcart: ", cart);
+        },
+
     
         // clicked() {           
         //     this.created(),
@@ -78,15 +102,13 @@ export default {
         <p class="productdetailsummary"><b>Summary:</b><br><br>{{ product.summary }}</p>
         <p class="productdetailprice"><b>Price:</b> €{{ product.price }}</p>
         <p class="buttondetailPosition">
-            <Button class="buttonCart">Add to Cart Button</Button>
+            Quantity<input type="number" v-model="quantity"/>
+            <button class="buttonCart" @click="addToCart()">Add to Cart Button</button>
         </p>
 
         <p class="productdetaildescription"><b>Description:</b><br><br>{{ product.description }} </p>
         <p class="productdetailweight"><b>Weight:</b> {{ product.weight }}g</p>
 
-        <p class="buttondetailPosition">
-            <Button class="buttonCart">Add to Cart Button</Button>
-        </p>
   
 
 </section>

@@ -168,10 +168,10 @@ export default defineComponent({
       <p><b>Phone number: </b>{{ this.currentUser.phoneNumber }}</p>
     </section>
 
-    <section v-show="this.edit">
-      <form class="loginform" @submit.prevent="processForm" novalidate>
 
-        <fieldset>
+      <form v-show="this.edit" class="loginform" @submit.prevent="processForm" novalidate>
+
+ 
           <p for="firstName">
             <span>First name</span>
             <input type="text" id="firstName" autocomplete="firstName" v-model="currentUser.firstName">
@@ -217,15 +217,17 @@ export default defineComponent({
             <input type="email" id="email" autocomplete="email" v-model="currentUser.email">
           </p>
 
-          <p><input @click="updateUser()" type="submit" value="Update"></p>
+          <p><input class="buttonEdit" @click="updateUser()" type="submit" value="Update"></p>
 
-        </fieldset>
+          <button class="buttonEdit" @click="isEdit()"> {{ this.edit ? "Cancel" : "Edit info" }}</button>
+
       </form>
-    </section>
+      <button class="buttonEdit" v-show="!this.edit" @click="isEdit()"> {{ this.edit ? "Cancel" : "Edit info" }}</button>
 
 
 
-    <button @click="isEdit()"> {{ this.edit ? "Cancle" : "Edit info" }}</button>
+
+    
     <!-- <p><b>Id#: </b>{{ this.currentUser.id }}</p> -->
     <!-- <p><b>Role: </b>{{ this.currentUser.admin ? "Admin" : "User"}}</p> -->
 
@@ -237,5 +239,19 @@ export default defineComponent({
 </template>
 
 <style scoped>
-
+.buttonEdit {
+  background-color: #02527d;
+  /* Green */
+  width: 75px; 
+  color: white;
+  padding: 10px 10px;
+  margin: 4px 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16p;
+  border: 1px solid blue;
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px #000;
+}
 </style>

@@ -57,64 +57,64 @@ export default defineComponent({
     <form class="loginform" @submit.prevent="register" v-if="!response">
     <fieldset>
       <p for="firstName">
-        <span>First name</span>
+        <label>First name</label>
         <input type="text" id="firstName" autocomplete="firstName" v-model="user.firstName">
       </p>
       
       <p for="lastName">
-        <span>Last name</span>
+        <label>Last name</label>
         <input type="text" id="lastName" autocomplete="lastName" v-model="user.lastName">
       </p>
      
       <p for="city">
-        <span>City</span>
+        <label>City</label>
         <input type="text" id="city" autocomplete="city" v-model="user.city">
       </p>
       
       <p for="country">
-        <span>Country</span>
+        <label>Country</label>
         <input type="text" id="country" autocomplete="country" v-model="user.country">
       </p>
      
       <p for="address">
-        <span>Address</span>
+        <label>Address</label>
         <input type="text" id="address" autocomplete="address" v-model="user.address">
       </p>
      
       <p for="address2">
-        <span>Address2</span>
+        <label>Address2</label>
         <input type="text" id="address2" autocomplete="address2" v-model="user.address2">
       </p>
      
       <p for="postCode">
-        <span>PostCode</span>
+        <label>PostCode</label>
         <input type="number" id="postCode" autocomplete="postCode" v-model="user.postCode">
      </p>
      
      <p for="phoneNumber">
-        <span>Phone number</span>
+        <label>Phone number</label>
         <input type="number" id="phoneNumber" autocomplete="phoneNumber" v-model="user.phoneNumber">
       </p>
 
       <p for="email">
-        <span>E-mail</span>
+        <label>E-mail</label>
         <input type="email" id="email" autocomplete="email" v-model="user.email">
       </p>
       <p for="username">
-        <span>Username</span>
+        <label>Username</label>
         <input type="username" id="username" autocomplete="username" v-model="user.username">
       </p>
       <p for="password2">
-        <span>Password</span>
+        <label>Password</label>
         <input type="password" id="password2" autocomplete="new-password" v-model="user.password2">
       </p>
 
       <p for="password1">
-        <span>Password repeat</span>
+        <label>Password repeat</label>
         <input type="password" id="password1" autocomplete="new-password" v-model="user.password1">
       </p>
 
-      <button>Register</button>
+      <button class="buttonRegister">Register</button>
     </fieldset>
   </form>
 
@@ -143,7 +143,7 @@ export default defineComponent({
     margin-right: auto;
 	padding: 20px 20px;
 	box-sizing: border-box;
-	border: 2px solid #380000;
+	border: 0px solid #380000;
 	border-radius: 4px;
 	background-color: whitesmoke;
 	resize: none;
@@ -152,18 +152,19 @@ export default defineComponent({
 }
 
 .loginform label {
+    border: 0px solid #000;
     display: inline-block;
     width: 100px;
-    text-align: right;
-    margin: 1px;
-    font-size: 14px;
+    text-align: left;
+    margin-right: 5px;
+    font-size: 15px;
 }
 
-input[type=text],[type=username], [type=email]  {
+input[type=text],[type=username], [type=email], [type="number"], [type="password"]  {
     height: 25px;
     width: 60%;
     padding: 3px;
-    margin-left: 15px;
+    margin-left: 25px;
     border-radius: 3px;
     border: 1px solid transparent;
     border-top: none;
@@ -195,6 +196,23 @@ fieldset > label {
 label > span {
   display: block;
   margin-bottom: 0.2rem;
+}
+
+.buttonRegister {
+  background-color: #1f0cc9;
+  width: 100px;
+  height: 40px;
+  color: white;
+  padding: 10px 10px;
+  margin: 8px 8px;
+  margin-left: 250px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px #000;
 }
 
 

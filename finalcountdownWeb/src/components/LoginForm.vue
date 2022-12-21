@@ -48,17 +48,16 @@ export default defineComponent({
 
     <form class="loginform" @submit.prevent="login" v-if="!authStore.isAuthenticated">
     <fieldset>
-      <label for="username">
-        <span>Username</span>
+      <label for="username">Username</label>
         <input type="text" id="username" autocomplete="username" v-model="user.username">
-      </label>
 
-      <label for="password">
-        <span>Password</span>
+<br>
+      <label for="password">Password</label>
+
         <input type="password" id="password" autocomplete="current-password" v-model="user.password">
-      </label>
 
-      <button type="submit" :disabled="!valid">Login</button>
+<br>
+      <button class="buttonLogin" type="submit" :disabled="!valid">Login</button>
     </fieldset>
   </form>
   <ErrorMessage v-if="error?.message" :error="error"/>
@@ -83,12 +82,12 @@ export default defineComponent({
 
 
 .loginform {
-	width: 450px;
+	width: 70%;
     margin-left: auto;
     margin-right: auto;
 	padding: 20px 20px;
 	box-sizing: border-box;
-	border: 2px solid #380000;
+	border: 0px solid #000000;
 	border-radius: 4px;
 	background-color: whitesmoke;
 	resize: none;
@@ -98,17 +97,18 @@ export default defineComponent({
 
 .loginform label {
     display: inline-block;
-    width: 100px;
-    text-align: right;
-    margin: 1px;
-    font-size: 14px;
+    width: 50px;
+    text-align: left;
+    margin: 3px;
+    font-size: 15px;
 }
 
 input[type=text],[type=username], [type=email], [type=password] {
     height: 25px;
-    width: 60%;
+    width: 150px;
     padding: 3px;
-    margin-left: 15px;
+    margin-left: 30px;
+    margin-bottom: 8px;
     border-radius: 3px;
     border: 1px solid transparent;
     border-top: none;
@@ -119,7 +119,7 @@ input[type=text],[type=username], [type=email], [type=password] {
 
 .input[type=button], input[type=submit], input[type=reset] {
 	background-color: #00050f; /*inverted of floralwhite*/
-	border: 2px solid darkblue;
+	border: 1px solid darkblue;
 	border-radius: 4px;
 	color: white;
 	padding: 10px 15px;
@@ -128,12 +128,29 @@ input[type=text],[type=username], [type=email], [type=password] {
 	cursor: pointer;
 }
 
+.buttonLogin {
+  background-color: #1f0cc9;
+  width: 75px;
+  height: 40px;
+  color: white;
+  padding: 10px 10px;
+  margin: 8px 8px;
+  margin-left: 170px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px #000;
+}
+
 fieldset {
   border: 0;
 }
 fieldset > label {
   display: block;
-  width: 10rem;
+  width: 20rem;
   margin-bottom: 1rem;
 }
 label > span {
