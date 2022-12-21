@@ -58,9 +58,9 @@ export default {
 
         // //for shopping cart
         addToCart() {
-            this.cartStore.addToCart(this.product.id, this.quantity);
-            alert(`Product ${this.product.id} added to cart`);
-            console.log("Showcart: ", cart);
+            this.cartStore.addToCart(this.product.id, this.product.name, this.product.price, this.quantity);
+            alert(`Product ${this.product.name} added to cart`);
+            // console.log("Showcart: ", cart);
         },
 
     

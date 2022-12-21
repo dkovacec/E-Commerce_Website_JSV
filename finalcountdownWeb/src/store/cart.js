@@ -5,8 +5,14 @@ export const useCartStore = defineStore('cart', {
         totalCart: 0
     }),
     actions: {
-        addToCart(productId, quantity) {
-            this.cart.push({id: productId, quantity: quantity});
+        addToCart(productId, productName, productPrice, quantity) {
+            this.cart.push({id: productId, 
+                name: productName,
+                price: productPrice,
+                quantity: quantity});
+
+
+
             alert(`Product ${productId} added to cart`)
         },
         removeFromCart(productId) {
