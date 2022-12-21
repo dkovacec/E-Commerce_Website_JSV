@@ -58,7 +58,7 @@ export default {
 
         // //for shopping cart
         addToCart() {
-            this.cartStore.addToCart(this.product.id, this.product.name, this.product.price, this.quantity);
+            this.cartStore.addToCart(this.product.id, this.product.name, this.product.price, this.product.imageName, this.quantity);
             alert(`Product ${this.product.name} added to cart`);
             // console.log("Showcart: ", cart);
         },
