@@ -89,7 +89,7 @@ export default {
         <Message v-show="errors.name" :message="'Name of category should not be empty'"></Message>
         <p>
             <label for="categoryDescription">Category Description: </label>
-            <textarea type="textarea" id="categoryDescription" v-model="category.description"></textarea> 
+            <pre><textarea type="textarea" id="categoryDescription" v-model="category.description"></textarea> </pre>
         </p>
         <Message v-show="errors.description" :message="'Description of category should not be empty'"></Message>
 

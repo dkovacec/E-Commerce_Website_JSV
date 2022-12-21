@@ -2,30 +2,38 @@
 import { defineComponent } from "vue";
 import { mapState } from "pinia";
 import { useAuthStore } from "@/store/auth";
+
+// //for shopping cart
+// import { useCartStore } from "@/store/cart";
+
+
 export default defineComponent({
 
   data() {
     return {
       currentUser: null,
+      // cart: [],
+      // totalCart: 0
     }
   },
   created() {
-    // this.fetchCurrentUser();
+    this.fetchCurrentUser();
   },
   methods: {
-    // async fetchCurrentUser() {
-    //   const response = await fetch('/api/users/me')
-    //   if (response.ok) {
-    //     setTimeout(async () => {
-    //       this.currentUser = await response.json();
-    //     }, 500) // setTimeout is only for showing the usage of loadingSpinners!
-    //   }
-    // },
+    async fetchCurrentUser() {
+      const response = await fetch('/api/users/me')
+      if (response.ok) {
+        setTimeout(async () => {
+          this.currentUser = await response.json();
+        }, 500) // setTimeout is only for showing the usage of loadingSpinners!
+      }
+    },
   },
 
   computed: {
-    ...mapState(useAuthStore, ["isAuthenticated", "user"] )
-  },
+    ...mapState(useAuthStore, ["isAuthenticated", "user"] ),
+    // ...mapState(useCartStore , ["cart", "totalCart"])
+}
 });
 
 </script>
