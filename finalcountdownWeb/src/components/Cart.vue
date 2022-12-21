@@ -11,17 +11,9 @@ export default {
 
 }
 
-methods: {
 
-    removeFromCart(productId) {
-            this.cart = this.cart.filter(item => item.id !== productId);
-            alert(`Product ${productId} removed from cart`)
-        },
-        clear() {
-            this.cart = [];
-        },
-        
-}
+
+
 
 
 </script>

@@ -92,11 +92,10 @@ export default defineComponent({
     </li>
 
 
+        <li v-if="isAuthenticated">
+          <router-link :to="{ name: 'cart' }">Cart</router-link>
+        </li>
 
-
-
-
-        <li><a href="#">Cart</a></li>
       </ul>
     </nav>
 
