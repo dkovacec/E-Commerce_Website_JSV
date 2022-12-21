@@ -83,9 +83,9 @@ export default {
                 this.errors.email = false;
             }
         },
-// do ovdje
 
-        /// ovo promjenio
+
+
         async getUser() {
             let urlGetUser = '/api/users/' + this.$route.params.uId
 
@@ -101,14 +101,12 @@ export default {
 
         },
         // do ovdje
-// ovo promjenio
+
         created() {
             this.getUser();
 
         },
-// do ovdje
 
-// ovo
         async updateUser() {
             try {
                 let urlUpdateUser = `/api/users/` + this.$route.params.uId
@@ -150,7 +148,7 @@ export default {
     }
 }
 
-// do ovdje
+
 
 
 </script>
@@ -205,7 +203,7 @@ export default {
                 <input type="email" id="email" autocomplete="email" v-model="users.email">
             </p>
 
-<!-- ovo -->
+
 
             <p for="username">
                 <span>Username: {{users.username}}</span>
@@ -213,11 +211,14 @@ export default {
             </p>
 
             <p for="admin">
-                <span>Admin=1 | User= 0</span>
-                <input type="text" id="admin" autocomplete="admin" v-model="users.admin">
+                <span>Select user role: </span>
+                <label>Admin: 
+                <input type="radio" id="admin" autocomplete="admin" v-model="users.admin" :value="true">
+                </label>
+                <label> User: <input type="radio" id="admin" autocomplete="admin" v-model="users.admin" :value="false"></label>
                 <br><br>
             </p>
-<!-- do ovdje -->
+
             <p><input @click="updateUser()" type="submit" value="Update"></p>
         </fieldset>
     </form>
