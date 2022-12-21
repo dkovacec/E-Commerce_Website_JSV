@@ -1,4 +1,5 @@
 <script>
+import router from '../router';
 import ErrorMessage from './ErrorMessage.vue';
 
 export default {
@@ -90,8 +91,12 @@ export default {
                     })
                 });
                 let newProduct = await responseProduct.json();
+               
                 alert(`Product inserted with id= ${newProduct.id}`)
-            } catch (error) {
+           
+                router.push({ path: '/productlist' })
+            }
+             catch (error) {
                 console.log("Error: ", error)
             }
         },

@@ -1,5 +1,6 @@
 <script>
 import ErrorMessage from './ErrorMessage.vue';
+import router from '../router';
 //import Message from './ErrorMessage.vue';
 
 export default {
@@ -69,7 +70,10 @@ export default {
                     })
                 });
                 let newCategory = await responseCategory.json();
-                alert(`Category inserted with id= ${newCategory.id}`)
+               
+                 alert(`Category inserted with id= ${newCategory.id}`)
+                
+                 router.push({ path: '/categorylist' })
             } catch (error) {
                 console.log("Error: ", error)
             }
