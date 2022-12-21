@@ -93,7 +93,7 @@ export default {
         <Message v-show="errors.name" :message="'Name of category should not be empty'"></Message>
         <p>
             <label for="categoryDescription">Category Description: </label>
-            <pre><textarea type="textarea" id="categoryDescription" v-model="category.description"></textarea> </pre>
+            <textarea type="textarea" id="categoryDescription" v-model="category.description"></textarea>
         </p>
         <Message v-show="errors.description" :message="'Description of category should not be empty'"></Message>
 
@@ -104,7 +104,7 @@ export default {
 
 </template>
 
-<style>
+<style scoped>
 
 .loginform {
 	width: 65%;
@@ -113,7 +113,7 @@ export default {
     margin-right: auto;
 	padding: 20px 20px;
 	box-sizing: border-box;
-	border: 2px solid #380000;
+	border: 1px solid #380000;
 	border-radius: 4px;
 	background-color: whitesmoke;
 	resize: none;
@@ -121,8 +121,9 @@ export default {
 }
 
 .loginform label {
+    border: 0px solid black;
     display: inline-block;
-    width: 100px;
+    width: 80px;
     text-align: right;
     margin: 1px;
     font-size: 14px;

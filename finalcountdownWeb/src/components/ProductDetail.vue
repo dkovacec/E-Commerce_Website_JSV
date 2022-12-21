@@ -102,7 +102,7 @@ export default {
         <p class="productdetailsummary"><b>Summary:</b><br><br>{{ product.summary }}</p>
         <p class="productdetailprice"><b>Price:</b> €{{ product.price }}</p>
         <p class="buttondetailPosition">
-            Quantity<input type="number" v-model="quantity"/>
+            <span class="quantityLabel">Quantity </span><input class="quantity" type="number" v-model="quantity"/>
             <button class="buttonCart" @click="addToCart()">Add to Cart Button</button>
         </p>
 
@@ -161,6 +161,18 @@ export default {
     text-align: right;
     padding: 5px; 
 }
+
+.quantity {
+    width: 60px;
+    margin-bottom: 5px;
+}
+
+.quantityLabel {
+    padding-right: 2px;
+    font-weight: bold;
+}
+
+
 .buttondetailPosition {
     position: relative;
     margin-left: auto;
