@@ -18,6 +18,7 @@ import Register from '../views/Register.vue';
 import UserInfo from '../views/UserInfo.vue';
 import UserList from '../views/UserList.vue';
 import UserProfile from '../views/UserProfile.vue';
+import Cart from '../components/Cart.vue';
 export const routes = [
 
     
@@ -152,6 +153,15 @@ export const routes = [
          meta: {
                 requiresAuth: false
             }
+            },
+
+            {
+                name: "cart",
+                path: "/cart",
+                component: Cart,
+                meta: {
+                    requiresAuth: true
+                }
             },
   
     
