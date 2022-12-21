@@ -2,11 +2,11 @@
 import router from '../router';
 import ErrorMessage from './ErrorMessage.vue';
 
-
+//ovo
 export default {
-    // mounted: function () {
-    //     this.created()
-    // },
+    mounted: function () {
+        this.created()
+    },
     data() {
         return {
             user: {
@@ -21,6 +21,7 @@ export default {
                 username: "",
                 email: "",
                 admin: ""
+
             },
             errors: {
                 firstName: false,
@@ -36,7 +37,6 @@ export default {
                 admin: false,
             },
             users: [],
-
         }
     },
     components: {
@@ -70,7 +70,6 @@ export default {
                 console.log("Clicked 2")
                 alert("You have edited a user!")
                 this.username = "",
-                    this.email = "",
                     this.firstName = "",
                     this.lastName = "",
                     this.address = "",
@@ -79,31 +78,34 @@ export default {
                     this.country = "",
                     this.postCode = "",
                     this.phoneNumber = "",
+                    this.admin=""
                     this.errors.username = false;
-                    this.errors.email = false;
-            
+                this.errors.email = false;
             }
         },
 
-        // async getUser() {
-        //     let urlGetUser = '/api/users/users'
 
-        //     try {
 
-        //         let response = await fetch(urlGetUser);
-        //         this.users = await response.json();
-        //         console.log(this.users)
+        async getUser() {
+            let urlGetUser = '/api/users/' + this.$route.params.uId
 
-        //     } catch (error) {
+            try {
 
-        //     }
+                let response = await fetch(urlGetUser);
+                this.users = await response.json();
+                console.log(this.users)
 
-        // },
+            } catch (error) {
 
-        // created() {
-        //     this.getUser();
+            }
 
-        // },
+        },
+        // do ovdje
+
+        created() {
+            this.getUser();
+
+        },
 
         async updateUser() {
             try {
@@ -120,21 +122,23 @@ export default {
                         id: this.$route.params.uId,
                         firstName: this.users.firstName,
                         lastName: this.users.lastName,
-                        lastName: this.users.username,
+                        username: this.users.username,
                         city: this.users.city,
                         country: this.users.country,
                         address: this.users.address,
                         address2: this.users.address2,
                         postCode: this.users.postCode,
                         phoneNumber: this.users.phoneNumber,
-                        admin: this.users.admin,
+                        email: this.users.email,
+                        admin: this.users.admin
                     })
                 });
                 let updateUser = await responseCategory.json();
-                // alert(`User updated with id= ${updateUser.uId}`)
+
+                
+                alert(`User updated with id= + ${updateUser.id}`)
 
                 router.push({ path: '/user' })
-
 
 
             } catch (error) {
@@ -143,6 +147,7 @@ export default {
         }
     }
 }
+
 
 
 
@@ -197,27 +202,22 @@ export default {
                 <span>E-mail</span>
                 <input type="email" id="email" autocomplete="email" v-model="users.email">
             </p>
-            <p for="username">
 
-                <span>Username: {{ users.username }}</span>
+
+
+            <p for="username">
+                <span>Username: {{users.username}}</span>
                 <!-- <input type="username" id="username" autocomplete="username" v-model="users.username"> -->
             </p>
 
             <p for="admin">
-                <span>Admin=1 | User= 0</span>
-                <input type="text" id="admin" autocomplete="admin" v-model="users.admin">
+                <span>Select user role: </span>
+                <label>Admin: 
+                <input type="radio" id="admin" autocomplete="admin" v-model="users.admin" :value="true">
+                </label>
+                <label> User: <input type="radio" id="admin" autocomplete="admin" v-model="users.admin" :value="false"></label>
                 <br><br>
             </p>
-
-            <!-- <p for="isAdmin">
-                <span>Admin</span>
-                <input type="radio" id="admin" autocomplete="isAdmin" v-model="users.isAdmin" v-bind:value="true">
-                <br>
-                <span>User</span>
-                <input type="radio" id="user" autocomplete="isAdmin" v-model="users.isAdmin" v-bind:value="false">
-                <br><br>
-            <span>Admin: {{ isAdmin }}</span>
-            </p> -->
 
             <p><input @click="updateUser()" type="submit" value="Update"></p>
         </fieldset>
@@ -228,4 +228,5 @@ export default {
 <style>
 
 </style>
+
 
