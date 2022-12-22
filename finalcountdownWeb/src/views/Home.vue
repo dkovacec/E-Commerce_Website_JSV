@@ -15,7 +15,8 @@ export default defineComponent({
 
 <template>
 
-<h1>BANNER GOES HERE</h1>
+<h1>DigitLion</h1>
+<p>Best gaming and computing equipment you can find online. Browse through our offers and find whatever you need.</p>
 <HomeMain></HomeMain>
 
   <!-- <p>This application provides a simple introduction for enabling user authentication for a VueJS web application with a Spring Boot
@@ -37,5 +38,21 @@ export default defineComponent({
 <style scoped>
 .authenticated {
   background-color: lightcoral;
+}
+
+.mainBanner {
+  border: 0px solid black;
+  margin-top: -50px;
+  width: 99%;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.banner {
+  width: 100%;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
