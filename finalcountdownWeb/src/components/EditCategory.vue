@@ -99,7 +99,7 @@ export default {
                     })
                 });
                 let updateCategory = await responseCategory.json();
-                alert(`Category updated with id= ${updateCategory.id}`)
+                alert(`Category ${updateCategory.name} has been updated`)
 
                 router.push({path: '/categorylist'})
 
