@@ -53,7 +53,6 @@ export default defineComponent({
         <th>Firstname</th>
         <th>Lastname</th>
         <th>Role</th>
-        <th>Details</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -65,8 +64,9 @@ export default defineComponent({
         <td>{{ user.firstName }}</td>
         <td>{{ user.lastName }}</td>
         <td>{{ user.admin ? "Admin" : "User"}}</td>
-        <td><router-link :to="{ name: 'userInfo', params: { userId: user.id } }" class="buttonEdit">Profile</router-link></td>
+        <!-- <td><router-link :to="{ name: 'userInfo', params: { userId: user.id } }" class="buttonProfile">Profile</router-link></td> -->
         <td>
+          <router-link :to="{ name: 'userInfo', params: { userId: user.id } }"><button class="buttonProfile">Profile</button></router-link>
           <router-link :to="{ name: 'EditUser', params: { uId: user.id } }">
             <button class="buttonEdit">Edit</button>
           </router-link>
@@ -82,8 +82,9 @@ export default defineComponent({
 <style scoped>
 .formattedTable,
 .formattedTable td {
-
-  border: 1px solid black;
+  border:2px solid black;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
@@ -91,7 +92,7 @@ export default defineComponent({
 .formattedTable th:nth-child(1),
 .formattedTable th:nth-child(2) {
 
-  border-right: 1px solid white;
+  border-right: 0px solid white;
 }
 
 
@@ -102,8 +103,8 @@ export default defineComponent({
 
 .formattedTable th,
 .formattedTable td {
-
-  padding: 5px;
+  padding: 15px;
+  text-align: center;
 }
 
 .formattedTable th {
@@ -127,73 +128,61 @@ export default defineComponent({
   color: white;
 }
 
-.formattedTable caption {
+/* .formattedTable caption {
   margin-top: 3px;
   caption-side: bottom;
-}
-
-.input[type="checkbox"] {
-
-  background-color: #000;
-  margin: 2px;
-  font: inherit;
-  color: currentColor;
-  width: 1.5em;
-  height: 1.5em;
-  border: 0.25em solid currentColor;
-  border-radius: 0.15em;
-  transform: translateY(-0.075em);
-}
+} */
 
 .buttonEdit {
-  background-color: #000;
-  margin: 2px;
-  font: inherit;
-  color: currentColor;
-  width: 1.5em;
-  height: 1.5em;
-  border: 0.25em solid currentColor;
-  border-radius: 0.15em;
-  transform: translateY(-0.075em);
-}
-
-.buttonEdit {
-  background-color: #02527d;
-  /* Green */
-  width: 75px;
+  background-color: green;
+  width: 90px;
+  font-weight: bold;
   color: white;
   padding: 5px 10px;
   margin: 4px 2px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16p;
-  border: 1px solid blue;
+  font-size: 16px;
+  border: 1px solid black;
   border-radius: 5px;
   box-shadow: 0px 3px 5px #000;
+  cursor: pointer;
 }
 
-.buttonDelete {
-
-  background-color: #380000;
-  width: 75px;
-  color: yellow;
+.buttonProfile {
+  background-color: blue;
+  width: 90px;
+  font-weight: bold;
+  color: white;
   padding: 5px 10px;
   margin: 4px 2px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  border: 1px solid crimson;
+  border: 1px solid black;
   border-radius: 5px;
   box-shadow: 0px 3px 5px #000;
+  cursor: pointer;
 }
 
-.listimage {
+.buttonDelete {
 
-  width: 150px;
-  height: 150px;
-
-
+  background-color: red;
+  width: 90px;
+  font-weight: bold;
+  color: white;
+  padding: 5px 10px;
+  margin: 4px 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px #000;
+  cursor: pointer;
 }
+
 </style>

@@ -118,7 +118,7 @@ export default {
 
         </tfoot>
     </table>
-    <button @click="clear()">Return to Homepage</button>
+    <button class="buttonHome" @click="clear()">Return to Homepage</button>
 </template>
 
 <style scoped>
@@ -128,44 +128,44 @@ export default {
 }
 
 .cartTable {
-    /*border-spacing: 0;*/
-    border-collapse: collapse;
-    margin-left: auto;
-    margin-right: auto;
+  /*border-spacing: 0;*/
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
-.cartTable th,
-.cartTable td {
-
-    padding: 5px;
+.cartTable th, .cartTable td {
+  border: 2px black solid;
+  padding: 5px;
 }
 
 .cartTable th {
-    background-color: black;
-    color: white;
-    margin: 2px;
-    border: 2px solid white;
+  background-color: black;
+  color: white;
+  margin: 2px;
+  /* border: 2px solid white; */
 
 }
 
 .cartTable tfoot td {
-    background-color: #eee;
+  background-color: #eee;
 }
 
 /* :nth-child - pseudo-class*/
 .cartTable tbody tr:nth-child(even) {
-    background-color: #ccc;
+  background-color: #ccc;
 }
 
 .cartTable tbody tr:hover {
-    cursor: pointer;
-    background-color: #555;
-    color: white;
+  
+  background-color: #555;
+  color: white;
 }
 
 .cartTable caption {
-    margin-top: 3px;
-    caption-side: bottom;
+  margin-top: 3px;
+  caption-side: bottom;
 }
 
 .totalPrice {
@@ -177,60 +177,34 @@ export default {
 
 .input[type="checkbox"] {
 
-    background-color: #000;
-    margin: 2px;
-    font: inherit;
-    color: currentColor;
-    width: 1.5em;
-    height: 1.5em;
-    border: 0.25em solid currentColor;
-    border-radius: 0.15em;
-    transform: translateY(-0.075em);
+  background-color: #000;
+  margin: 2px;
+  font: inherit;
+  color: currentColor;
+  width: 1.5em;
+  height: 1.5em;
+  border: 0.25em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
 }
 
-.buttonEdit {
-    background-color: #000;
-    margin: 2px;
-    font: inherit;
-    color: currentColor;
-    width: 1.5em;
-    height: 1.5em;
-    border: 0.25em solid currentColor;
-    border-radius: 0.15em;
-    transform: translateY(-0.075em);
+.buttonHome {
+  background-color: blue;
+  float: left;
+  width: 175px;
+  font-weight: bold;
+  color: white;
+  padding: 5px 10px;
+  margin: 4px 2px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 16px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px #000;
 }
 
-.buttonEdit {
-    background-color: #02527d;
-    /* Green */
-    width: 75px;
-    color: white;
-    padding: 5px 10px;
-    margin: 4px 2px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16p;
-    border: 1px solid blue;
-    border-radius: 5px;
-    box-shadow: 0px 3px 5px #000;
-}
-
-.buttonDelete {
-
-    background-color: #380000;
-    width: 75px;
-    color: yellow;
-    padding: 5px 10px;
-    margin: 4px 2px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border: 1px solid crimson;
-    border-radius: 5px;
-    box-shadow: 0px 3px 5px #000;
-}
 
 .billingData {
 

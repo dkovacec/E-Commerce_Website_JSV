@@ -70,9 +70,9 @@ export default {
                 <td>{{ category.description }}</td>
                 <td>
                    <router-link :to="{name:'EditCategory', params: {id: category.id}}">
-                    <Button class="buttonEdit"> Edit</Button>
+                    <button class="buttonEdit">Edit</button>
                 </router-link>
-                    <Button class="buttonDelete" @click="deleteCategory(category.id)"> Delete</Button>
+                    <button class="buttonDelete" @click="deleteCategory(category.id)">Delete</button>
                 </td>
             </tr>
         </tbody>
@@ -85,92 +85,114 @@ export default {
     </table>
 </template>
 
-<style>
-
-.formattedTable, .formattedTable td {
-    border: 1px solid black;
+<style scoped>
+.formattedTable,
+.formattedTable td {
+  border: 2px solid black;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
-.formattedTable th:nth-child(1), .formattedTable th:nth-child(2) {
-    border-right: 1px solid white;
+
+.formattedTable th:nth-child(1),
+.formattedTable th:nth-child(2) {
+
+  border-right: 0px solid white;
 }
 
 
 .formattedTable {
-    /*border-spacing: 0;*/
-    border-collapse: collapse;
+  /*border-spacing: 0;*/
+  border-collapse: collapse;
 }
 
-.formattedTable th, .formattedTable td {
-    padding: 5px;
+.formattedTable th,
+.formattedTable td {
+  padding: 15px;
 }
 
 .formattedTable th {
-    background-color: black;
-    color: white;
+  background-color: black;
+  color: white;
 
 }
 
 .formattedTable tfoot td {
-    background-color: #eee;
+  background-color: #eee;
 }
 
 /* :nth-child - pseudo-class*/
 .formattedTable tbody tr:nth-child(even) {
-    background-color: #ccc;
+  background-color: #ccc;
 }
 
 .formattedTable tbody tr:hover {
-    cursor: pointer;
-    background-color: #555;
-    color: white;
+  cursor: pointer;
+  background-color: #555;
+  color: white;
 }
 
-.formattedTable caption {
-    margin-top: 3px;
-    caption-side: bottom;
-}
-
-.input[type="checkbox"] {
-	background-color: #000;
-	margin: 2px;
-	font: inherit;
-	color: currentColor;
-	width: 1.5em;
-	height: 1.5em;
-	border: 0.25em solid currentColor;
-	border-radius: 0.15em;
-	transform: translateY(-0.075em);
-}
+/* .formattedTable caption {
+  margin-top: 3px;
+  caption-side: bottom;
+} */
 
 .buttonEdit {
-	background-color: #02527d; /* Green */
-    width: 75px;
-	color: white;
-	padding: 5px 10px;
-	margin: 4px 2px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16p;
-	border: 1px solid blue;
-	border-radius: 5px;
-    box-shadow: 0px 3px 5px #000;
+  background-color: green;
+  width: 90px;
+  font-weight: bold;
+  color: white;
+  padding: 5px 10px;
+  margin: 4px 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px #000;
+  cursor: pointer;
+}
+
+.buttonProfile {
+  background-color: blue;
+  width: 90px;
+  font-weight: bold;
+  color: white;
+  padding: 5px 10px;
+  margin: 4px 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px #000;
+  cursor: pointer;
 }
 
 .buttonDelete {
-	background-color: #380000;
-    width: 75px;
-	color: yellow;
-	padding: 5px 10px;
-	margin: 4px 2px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	border: 1px solid crimson;
-	border-radius: 5px;
-    box-shadow: 0px 3px 5px #000;
+
+  background-color: red;
+  width: 90px;
+  font-weight: bold;
+  color: white;
+  padding: 5px 10px;
+  margin: 4px 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px #000;
+  cursor: pointer;
 }
+
+tr td:last-child {
+    width: 1%;
+    white-space: nowrap;
+}
+
 </style>

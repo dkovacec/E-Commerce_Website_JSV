@@ -113,7 +113,7 @@ export default {
     margin-right: auto;
 	padding: 20px 20px;
 	box-sizing: border-box;
-	border: 1px solid #380000;
+	border: 0px solid #380000;
 	border-radius: 4px;
 	background-color: whitesmoke;
 	resize: none;
@@ -153,13 +153,17 @@ input[type=text],[type=username], [type=email]  {
 }
 
 .input[type=button], input[type=submit], input[type=reset] {
-	background-color: #00050f; /*inverted of floralwhite*/
-	border: 2px solid darkblue;
-	border-radius: 4px;
+	background-color: blue;
+	border: 1px solid black;
+	border-radius: 5px;
 	color: white;
-	padding: 10px 15px;
+	padding: 5px 10px;
+    font-weight: bold;
+    font-size: 16px;
 	text-decoration: none;
 	margin: 4px 2px;
+    margin-left: 400px;
+    box-shadow: 0px 3px 5px #000;
 	cursor: pointer;
 }
 

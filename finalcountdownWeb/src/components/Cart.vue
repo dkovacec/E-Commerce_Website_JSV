@@ -107,21 +107,21 @@ export default {
                 <td> € {{ product.price }}</td>
                 <td>{{ product.quantity }}</td>
                 <td>€ {{ product.price * product.quantity }}</td>
-                <td><button @click="removeFromCart(product.id)">Remove from cart</button></td>
+                <td><button class="buttonDelete" @click="removeFromCart(product.id)">Remove from cart</button></td>
             </tr>
         </tbody>
         <tfoot>
             <tr>
-                <td class="totalPrice" colspan="7">Total price: €{{this.totalSum}}</td>
+                <td class="totalPrice" colspan="7"> 
+
+                    <button class="buttonBuy" v-show="(this.cartStore.cart.length >=1)" @click="completePurchase()">Complete purchase</button>
+                    <button class="buttonDeleteCart" v-show="(this.cartStore.cart.length >=1)" @click="clear()">Empty the cart</button>Total price: €{{this.totalSum}}</td>
             </tr>
 
         </tfoot>
     </table>
 
-<button v-show="(this.cartStore.cart.length >=1)" @click="clear()">Empty the cart</button>
-<br>
-  
-<button v-show="(this.cartStore.cart.length >=1)" @click="completePurchase()">Complete purchase</button>
+
 
 </template>
 
@@ -137,10 +137,11 @@ export default {
   border-collapse: collapse;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 
 .cartTable th, .cartTable td {
-
+  border: 2px black solid;
   padding: 5px;
 }
 
@@ -148,7 +149,7 @@ export default {
   background-color: black;
   color: white;
   margin: 2px;
-  border: 2px solid white;
+  /* border: 2px solid white; */
 
 }
 
@@ -162,7 +163,7 @@ export default {
 }
 
 .cartTable tbody tr:hover {
-  cursor: pointer;
+  
   background-color: #555;
   color: white;
 }
@@ -192,49 +193,59 @@ export default {
   transform: translateY(-0.075em);
 }
 
-.buttonEdit {
-  background-color: #000;
-  margin: 2px;
-  font: inherit;
-  color: currentColor;
-  width: 1.5em;
-  height: 1.5em;
-  border: 0.25em solid currentColor;
-  border-radius: 0.15em;
-  transform: translateY(-0.075em);
-}
 
-.buttonEdit {
-  background-color: #02527d;
-  /* Green */
-  width: 75px;
+
+.buttonBuy {
+  background-color: green;
+  float: left;
+  width: 175px;
+  font-weight: bold;
   color: white;
   padding: 5px 10px;
   margin: 4px 2px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  font-size: 16p;
-  border: 1px solid blue;
+  cursor: pointer;
+  font-size: 16px;
+  border: 1px solid black;
   border-radius: 5px;
   box-shadow: 0px 3px 5px #000;
 }
 
 .buttonDelete {
-
-  background-color: #380000;
-  width: 75px;
-  color: yellow;
+  background-color: red;
+  width: 175px;
+  font-weight: bold;
+  color: white;
   padding: 5px 10px;
   margin: 4px 2px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  float: left;
+  cursor: pointer;
   font-size: 16px;
-  border: 1px solid crimson;
+  border: 1px solid black;
   border-radius: 5px;
   box-shadow: 0px 3px 5px #000;
 }
+
+.buttonDeleteCart {
+  background-color: red;
+  float: left;
+  width: 175px;
+  font-weight: bold;
+  color: white;
+  padding: 5px 10px;
+  margin: 4px 2px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px #000;
+}
+
 
 
 </style>

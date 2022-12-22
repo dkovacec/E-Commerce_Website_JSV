@@ -166,22 +166,27 @@ export default {
 <style>
 .loginform {
 	width: 65%;
-	margin: 0;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
 	padding: 20px 20px;
 	box-sizing: border-box;
-	border: 2px solid #380000;
+	border: 0px solid #380000;
 	border-radius: 4px;
 	background-color: whitesmoke;
 	resize: none;
 	color: black;
 }
+
 .loginform label {
+    border: 0px solid black;
     display: inline-block;
-    width: 100px;
+    width: 80px;
     text-align: right;
     margin: 1px;
     font-size: 14px;
 }
+
 .loginform textarea {
     box-shadow: inset 0 2px 3px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
     background-color: #DDD;
@@ -191,6 +196,7 @@ export default {
     padding: 3px;
     margin-left: 15px;
 }
+
 input[type=text],[type=username], [type=email]  {
     height: 25px;
     width: 80%;
@@ -203,15 +209,20 @@ input[type=text],[type=username], [type=email]  {
     background-color: #DDD;
     box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF
 }
+
 .input[type=button], input[type=submit], input[type=reset] {
-	background-color: #00050f; /*inverted of floralwhite*/
-	border: 2px solid darkblue;
-	border-radius: 4px;
+	background-color: blue;
+	border: 1px solid black;
+	border-radius: 5px;
 	color: white;
-	padding: 10px 15px;
+	padding: 5px 10px;
+    font-weight: bold;
+    font-size: 16px;
 	text-decoration: none;
 	margin: 4px 2px;
-	cursor: pointer;
+    margin-left: 400px;
+    box-shadow: 0px 3px 5px #000;
+    cursor: pointer;
 }
 select {
     background-color: #ddd;

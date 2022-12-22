@@ -23,18 +23,19 @@ export default defineComponent({
 <style scoped>
 
 #buttonLogout {
-  background-color: #380000;
-  width: 75px;
-  height: 40px;
-  color: yellow;
-  padding: 10px 10px;
+  background-color: blue;
+  width: 90px;
+  font-weight: bold;
+  color: white;
+  padding: 5px 10px;
   margin: 4px 2px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  border: 1px solid crimson;
+  border: 1px solid black;
   border-radius: 5px;
   box-shadow: 0px 3px 5px #000;
+  cursor: pointer;
 }
 </style>
