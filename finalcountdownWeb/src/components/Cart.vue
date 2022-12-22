@@ -1,5 +1,6 @@
 <script>
 //for shopping cart
+import router from '../router';
 import { mapStores } from "pinia";
 import { useCartStore } from "@/store/cart";
 
@@ -72,8 +73,11 @@ export default {
 
         getTotalPrice() {
             this.totalItem
-        }
-    },
+        },
+        completePurchase(){
+        router.push({ path: '/purchase' })
+    }
+    }
 }
 
 
@@ -114,10 +118,10 @@ export default {
         </tfoot>
     </table>
 
-<button @click="clear()">Empty the cart</button>
+<button v-show="(this.cartStore.cart.length >=1)" @click="clear()">Empty the cart</button>
 <br>
-<button>Complete purchase</button>
-
+  
+<button v-show="(this.cartStore.cart.length >=1)" @click="completePurchase()">Complete purchase</button>
 
 </template>
 

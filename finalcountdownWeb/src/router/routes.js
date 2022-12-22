@@ -19,6 +19,7 @@ import UserInfo from '../views/UserInfo.vue';
 import UserList from '../views/UserList.vue';
 import UserProfile from '../views/UserProfile.vue';
 import Cart from '../components/Cart.vue';
+import Purchase from '../components/Purchase.vue';
 export const routes = [
 
     
@@ -159,6 +160,14 @@ export const routes = [
                 name: "cart",
                 path: "/cart",
                 component: Cart,
+                meta: {
+                    requiresAuth: true
+                }
+            },
+            {
+                name: "Purchase",
+                path: "/purchase",
+                component: Purchase,
                 meta: {
                     requiresAuth: true
                 }
