@@ -72,7 +72,7 @@ export default {
 
   <div class="card" v-for="(product,index) in productList.slice(0,8)" :key="product.id">
     <router-link :to="{ name: 'ProductDetail', params: { productid: product.id } }">
-      <img class="imageCard" :src="product.imageName">
+      <div class="imageBlock"><img class="imageCard" :src="product.imageName"></div>
       <p class="title">{{ product.name }}</p>
       <p class="price">€{{ product.price }}</p>
       <!-- <p class="summary">{{product.summary}}</p> -->
@@ -185,9 +185,9 @@ export default {
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 290px;
+  width: 290px;
   height: 435px;
-  margin-top: 8%;
+  margin-top: 6%;
   text-align: center;
   float:left;
   margin-left: 2.8rem;
@@ -209,9 +209,13 @@ export default {
   font-size: 22px;
 }
 
+.card .imageBlock {
+  width: 285px;
+  height: 285px;
+}
 .card .imageCard {
-  width: 280px;
-  height: 280px;
+  max-width: 280px;
+  max-height: 280px;
 }
 
 

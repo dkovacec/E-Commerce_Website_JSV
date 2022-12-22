@@ -159,7 +159,7 @@ export default {
 </script>
 
 <template>
-    <h1>Edit a category</h1>
+    <h1>Product management</h1>
     <form class="loginform" @submit.prevent="processForm" novalidate>
         <p>
             <label for="productName">Product Name: </label>
