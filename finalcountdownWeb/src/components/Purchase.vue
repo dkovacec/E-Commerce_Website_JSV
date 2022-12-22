@@ -118,7 +118,7 @@ export default {
 
         </tfoot>
     </table>
-    <button @click="clear()">Return to Homepage</button>
+    <button class="buttonHome" @click="clear()">Return to Homepage</button>
 </template>
 
 <style scoped>
@@ -200,20 +200,21 @@ export default {
     transform: translateY(-0.075em);
 }
 
-.buttonEdit {
-    background-color: #02527d;
-    /* Green */
-    width: 75px;
-    color: white;
-    padding: 5px 10px;
-    margin: 4px 2px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16p;
-    border: 1px solid blue;
-    border-radius: 5px;
-    box-shadow: 0px 3px 5px #000;
+.buttonHome {
+  background-color: blue;
+  float: left;
+  width: 175px;
+  font-weight: bold;
+  color: white;
+  padding: 5px 10px;
+  margin: 4px 2px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 16px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px #000;
 }
 
 .buttonDelete {

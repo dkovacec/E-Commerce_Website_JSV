@@ -240,17 +240,17 @@ export default defineComponent({
 
 <style scoped>
 .buttonEdit {
-  background-color: #02527d;
-  /* Green */
-  width: 75px; 
+  background-color: green;
+  width: 90px;
   color: white;
-  padding: 10px 10px;
+  padding: 5px 10px;
   margin: 4px 2px;
   text-align: center;
+  font-weight: bold;
   text-decoration: none;
   display: inline-block;
-  font-size: 16p;
-  border: 1px solid blue;
+  font-size: 16px;
+  border: 1px solid black;
   border-radius: 5px;
   box-shadow: 0px 3px 5px #000;
 }

@@ -92,7 +92,7 @@ export default defineComponent({
 .formattedTable th:nth-child(1),
 .formattedTable th:nth-child(2) {
 
-  border-right: 1px solid white;
+  border-right: 0px solid white;
 }
 
 
@@ -108,7 +108,7 @@ export default defineComponent({
 }
 
 .formattedTable th {
-  /* background-color: black; */
+  background-color: black;
   color: white;
 
 }
@@ -135,7 +135,8 @@ export default defineComponent({
 
 .buttonEdit {
   background-color: green;
-  width: 75px;
+  width: 90px;
+  font-weight: bold;
   color: white;
   padding: 5px 10px;
   margin: 4px 2px;
@@ -150,7 +151,8 @@ export default defineComponent({
 
 .buttonProfile {
   background-color: blue;
-  width: 75px;
+  width: 90px;
+  font-weight: bold;
   color: white;
   padding: 5px 10px;
   margin: 4px 2px;
@@ -166,7 +168,8 @@ export default defineComponent({
 .buttonDelete {
 
   background-color: red;
-  width: 75px;
+  width: 90px;
+  font-weight: bold;
   color: white;
   padding: 5px 10px;
   margin: 4px 2px;
