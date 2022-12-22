@@ -25,7 +25,7 @@ export default {
 <!-- <HeaderSecondary></HeaderSecondary> -->
 
   <main class="container">
-    <div class="mainBanner"><img class="banner" src="src\images\banner2.jpg"></div>
+    <div class="mainBanner"><img class="banner" src="@\images\banner2.jpg"></div>
 
     <router-view></router-view>
 

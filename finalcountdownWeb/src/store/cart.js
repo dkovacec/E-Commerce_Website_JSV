@@ -14,11 +14,11 @@ export const useCartStore = defineStore('cart', {
 
 
 
-            alert(`Product ${productId} added to cart`)
+            //alert(`Product ${productId} added to cart`)
         },
         removeFromCart(productId) {
             this.cart = this.cart.filter(item => item.id !== productId);
-            alert(`Product ${productId} removed from cart`)
+            //alert(`Product ${productId} removed from cart`)
         },
         clear() {
             this.cart = [];
