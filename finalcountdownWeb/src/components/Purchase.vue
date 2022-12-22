@@ -79,7 +79,18 @@ export default {
 </script>
 
 <template>
+    
+ <section v-show="(this.cartStore.cart.length >=1)">
     <h1>Thank you for your purchase  {{ this.currentUser?.firstName }}!</h1>
+    <p>This invoice is billed to:</p>
+    <ul class="billingData">
+        <li>{{ this.currentUser?.firstName }} {{ this.currentUser?.lastName }}</li>
+        <li>{{ this.currentUser?.address }}</li>
+        <li>{{ this.currentUser?.city }} {{ this.currentUser?.postCode }}</li>
+        <li>{{ this.currentUser?.email }}</li>
+        <li>{{ this.currentUser?.phoneNumber }}</li>     
+    </ul>
+</section>
 
     <table class="cartTable">
         <thead>
@@ -107,7 +118,7 @@ export default {
 
         </tfoot>
     </table>
-    <button @click="clear()">Return to Hompage</button>
+    <button @click="clear()">Return to Homepage</button>
 </template>
 
 <style scoped>
@@ -219,5 +230,15 @@ export default {
     border: 1px solid crimson;
     border-radius: 5px;
     box-shadow: 0px 3px 5px #000;
+}
+
+.billingData {
+
+}
+
+.billingData li {
+    display: block;
+    text-decoration: none;
+
 }
 </style>

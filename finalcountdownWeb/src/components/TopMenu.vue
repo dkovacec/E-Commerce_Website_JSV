@@ -57,16 +57,14 @@ export default defineComponent({
         <!-- <li><router-link :to="{ name: 'Tabs'}">Tabs</router-link></li> -->
         <!-- <li><a href="#">Shop</a></li> -->
 
-<li v-if="!isAuthenticated">
-      <router-link :to="{ name: 'register' }">Register</router-link>
+        <li v-if="isAuthenticated">
+      <router-link :to="{ name: 'profile' }">Profile</router-link>
     </li>
 
-    <li v-if="!isAuthenticated">
-      <router-link :to="{ name: 'login' }">Login</router-link>
-    </li>
-    <li v-if="isAuthenticated">
-      <router-link :to="{ name: 'logout' }">Logout</router-link>
-    </li>
+    <li>
+          <router-link :to="{ name: 'cart' }">Cart</router-link>
+        </li>
+   
 
     <li v-if="isAuthenticated && this.user?.admin">
         <li><router-link to="/categorylist">Categories</router-link></li>
@@ -87,14 +85,21 @@ export default defineComponent({
     <li v-if="isAuthenticated && this.user?.admin">
       <router-link :to="{ name: 'userList' }">Users</router-link>
     </li>
+    
+
+    <li v-if="!isAuthenticated">
+      <router-link :to="{ name: 'register' }">Register</router-link>
+    </li>
+
+    <li v-if="!isAuthenticated">
+      <router-link :to="{ name: 'login' }">Login</router-link>
+    </li>
     <li v-if="isAuthenticated">
-      <router-link :to="{ name: 'profile' }">Profile</router-link>
+      <router-link :to="{ name: 'logout' }">Logout</router-link>
     </li>
 
 
-        <li>
-          <router-link :to="{ name: 'cart' }">Cart</router-link>
-        </li>
+
 
       </ul>
     </nav>
@@ -128,9 +133,9 @@ export default defineComponent({
     position: absolute;
     list-style: none;
     margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
+    margin-right: auto;
+    left: 0;
+    right: 0;
     margin: auto;
     padding: 0;
     text-align: center;
@@ -144,10 +149,12 @@ export default defineComponent({
 
 .topMenu ul {
     margin: 0;
+
 }
 
 .topMenu li {
     display: inline;
+    margin-right: auto;
     /*border: 1px solid black;*/
 }
 
@@ -166,5 +173,6 @@ export default defineComponent({
     color: lightcyan;
     background-color: black;
 }
+
 
 </style>
