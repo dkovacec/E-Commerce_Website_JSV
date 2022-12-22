@@ -142,7 +142,7 @@ export default {
                     })
                 });
                 let updateProduct = await responseCategory.json();
-                alert(`Category updated with id= ${updateProduct.id}`)
+                alert(`Product ${updateProduct.name} has been updated`)
 
                 router.push({ path: '/productlist' })
 

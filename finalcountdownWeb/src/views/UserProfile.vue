@@ -173,47 +173,47 @@ export default defineComponent({
 
  
           <p for="firstName">
-            <span>First name</span>
+            <span>First name:</span>
             <input type="text" id="firstName" autocomplete="firstName" v-model="currentUser.firstName">
           </p>
 
           <p for="lastName">
-            <span>Last name</span>
+            <span>Last name:</span>
             <input type="text" id="lastName" autocomplete="lastName" v-model="currentUser.lastName">
           </p>
 
           <p for="city">
-            <span>City</span>
+            <span>City:</span>
             <input type="text" id="city" autocomplete="city" v-model="currentUser.city">
           </p>
 
           <p for="country">
-            <span>Country</span>
+            <span>Country:</span>
             <input type="text" id="country" autocomplete="country" v-model="currentUser.country">
           </p>
 
           <p for="address">
-            <span>Address</span>
+            <span>Address:</span>
             <input type="text" id="address" autocomplete="address" v-model="currentUser.address">
           </p>
 
           <p for="address2">
-            <span>Address2</span>
+            <span>Address2:</span>
             <input type="text" id="address2" autocomplete="address2" v-model="currentUser.address2">
           </p>
 
           <p for="postCode">
-            <span>PostCode</span>
+            <span>PostCode:</span>
             <input type="number" id="postCode" autocomplete="postCode" v-model="currentUser.postCode">
           </p>
 
           <p for="phoneNumber">
-            <span>Phone number</span>
+            <span>Phone number:</span>
             <input type="number" id="phoneNumber" autocomplete="phoneNumber" v-model="currentUser.phoneNumber">
           </p>
 
           <p for="email">
-            <span>E-mail</span>
+            <span>E-mail:</span>
             <input type="email" id="email" autocomplete="email" v-model="currentUser.email">
           </p>
 
@@ -222,7 +222,7 @@ export default defineComponent({
           <button class="buttonEdit" @click="isEdit()"> {{ this.edit ? "Cancel" : "Edit info" }}</button>
 
       </form>
-      <button class="buttonEdit" v-show="!this.edit" @click="isEdit()"> {{ this.edit ? "Cancel" : "Edit info" }}</button>
+      <button class="buttonEdit2" v-show="!this.edit" @click="isEdit()"> {{ this.edit ? "Cancel" : "Edit info" }}</button>
 
 
 
@@ -239,7 +239,63 @@ export default defineComponent({
 </template>
 
 <style scoped>
+
+.loginform {
+	width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+	padding: 20px 20px;
+	box-sizing: border-box;
+	border: 0px solid #380000;
+	border-radius: 4px;
+	background-color: whitesmoke;
+	resize: none;
+	color: black;
+
+}
+
+.loginform span {
+    border: 0px solid #000;
+    display: inline-block;
+    width: 105px;
+    text-align: left;
+    margin-right: -10px;
+    font-size: 15px;
+}
+
+input[type=text],[type=username], [type=email], [type="number"], [type="password"]  {
+    height: 25px;
+    width: 50%;
+    padding: 3px;
+    margin-left: 25px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    border-top: none;
+    border-bottom: 1px solid #DDD;
+    background-color: #DDD;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF
+}
+
 .buttonEdit {
+  background-color: green;
+  width: 90px;
+  color: white;
+  padding: 5px 10px;
+  margin: 4px 2px;
+  text-align: center;
+  font-weight: bold;
+  margin-right: -70px;
+  margin-left: 115px;
+  text-decoration: none;
+  float:left;
+  font-size: 16px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px #000;
+  cursor: pointer;
+}
+
+.buttonEdit2 {
   background-color: green;
   width: 90px;
   color: white;
@@ -253,5 +309,6 @@ export default defineComponent({
   border: 1px solid black;
   border-radius: 5px;
   box-shadow: 0px 3px 5px #000;
+  cursor: pointer;
 }
 </style>

@@ -136,7 +136,7 @@ export default {
                 let updateUser = await responseCategory.json();
 
                 
-                alert(`User updated with id= + ${updateUser.id}`)
+                alert(`User ${updateUser.username} has been updated`)
 
                 router.push({ path: '/user' })
 
@@ -204,9 +204,8 @@ export default {
             </p>
 
 
-
             <p for="username">
-                <span>Username: {{users.username}}</span>
+                <span>Username:</span><label class="lbl1">{{users.username}}</label>
                 <!-- <input type="username" id="username" autocomplete="username" v-model="users.username"> -->
             </p>
 
@@ -219,13 +218,85 @@ export default {
                 <br><br>
             </p>
 
-            <p><input @click="updateUser()" type="submit" value="Update"></p>
+            <p><input class="buttonUpdate" @click="updateUser()" type="submit" value="Update"></p>
         </fieldset>
     </form>
 
 </template>
 
-<style>
+<style scoped>
+
+.loginform {
+	width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+	padding: 20px 20px;
+	box-sizing: border-box;
+	border: 0px solid #380000;
+	border-radius: 4px;
+	background-color: whitesmoke;
+	resize: none;
+	color: black;
+
+}
+
+.loginform span {
+    border: 0px solid #000;
+    display: inline-block;
+    width: 125px;
+    text-align: left;
+    margin-right: -10px;
+    font-size: 15px;
+}
+
+.loginform label {
+    border: 0px solid #000;
+    display: inline-block;
+    width: 125px;
+    text-align: right;
+    margin-right: -10px;
+    font-size: 15px;
+}
+
+
+.lbl1 {
+    border: 0px solid #000;
+    display: inline-block;
+    text-align: right;
+    margin-left: -50px;
+    font-size: 15px;
+}
+
+input[type=text],[type=username], [type=email], [type="number"], [type="password"]  {
+    height: 25px;
+    width: 50%;
+    padding: 3px;
+    margin-left: 25px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    border-top: none;
+    border-bottom: 1px solid #DDD;
+    background-color: #DDD;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF
+}
+
+.buttonUpdate {
+  background-color: green;
+  width: 100px;
+  height: 40px;
+  color: white;
+  padding: 10px 10px;
+  margin: 8px 8px;
+  margin-left: 150px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  box-shadow: 0px 3px 5px #000;
+  cursor: pointer;
+}
 
 </style>
 

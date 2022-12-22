@@ -103,7 +103,7 @@ export default {
         <p class="productdetailprice"><b>Price:</b> €{{ product.price }}</p>
         <p class="buttondetailPosition">
             <span class="quantityLabel">Quantity </span><input class="quantity" type="number" v-model="quantity" min="1"/>
-            <button class="buttonCart" @click="addToCart()">Add to Cart Button</button>
+            <button class="buttonCart" @click="addToCart()">Add to Cart</button>
         </p>
 
         <p class="productdetaildescription"><b>Description:</b><br><br>{{ product.description }} </p>
