@@ -7,7 +7,6 @@ export default defineComponent({
 </script>
 
 <template>
-  <h2>Login</h2>
   <LoginForm/>
 </template>
 

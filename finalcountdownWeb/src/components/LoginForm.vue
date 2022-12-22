@@ -45,7 +45,7 @@ export default defineComponent({
 
 </script>
 <template>
-
+  <h2 class="title">Login</h2>
     <form class="loginform" @submit.prevent="login" v-if="!authStore.isAuthenticated">
     <fieldset>
       <label for="username">Username</label>
@@ -79,15 +79,27 @@ export default defineComponent({
     color: red;
 
 }
-
-
-.loginform {
-	width: 70%;
+.title {
+	width: 0;
     margin-left: auto;
     margin-right: auto;
 	padding: 20px 20px;
 	box-sizing: border-box;
-	border: 0px solid #000000;
+	border: 0px solid #380000;
+	border-radius: 4px;
+	background-color: whitesmoke;
+	resize: none;
+	color: black;
+
+}
+
+.loginform {
+	width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+	padding: 20px 20px;
+	box-sizing: border-box;
+	border: 0px solid #380000;
 	border-radius: 4px;
 	background-color: whitesmoke;
 	resize: none;
@@ -96,19 +108,19 @@ export default defineComponent({
 }
 
 .loginform label {
+    border: 0px solid #000;
     display: inline-block;
-    width: 50px;
+    width: 100px;
     text-align: left;
-    margin: 3px;
+    margin-right: 5px;
     font-size: 15px;
 }
 
-input[type=text],[type=username], [type=email], [type=password] {
+input[type=text],[type=username], [type=email], [type="number"], [type="password"]  {
     height: 25px;
-    width: 150px;
+    width: 60%;
     padding: 3px;
-    margin-left: 30px;
-    margin-bottom: 8px;
+    margin-left: 25px;
     border-radius: 3px;
     border: 1px solid transparent;
     border-top: none;
@@ -119,23 +131,37 @@ input[type=text],[type=username], [type=email], [type=password] {
 
 .input[type=button], input[type=submit], input[type=reset] {
 	background-color: #00050f; /*inverted of floralwhite*/
-	border: 1px solid darkblue;
+	border: 2px solid darkblue;
 	border-radius: 4px;
 	color: white;
 	padding: 10px 15px;
 	text-decoration: none;
 	margin: 4px 2px;
 	cursor: pointer;
+
+}
+
+fieldset {
+  border: 0;
+}
+fieldset > label {
+  display: block;
+  width: 10rem;
+  margin-bottom: 1rem;
+}
+label > span {
+  display: block;
+  margin-bottom: 0.2rem;
 }
 
 .buttonLogin {
   background-color: #1f0cc9;
-  width: 75px;
+  width: 100px;
   height: 40px;
   color: white;
   padding: 10px 10px;
   margin: 8px 8px;
-  margin-left: 170px;
+  margin-left: 52%;
   text-align: center;
   text-decoration: none;
   display: block;
@@ -145,18 +171,6 @@ input[type=text],[type=username], [type=email], [type=password] {
   box-shadow: 0px 3px 5px #000;
 }
 
-fieldset {
-  border: 0;
-}
-fieldset > label {
-  display: block;
-  width: 20rem;
-  margin-bottom: 1rem;
-}
-label > span {
-  display: block;
-  margin-bottom: 0.2rem;
-}
 
 
 

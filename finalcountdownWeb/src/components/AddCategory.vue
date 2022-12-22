@@ -113,7 +113,7 @@ export default {
     margin-right: auto;
 	padding: 20px 20px;
 	box-sizing: border-box;
-	border: 1px solid #380000;
+	border: 0px solid #380000;
 	border-radius: 4px;
 	background-color: whitesmoke;
 	resize: none;
@@ -160,6 +160,8 @@ input[type=text],[type=username], [type=email]  {
 	padding: 10px 15px;
 	text-decoration: none;
 	margin: 4px 2px;
+    margin-left: 425px;
+
 	cursor: pointer;
 }
 
