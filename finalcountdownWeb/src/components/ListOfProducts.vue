@@ -102,7 +102,7 @@ export default {
 
 .formattedTable,
 .formattedTable td {
-  /* border: none; */
+  border: 2px solid black;
   margin-left: auto;
   margin-right: auto;
 }
@@ -168,6 +168,7 @@ export default {
   border: 1px solid black;
   border-radius: 5px;
   box-shadow: 0px 3px 5px #000;
+  cursor: pointer;
 }
 
 .buttonDelete {
@@ -185,6 +186,7 @@ export default {
   border: 1px solid black;
   border-radius: 5px;
   box-shadow: 0px 3px 5px #000;
+  cursor: pointer;
 }
 
 tr td:last-child {

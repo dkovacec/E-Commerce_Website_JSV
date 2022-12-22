@@ -102,7 +102,7 @@ export default {
         <p class="productdetailsummary"><b>Summary:</b><br><br>{{ product.summary }}</p>
         <p class="productdetailprice"><b>Price:</b> €{{ product.price }}</p>
         <p class="buttondetailPosition">
-            <span class="quantityLabel">Quantity </span><input class="quantity" type="number" v-model="quantity"/>
+            <span class="quantityLabel">Quantity </span><input class="quantity" type="number" v-model="quantity" min="1"/>
             <button class="buttonCart" @click="addToCart()">Add to Cart Button</button>
         </p>
 
@@ -192,6 +192,7 @@ export default {
 	border: 1px solid rgb(167, 185, 203);
 	border-radius: 5px;
     box-shadow: 0px 3px 5px #000;
+    cursor: pointer;
 }
 .buttonMore:hover {
 	background-color: rgb(13, 57, 111);

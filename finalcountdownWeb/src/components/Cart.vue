@@ -137,10 +137,11 @@ export default {
   border-collapse: collapse;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 
 .cartTable th, .cartTable td {
-
+  border: 2px black solid;
   padding: 5px;
 }
 
@@ -148,7 +149,7 @@ export default {
   background-color: black;
   color: white;
   margin: 2px;
-  border: 2px solid white;
+  /* border: 2px solid white; */
 
 }
 
@@ -230,6 +231,7 @@ export default {
 
 .buttonDeleteCart {
   background-color: red;
+  float: left;
   width: 175px;
   font-weight: bold;
   color: white;
@@ -237,7 +239,6 @@ export default {
   margin: 4px 2px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 16px;
   cursor: pointer;
   border: 1px solid black;

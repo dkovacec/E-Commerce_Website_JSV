@@ -169,6 +169,7 @@ label > span {
   border: 1px solid rgb(0, 0, 0);
   border-radius: 5px;
   box-shadow: 0px 3px 5px #000;
+  cursor: pointer;
 }
 
 
