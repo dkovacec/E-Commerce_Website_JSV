@@ -41,7 +41,7 @@ export default defineComponent({
 <template>
 
 <nav class="topMenu">
-    <img class="logo" src="..\images\logo.jpg">
+    <img class="logo" src="..\images\logo2.jpg">
 
     <p v-if="user" class="currentUser" > Hello {{ this.user?.username }} </p>
 
@@ -99,14 +99,19 @@ export default defineComponent({
       </ul>
     </nav>
 
+    
 </template>
 
 <style>
+
+
+
 .logo {
     padding: 0;
     margin: 0;
     vertical-align: center;
     float: left;
+    height: 37px;
 }
 
 .logo a {

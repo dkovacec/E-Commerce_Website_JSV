@@ -25,6 +25,7 @@ export default {
 <!-- <HeaderSecondary></HeaderSecondary> -->
 
   <main class="container">
+    <div class="mainBanner"><img class="banner" src="src\images\banner2.jpg"></div>
 
     <router-view></router-view>
 
@@ -49,13 +50,29 @@ body {
   margin-right: auto;
   left: 0;
   right: 0;
-  margin-top: 70px;
+  margin-top: 60px;
 	width: 75%;
 	padding: 10px;
-  padding-top: 100px;
+  padding-top: 90px;
 	font-family: Tahoma, Arial, sans-serif;
   /*border: 1px solid black;*/
 	background-color: whitesmoke;  /*inverted of whitesmokr  #0a0a0a*/
 	color: black;
+}
+
+.mainBanner {
+  border: 0px solid black;
+  margin-top: -70px;
+  width: 99%;
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.banner {
+  width: 100%;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
