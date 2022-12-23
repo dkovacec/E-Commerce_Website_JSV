@@ -15,8 +15,10 @@ export default defineComponent({
 
 <template>
 
-<h1>DigitLion</h1>
-<p>Best gaming and computing equipment you can find online. Browse through our offers and find whatever you need.</p>
+<hr>
+<h1 class="title">DigitLion</h1>
+<p class="text">Best gaming and computing equipment you can find online. Browse through our offers and find whatever you need.</p>
+<hr>
 <HomeMain></HomeMain>
 
   <!-- <p>This application provides a simple introduction for enabling user authentication for a VueJS web application with a Spring Boot
@@ -55,4 +57,17 @@ export default defineComponent({
   margin-left: auto;
   margin-right: auto;
 }
+
+
+.title{
+  text-align: center;
+  font-variant: small-caps;
+}
+.text{
+  text-align: center;
+  font-style: italic;
+}
+
+
+
 </style>
